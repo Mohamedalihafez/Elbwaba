@@ -57,6 +57,7 @@
         
         <!-- Template Javascript -->
         <script src="{{ asset('assets/js/main.js')}}"></script>
+
     @yield('js')
 </body>
 
