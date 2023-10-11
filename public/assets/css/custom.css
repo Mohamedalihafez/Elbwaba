@@ -137,3 +137,13 @@
 #uploadButton:hover {
     background-color: #219850;
 }
+.sellproduct {
+    background-color: white;
+    padding: 20px !important;
+}
+.mb-2 {
+    margin-bottom: 2px !important;
+}
+.f-xl {
+    font-size: x-large !important;
+}
