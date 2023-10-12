@@ -11,22 +11,11 @@ class City extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['user_id', 'action', 'message', 'action_model',  'action_id' ,'user_name', 'clinic_id'];
 
-    // protected static function booted()
-    // { 
-    //     if(Auth::hasUser())
-    //     {
-    //         if(! Auth::user()->isSuperAdmin())
-    //         {
-    //             static::addGlobalScope(new TenantScope());
-    //         } 
-    //     } 
-    // }
 
     static function fetchRegion($request)
     {
-        $data = City::where("region_id", $request->region_id)->get(["name_ar", "region_id"]);
+        $data = City::where("region_id", $request->region_id)->get(["name_ar", "id"]);
         return $data;
     }
 
@@ -50,8 +39,5 @@ class City extends Model
         return $query;
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+
 }

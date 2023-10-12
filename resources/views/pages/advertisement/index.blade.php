@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <i id="back_map" class="fa fa-arrow-right f-xl  d-none  product_details" > العوده </i>
+            <i id="back_map" class="fa fa-arrow-right f-xl  d-none  product_details" > &nbsp; العوده </i>
             <div class="col-lg-12 wow  slideInUp d-none product_details" >
                 <div class="">
                     <form method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
@@ -46,10 +46,23 @@
                                 <div class="col-md-6">
                                     <label class="mb-1" >حدد المدينه أو المحافظه  </label>
                                     <select id="cities"  class="form-control" name="region_id">
-                     
+                                            <option selected>
+                                                حدد المنطقه
+                                            </option>
                                     </select>
                                 </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <label class="mb-1" >الحي</label>
+                                        <input type="email"  name="email"  class="form-control border-0 bg-light px-4" placeholder="الحي " style="height: 55px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="mb-1" >الشارع</label>
+                                        <input type="email"  name="email"  class="form-control border-0 bg-light px-4" placeholder="الشارع" style="height: 55px;">
+                                    </div>
+                                </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <label class="mb-1" for="exampleInputEmail1">عنوان الاعلان :</label>
 
@@ -171,7 +184,7 @@
                 success: function (results) {
                     $('#cities').html('');
                     results.forEach((result, index) => {
-                        $("#cities").append('<option value="' + result['region_id'] + '">' + result['name_ar'] + '</option>');
+                        $("#cities").append('<option value="' + result['id'] + '">' + result['name_ar'] + '</option>');
                     });
                 },
             });
@@ -198,6 +211,7 @@
 $( "#setlocation" ).on( "click", function() {
   $('#location_map').addClass('d-none');
   $('.product_details').removeClass('d-none');
+  $('.product_details').css("visibility","inherit");
 } );
 
 $( "#back_map" ).on( "click", function() {

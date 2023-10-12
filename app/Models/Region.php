@@ -11,18 +11,6 @@ class Region extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['user_id', 'action', 'message', 'action_model',  'action_id' ,'user_name', 'clinic_id'];
-
-    // protected static function booted()
-    // { 
-    //     if(Auth::hasUser())
-    //     {
-    //         if(! Auth::user()->isSuperAdmin())
-    //         {
-    //             static::addGlobalScope(new TenantScope());
-    //         } 
-    //     } 
-    // }
 
     public function getCountAttribute()
     {
@@ -44,8 +32,5 @@ class Region extends Model
         return $query;
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+
 }
