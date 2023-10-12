@@ -7,7 +7,6 @@
 
 <div class="container-fluid  wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
-     
         <div class="row g-5">
             <div class="col-lg-12 wow sellproduct " data-wow-delay="0.6s">
                 <div class="section-title text-center position-relative pb-3 mx-auto" >
@@ -29,13 +28,20 @@
                 </div>
             </div>
             <i id="back_map" class="fa fa-arrow-right f-xl  d-none  product_details" > &nbsp; العوده </i>
-            <div class="col-lg-12 wow  slideInUp d-none product_details" >
-                <div class="">
-                    <form method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
+            <div class="col-lg-12 wow  slideInUp product_details d-none" >
+                <div class="card">
+                    <div class="data-ads">
+                        <form id="ads_form" method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
+                            @csrf
+                            <div class=" card-header text-center ">
+                                <div class="row">
+                                    <div class="col-sm-12 col-auto">
+                                        <h3 class="page-title">تحديد الموقع </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3">
                                     <label class="mb-1" >حدد المنطقه </label>
                                     <select id="regions"  class="form-control" name="region_id">
                                         @foreach ($regions as $region)
@@ -43,7 +49,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-3">
                                     <label class="mb-1" >حدد المدينه أو المحافظه  </label>
                                     <select id="cities"  class="form-control" name="region_id">
                                             <option selected>
@@ -51,62 +57,212 @@
                                             </option>
                                     </select>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-6">
-                                        <label class="mb-1" >الحي</label>
-                                        <input type="email"  name="email"  class="form-control border-0 bg-light px-4" placeholder="الحي " style="height: 55px;">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="mb-1" >الشارع</label>
-                                        <input type="email"  name="email"  class="form-control border-0 bg-light px-4" placeholder="الشارع" style="height: 55px;">
+                                <div class="col-lg-3">
+                                    <label class="mb-1" >الحي</label>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="mb-1" >الشارع</label>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                </div>
+                                <div class=" card-header text-center ">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-auto">
+                                            <h3 class="page-title"> تفاصيل الإعلان </h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="mb-1" for="exampleInputEmail1">عنوان الاعلان :</label>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عنوان الاعلان :</label>
 
-                                <input type="text" name="title" class="form-control border-0 bg-light px-4" placeholder="العنوان" style="height: 55px;">
-                                <p class="error error_name"></p>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="mb-1" for="exampleInputEmail1">صفة المعلن                                </label>
+                                    <input type="text" name="title" class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <p class="error error_name"></p>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" >نوع  العقار </label>
+                                    <select id="regions"  class="form-control" name="building_id">
+                                        @foreach ($buildings as $building)
+                                            <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>  
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" >صفة المعلن</label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">مالك</option>
+                                            <option value="2">مكتب عقار</option>
+                                            <option value="3">وسيط</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" >رقم الرخصه </label>
+                                    <input type="text" name="title" class="form-control border-0 bg-light px-4" placeholder="رقم الرخصه" style="height: 55px;">
+                                </div>     
+                                <hr>
+                                <div class="col-lg-4 ">
+                                    <label class="mb-1" >نوع الشارع </label>
+                                    <select id="regions"  class="form-control" name="stre_type">
+                                            <option value="1">سكني</option>
+                                            <option value="2"> تجاري</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <label class="mb-1" for="exampleInputEmail1">نوع الفلة                                    </label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">مستقله</option>
+                                            <option value="2">دوبلكس </option>
+                                            <option value="3">تاون هاوس</option>
+                                            <option value="4">مع شقق</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <label class="mb-1" for="exampleInputEmail1">الواجهة</label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">شمال</option>
+                                            <option value="2">جنوب </option>
+                                            <option value="3">شرق</option>
+                                            <option value="4">غرب</option>
+                                            <option value="5">جنوب شرقي</option>
+                                            <option value="6">جنوب غربي </option>
+                                            <option value="7">شمال شرقي </option>
+                                            <option value="8">شمال غربي </option>
+                                            <option value="9">ثلاث شوارع</option>
+                                            <option value="10">اربع شوارع </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">المساحه :</label>
 
-                                <input type="email"  name="email"  class="form-control border-0 bg-light px-4" placeholder="بريدك الالكتروني" style="height: 55px;">
-                                <p class="error error_email"></p>
-                            </div>
-                            <div class="col-12">
-                                <label class="mb-1" for="exampleInputEmail1">كلمه السر</label>
+                                    <input type="text" name="title" class="form-control border-0 bg-light px-4" style="height: 55px;">
+                                    <p class="error error_name"></p>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عمر العقار</label>
 
-                                <input type="number" name="phone"  class="form-control border-0 bg-light px-4" placeholder="رقم الجوال" style="height: 55px;">
-                                <p class="error error_phone"></p>
-                            </div>
-                            <div class="col-12">
-                                <label class="mb-1" for="exampleInputEmail1">كلمه السر</label>
+                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <p class="error error_email"></p>
+                                </div>
+                                <div class="col-lg-2 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">1</option>
+                                            <option value="2">2 </option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5 </option>
+                                            <option value="6">6  </option>
+                                            <option value="7">7  </option>
+                                            <option value="8">8+  </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">1</option>
+                                            <option value="2">2 </option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5+ </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
+                                    <select id="regions"  class="form-control" name="ads_type">
+                                            <option value="1">1</option>
+                                            <option value="2">2 </option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5+ </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
 
-                                <textarea class="form-control border-0 bg-light px-4 py-3" name="comments"  rows="4" placeholder="الوصف"></textarea>
-                                <p class="error error_comments"></p>
-                            </div>
+                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
+                                    <p class="error error_email"></p>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
 
-                            <div class="col-12">
-                                <div class="image-upload-container">
-                                    <label for="imageInput" class="custom-file-upload">
-                                        <i class="fas fa-cloud-upload-alt"></i> إضافه صور للاعلان
+                                    <input type="text"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
+                                    <p class="error error_email"></p>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
+
+                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
+                                    <p class="error error_email"></p>
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
+
+                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
+                                    <p class="error error_email"></p>
+                                </div>
+                                <hr>
+                                
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6 mt-2">
+                                            <label class="mb-1" > رقم الجوال </label>
+                                            <input id="phone" type="tel" style="height: 55px;"   class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">
+                                        </div>
+                                        <div class="col-lg-6 mt-2">
+                                            <label class="mb-1" > السعر  </label>
+                                            <input  style="height: 55px;" type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" >
+    
+                                        </div>                       
+                                        <div class="col-12 mt-2">
+                                            <label class="mb-1" for="exampleInputEmail1">الوصف</label>
+                                            <textarea class="form-control border-0 bg-light px-4 py-3" name="comments"  rows="4" ></textarea>
+                                            <p class="error error_comments"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="" for="exampleInputEmail1">تحميل الصور</label>    
+                                    <div class="upload__box">
+                                        
+                                        <div id="galleryList" class="d-flex flex-wrap">
+                                            <!--display the images uploaded-->
+                                            <div id="galleryControls">
+                                                <input class="form-control" id="galleryPics" type="file" accept="image/jpeg, image/png, image/jpg" multiple hidden>
+                                                <button type="button" id="galleryUploadBtn" onclick="galleryUploadBtnActive()"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" card-header text-center ">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-auto">
+                                            <h3 class="page-title"> بيانات مطلوبه </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهددف بالإعلان</label>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="mb-1" >
+                                        إضافه رابط اليوتيوب (اختياري)
                                     </label>
-                                    <input type="file" id="imageInput" accept="image/*" multiple>
-                                    <div class="image-preview" id="imagePreview">
-                                        {{-- <p>إضافه صور للاعلان</p> --}}
-                                    </div>
+                                    <br> <br>
+                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
                                 </div>
                             </div>
-                            
-                        
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-       
-         
         </div>
     </div>
 </div>
@@ -192,20 +348,74 @@
     });
         
 
-    function displayImagePreviews(input) {
-    var imagePreview = document.getElementById("imagePreview");
-    imagePreview.innerHTML = "";
+    const galleryDt = new DataTransfer();
 
-    if (input.files) {
-        for (var i = 0; i < input.files.length; i++) {
-            var file = input.files[i];
-            var image = document.createElement("img");
-            image.src = URL.createObjectURL(file);
-            imagePreview.appendChild(image);
-        }
-    }
+const galleryUploadInput = document.getElementById("galleryPics");
+const galleryList = document.getElementById("galleryList");
+const galleryCtrls = document.getElementById("galleryControls");
+
+function galleryUploadBtnActive() {
+  galleryUploadInput.click();
 }
 
+galleryUploadInput.addEventListener("change", function () {
+  if ((galleryDt.items.length + this.files.length) <= 5) {
+    //preview the images
+    for (let i = 0; i < this.files.length; i++) {
+      let file = this.files[i];
+      if (file) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", function () {
+          let result = reader.result;
+          let imageCon = document.createElement("div");
+          imageCon.classList.add("gallery-preview-wrapper");
+          imageCon.classList.add("d-flex");
+          imageCon.classList.add("align-items-center");
+          imageCon.classList.add("justify-content-center");
+          imageCon.classList.add("d-inline-block");
+          imageCon.classList.add("active");
+          imageCon.innerHTML =
+            '<div class="gallery-pic-container d-flex align-items-center justify-content-center overflow-hidden"><img></div><div class="gallery-cancel-btn"><i class="fas fa-times"></i></div><div class="gallery-file-name"></div>';
+          imageCon.firstElementChild.firstElementChild.src = result;
+          imageCon.children[2].innerHTML = file.name;
+          /*addEventListener to cancel button*/
+          imageCon.children[1].addEventListener("click", function () {
+            const fileName = this.parentElement.children[2].innerHTML;
+            this.parentElement.remove();
+            for (let i = 0; i < galleryDt.items.length; i++) {
+              if (fileName === galleryDt.items[i].getAsFile().name) {
+                galleryDt.items.remove(i);
+                continue;
+              }
+            }
+            // Updating input file files after deletion
+            galleryUploadInput.files = galleryDt.files;
+            if(galleryUploadInput.files.length < 5 && galleryCtrls.hasAttribute("hidden")){
+              galleryCtrls.removeAttribute("hidden");
+            }
+          });
+
+          galleryList.insertBefore(imageCon, galleryCtrls);
+        });
+        reader.onerror = function () {
+          alert(reader.error);
+        };
+      }
+    }
+    for (let file of this.files) {
+      galleryDt.items.add(file);
+    }
+    this.files = galleryDt.files;
+    if(this.files.length == 5){
+      galleryCtrls.setAttribute("hidden", "");
+    }
+  }
+  else {
+    galleryUploadInput.files = galleryDt.files;
+    alert("Please upload 5 images only!");
+  }
+});
 
 
 $( "#setlocation" ).on( "click", function() {
@@ -219,25 +429,23 @@ $( "#back_map" ).on( "click", function() {
   $('#location_map').removeClass('d-none');
 } );
 
+</script>
+<script>
 
-// Attach event listener to the file input for image previews
-document.getElementById("imageInput").addEventListener("change", function () {
-    displayImagePreviews(this);
-});
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+    initialCountry: "SA",
+    utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
 
-// Function to handle image upload (you can customize this)
-document.getElementById("uploadButton").addEventListener("click", function () {
-    var input = document.getElementById("imageInput");
-
-    if (input.files && input.files.length > 0) {
-        // Here, you can write code to upload the selected images to your server.
-        // You can use XMLHttpRequest or fetch to send the files to your backend.
-        // See the previous response for backend handling.
-        alert("Images uploaded successfully.");
-    } else {
-        alert("Please select images to upload.");
-    }
-});
+    $(document).ready(function(){
+        $('#ads_form').append(`<input class="d-none" name="country_code" value="966" />`);
+        $('.iti__country-list li').click(function(){
+            var dataVal = $(this).attr('data-dial-code');
+            $('#ads_form').append(`<input class="d-none" name="country_code" value="${dataVal}" />`);
+        });
+    });
 
 
 </script>

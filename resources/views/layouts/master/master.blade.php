@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/img/logo_2.jpeg')}}" rel="icon">
+    <link href="{{ asset('assets/img/logo.jpeg')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,9 @@
     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
 
     <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    
     @yield('css')
 </head>
 <body>
@@ -57,6 +60,8 @@
         
         <!-- Template Javascript -->
         <script src="{{ asset('assets/js/main.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
 
     @yield('js')
 </body>

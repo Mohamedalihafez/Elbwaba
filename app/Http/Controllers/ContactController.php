@@ -26,7 +26,6 @@ class ContactController extends Controller
     }
     public function modify(ContactRequest $request)
     {
-        dd($request->all());
         Contact::upsertInstance($request);
         return redirect()->route('contact');
     }
