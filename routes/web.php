@@ -29,8 +29,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'ads'],function () {
+Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');
     Route::post('api/fetch-region', [AdvertisementController::class, 'fetchRegion'])->name('region.fetch');
     Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
 });
+

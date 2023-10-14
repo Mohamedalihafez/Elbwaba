@@ -24,7 +24,6 @@ class AdvertisementRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
 
         ];
     }

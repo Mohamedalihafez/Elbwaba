@@ -14,13 +14,10 @@
                     <h3 class="text-lg md:text-xl font-bold my-1 font-semibold"> </h3><hr class="my-2"><span>بسم الله الرحمن الرحيم</span><br><span>قال الله تعالى:</span><b>" وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً "</b><span>صدق الله العظيم</span><br><br>
                 </div>
                 <div  id="location_map">
-                    <label  class="h3" for="exampleInputEmail1">حدد موقع إعلانك</label>
+                    <label  class="h3" for="exampleInputtext1">حدد موقع إعلانك</label>
 
                     <div class="mt-2" id="map" style="width: 100%; height: 400px;"></div>
-                    <div class="d-none">
-                      <input name="currentLat" value=""  id="currentLat"/>
-                        <input name="currentLat" value=""  id="currentLng"/>
-                    </div>
+                   
                     
                     <div class="col-12 mt-2">
                         <a id="setlocation" class="btn btn-primary w-100 py-3  mt-2">تأكيد العنوان </a>
@@ -31,8 +28,12 @@
             <div class="col-lg-12 wow  slideInUp product_details d-none" >
                 <div class="card">
                     <div class="data-ads">
-                        <form id="ads_form" method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
+                        <form id="ads_form" method="post" enctype="multipart/form-data" action="{{ route('advertisement.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
                             @csrf
+                            <div class="d-none">
+                                <input name="currentLat" value=""  id="currentLat"/>
+                                  <input name="currentLng" value=""  id="currentLng"/>
+                            </div>
                             <div class=" card-header text-center ">
                                 <div class="row">
                                     <div class="col-sm-12 col-auto">
@@ -51,7 +52,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="mb-1" >حدد المدينه أو المحافظه  </label>
-                                    <select id="cities"  class="form-control" name="region_id">
+                                    <select id="cities"  class="form-control" name="city_id">
                                             <option selected>
                                                 حدد المنطقه
                                             </option>
@@ -59,11 +60,11 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="mb-1" >الحي</label>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <input type="text"  name="district"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="mb-1" >الشارع</label>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <input type="text"  name="street"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class=" card-header text-center ">
                                     <div class="row">
@@ -73,9 +74,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عنوان الاعلان :</label>
+                                    <label class="mb-1" for="exampleInputtext1">عنوان الاعلان :</label>
 
-                                    <input type="text" name="title" class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <input type="text" name="title" class="form-control border-0 bg-light "  style="height: 55px;">
                                     <p class="error error_name"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
@@ -88,7 +89,7 @@
                                 </div>  
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" >صفة المعلن</label>
-                                    <select id="regions"  class="form-control" name="ads_type">
+                                    <select id="ads_type"  class="form-control" name="ads_type">
                                             <option value="1">مالك</option>
                                             <option value="2">مكتب عقار</option>
                                             <option value="3">وسيط</option>
@@ -96,18 +97,18 @@
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" >رقم الرخصه </label>
-                                    <input type="text" name="title" class="form-control border-0 bg-light px-4" placeholder="رقم الرخصه" style="height: 55px;">
+                                    <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="رقم الرخصه" style="height: 55px;">
                                 </div>     
                                 <hr>
                                 <div class="col-lg-4 ">
                                     <label class="mb-1" >نوع الشارع </label>
-                                    <select id="regions"  class="form-control" name="stre_type">
+                                    <select id="regions"  class="form-control" name="street_type">
                                             <option value="1">سكني</option>
                                             <option value="2"> تجاري</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-4 ">
-                                    <label class="mb-1" for="exampleInputEmail1">نوع الفلة                                    </label>
+                                    <label class="mb-1" for="exampleInputtext1">نوع الفلة                                    </label>
                                     <select id="regions"  class="form-control" name="ads_type">
                                             <option value="1">مستقله</option>
                                             <option value="2">دوبلكس </option>
@@ -116,8 +117,8 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4 ">
-                                    <label class="mb-1" for="exampleInputEmail1">الواجهة</label>
-                                    <select id="regions"  class="form-control" name="ads_type">
+                                    <label class="mb-1" for="exampleInputtext1">الواجهة</label>
+                                    <select id="regions"  class="form-control" name="face_type">
                                             <option value="1">شمال</option>
                                             <option value="2">جنوب </option>
                                             <option value="3">شرق</option>
@@ -131,20 +132,20 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">المساحه :</label>
+                                    <label class="mb-1" for="exampleInputtext1">المساحه :</label>
 
-                                    <input type="text" name="title" class="form-control border-0 bg-light px-4" style="height: 55px;">
-                                    <p class="error error_name"></p>
+                                    <input type="text" name="width" class="form-control border-0 bg-light " style="height: 55px;">
+                                    <p class="error error_width"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عمر العقار</label>
+                                    <label class="mb-1" for="exampleInputtext1">عمر العقار</label>
 
-                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
-                                    <p class="error error_email"></p>
+                                    <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <p class="error error_age"></p>
                                 </div>
                                 <div class="col-lg-2 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
-                                    <select id="regions"  class="form-control" name="ads_type">
+                                    <select id="regions"  class="form-control" name="rooms">
                                             <option value="1">1</option>
                                             <option value="2">2 </option>
                                             <option value="3">3</option>
@@ -157,7 +158,7 @@
                                 </div>
                                 <div class="col-lg-2 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
-                                    <select id="regions"  class="form-control" name="ads_type">
+                                    <select id="regions"  class="form-control" name="halls">
                                             <option value="1">1</option>
                                             <option value="2">2 </option>
                                             <option value="3">3</option>
@@ -167,7 +168,7 @@
                                 </div>
                                 <div class="col-lg-2 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
-                                    <select id="regions"  class="form-control" name="ads_type">
+                                    <select id="regions"  class="form-control" name="bathrooms">
                                             <option value="1">1</option>
                                             <option value="2">2 </option>
                                             <option value="3">3</option>
@@ -178,26 +179,26 @@
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
 
-                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
-                                    <p class="error error_email"></p>
+                                    <input type="number"  name="flats"  class="form-control border-0 bg-light " style="height: 55px;">
+                                    <p class="error error_flats"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
 
-                                    <input type="text"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
-                                    <p class="error error_email"></p>
+                                    <input type="text"  name="ads_direction"  class="form-control border-0 bg-light " style="height: 55px;">
+                                    <p class="error error_ads_direction"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
 
-                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
-                                    <p class="error error_email"></p>
+                                    <input type="number"  name="floors"  class="form-control border-0 bg-light " style="height: 55px;">
+                                    <p class="error error_floors"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
 
-                                    <input type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" style="height: 55px;">
-                                    <p class="error error_email"></p>
+                                    <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 55px;">
+                                    <p class="error error_stores_number"></p>
                                 </div>
                                 <hr>
                                 
@@ -205,16 +206,16 @@
                                     <div class="row">
                                         <div class="col-lg-6 mt-2">
                                             <label class="mb-1" > رقم الجوال </label>
-                                            <input id="phone" type="tel" style="height: 55px;"   class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">
+                                            <input id="phone" name="phone" type="tel" style="height: 55px;"   class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">
                                         </div>
                                         <div class="col-lg-6 mt-2">
                                             <label class="mb-1" > السعر  </label>
-                                            <input  style="height: 55px;" type="number"  name="ads_age"  class="form-control border-0 bg-light px-4" >
+                                            <input  style="height: 55px;" type="number"  name="price"  class="form-control border-0 bg-light " >
     
                                         </div>                       
                                         <div class="col-12 mt-2">
                                             <label class="mb-1" for="exampleInputEmail1">الوصف</label>
-                                            <textarea class="form-control border-0 bg-light px-4 py-3" name="comments"  rows="4" ></textarea>
+                                            <textarea class="form-control border-0 bg-light  py-3" name="description"  rows="4" ></textarea>
                                             <p class="error error_comments"></p>
                                         </div>
                                     </div>
@@ -226,7 +227,7 @@
                                         <div id="galleryList" class="d-flex flex-wrap">
                                             <!--display the images uploaded-->
                                             <div id="galleryControls">
-                                                <input class="form-control" id="galleryPics" type="file" accept="image/jpeg, image/png, image/jpg" multiple hidden>
+                                                <input  name="ads_images[]" class="form-control" id="galleryPics" type="file" accept="image/jpeg, image/png, image/jpg" multiple hidden>
                                                 <button type="button" id="galleryUploadBtn" onclick="galleryUploadBtnActive()"><i class="fas fa-plus"></i></button>
                                             </div>
                                         </div>
@@ -241,22 +242,25 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <input type="text"  name="question_1"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <input type="text"  name="question_2"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهددف بالإعلان</label>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
+                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >
                                         إضافه رابط اليوتيوب (اختياري)
                                     </label>
-                                    <br> <br>
-                                    <input type="email"  name="email"  class="form-control border-0 bg-light px-4"  style="height: 55px;">
+                                    <br> 
+                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit"> نشر الإعلان  </button>
                                 </div>
                             </div>
                         </form>
@@ -300,11 +304,11 @@
 		
 						// Update the marker's position with the user's location
 						marker.setPosition(userLocation);
-		
+                        console.log( userLocation.lat.toFixed(6));
 						// Display the user's current latitude and longitude
-						document.getElementById('currentLat').attr('value') = userLocation.lat.toFixed(6);
-						document.getElementById('currentLng').attr('value') = userLocation.lng.toFixed(6);
-					},
+                        $('#currentLat').val(userLocation.lat.toFixed(6));
+                        $('#currentLng').val(userLocation.lng.toFixed(6));
+                    },
 					function (error) {
 						console.error('Error getting user location:', error);
 					}
@@ -323,8 +327,8 @@
             const currentLng = position.lng();
 
             // Update the HTML elements displaying the coordinates
-            document.getElementById('currentLat').textContent = currentLat.toFixed(6);
-            document.getElementById('currentLng').textContent = currentLng.toFixed(6);
+            $('#currentLat').val(currentLat.toFixed(6));
+            $('#currentLng').val(currentLng.toFixed(6));
         }
         $(document).ready(function () {
         $('#regions').on('change', function () {

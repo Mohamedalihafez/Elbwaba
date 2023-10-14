@@ -19,20 +19,16 @@ class Building extends Model
 
     static function upsertInstance($request)
     {
-        // $user_id = Compound::find($request->compound_id)->user->id;
-
-        // $request->merge([
-        //     'user_id' => $user_id
-        // ]);
-
+        
         $building = Building::updateOrCreate(
             [
                 'id' => $request->id ?? null
             ],
                 $request->all()
-            );
+        );
 
         return $building;
+
     }
 
     public function scopeFilter($query,$request)

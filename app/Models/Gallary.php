@@ -21,6 +21,7 @@ class Gallary extends Model
     {
         $get_file_extention = $request->file('filepond')->extension();
         $generate_random_name = rand(1000000,999999999).'.'.$get_file_extention;
+        
         return $request->file('filepond')->move('uploads/temp/'.$request->identifier,$generate_random_name);
     }
 
