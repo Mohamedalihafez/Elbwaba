@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Advertisement extends Model
 {
@@ -16,6 +17,10 @@ class Advertisement extends Model
 
     static function upsertInstance($request)
     {
+        $request->merge([
+            'user_id' => Auth::user()->id
+        ]);
+
         $advertisement = Advertisement::updateOrCreate(
         [
             'id' => $request->id ?? null
@@ -23,27 +28,24 @@ class Advertisement extends Model
             $request->all()
         );
 
-        if($request->ads_images){
-            foreach($request->ads_images as $key => $result){
-                foreach ($result as $key_ads => $ads) {
-                    $ad_image = 'ad_' . $key . $key_ads . '.png';
-
-                    $request->ads_images[$key][$key_ads]->move('ads/' . $key . $key_ads . '/', $ad_image);
-                    $advertisement->gallaries()->updateOrCreate(
-                        [
-                            'imageable_id' => $key_ads,
-                            'second_id' => $key,
-                            'use_for' => 'ads'
-                        ],
-                        [
-                            'imageable_id' => $key_ads,
-                            'second_id' => $key,
-                            'name' => $ad_image,
-                            'use_for' => 'ads'
-                        ]);
-                }            
-            }
+        foreach($request->ads_images as $key => $result){
+   
+            $imageName = 'ads_' . $advertisement->id .'_' .$result->getClientOriginalName()  . '.png';
+            $result->move('ads/' . $advertisement->id . '/', $imageName);
+            $advertisement->gallaries()->updateOrCreate(
+                [
+                    'imageable_id' => $advertisement->id,
+                    'name' => $imageName,
+                    'use_for' => 'ads'
+                ],
+                [
+                    'imageable_id' => $advertisement->id,
+                    'second_id' => $key,
+                    'name' => $imageName,
+                    'use_for' => 'ads'
+                ]);    
         }
+        
         return $advertisement;    
     }
 
@@ -57,7 +59,22 @@ class Advertisement extends Model
     {
         return $this->morphMany(Gallary::class, 'imageable');
     }
+
+    public function region()
+    {
+      return  $this->belongsTo(Region::class, 'region_id');
+    }
+
+    public function city()
+    {
+      return  $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function building()
+    {
+      return  $this->belongsTo(Building::class, 'ads_type');
+    }
+
+
     
-
-
 }

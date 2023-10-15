@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
                 <a href="{{ route('index') }}" class="nav-item nav-link {{is_active('index')}} ">الرئيسيه </a>
-                <a href="{{ route('home') }}" class="nav-item nav-link   {{is_active('home')}} ">خدماتنا  </a>
+                <a href="{{ route('index') }}" class="nav-item nav-link   {{is_active('index')}} ">خدماتنا  </a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} "> تواصل معنا </a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} ">عملائنا الكرام  </a>
          

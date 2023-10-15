@@ -30,6 +30,11 @@ class AdvertisementController extends Controller
         return view('pages.advertisement.index' ,[ 'regions' => $regions , 'buildings' => $buildings]);
     }
 
+    public function show( Advertisement $advertisement)
+    {
+        return view('pages.advertisement.show' ,[ 'advertisement' => $advertisement]);
+    }
+
     public function fetchRegion(Request $request)
     {
        return City::fetchRegion($request);

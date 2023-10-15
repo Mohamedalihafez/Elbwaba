@@ -322,3 +322,124 @@
   #galleryUploadBtn:hover i {
     color: #1fb6ae;
   }
+  .image-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail {
+    max-width: 100px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.large-image-container {
+    padding: 10px;
+}
+
+#large-image {
+    max-width: 100%;
+}
+#large-image {
+    width: 100% !important;
+    height: 350px !important;
+    border: 3px solid #73bcab;
+}
+.small_image {
+  height: 50px !important;
+  width: 100% !important;
+  border: 3px solid #0e2e50;
+
+}
+.card-box-ico {
+  padding: 1rem 2.5rem 1rem 3rem;
+  border: 5px solid #2eca6a;
+}
+.title-box-d .title-d {
+  font-weight: 600 ;
+  font-size: 2rem;
+}
+.title-box-d {
+  padding-bottom: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+@media (min-width: 992px) {
+.title-c {
+    font-size: 2.5rem;
+}
+}
+
+.title-box-d .title-d:after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 4px;
+  background-color: #2eca6a;
+  bottom: 20px;
+  right: 0;
+}
+
+.card-box-ico span {
+  font-size: 4rem;
+  color: #000000;
+}
+.bg-card {
+  background: white;
+  padding: 34px;
+}
+.list-a li {
+  position: relative;
+  width: 50%;
+  float: left;
+  padding-left: 25px;
+  padding-right: 5px;
+}
+@media (min-width: 992px)
+{
+  .list-a li {
+      width: 33.333%;
+  }
+}
+
+.list-a li:before {
+  content: '';
+  width: 10px;
+  height: 2px;
+  position: absolute;
+  background-color: #313131;
+  top: 15px;
+  right: 0;
+}
+.list-a {
+  display: inline-block;
+  line-height: 2;
+  padding: 0;
+  list-style: none;
+}
+.list-a li {
+  position: relative;
+  width: 50%;
+  float: left;
+  padding-right: 25px;
+  padding-left: 5px;
+}
+.title-c {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-right: -40px;
+}
+@media (min-width: 992px)
+{
+  .title-c {
+      font-size: 2.5rem;
+      color: black;
+  }
+}

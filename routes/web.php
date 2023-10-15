@@ -16,9 +16,7 @@ use App\Http\Controllers\AdvertisementController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('index');
+
 
 Route::group(['prefix' => 'contact'],function () {
     Route::get('/',[ContactController::class,'index'])->name('contact');
@@ -27,11 +25,15 @@ Route::group(['prefix' => 'contact'],function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');
     Route::post('api/fetch-region', [AdvertisementController::class, 'fetchRegion'])->name('region.fetch');
     Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
+});
+
+Route::group(['prefix' => 'ads-show'],function () {
+    Route::get('/show/{advertisement?}',[AdvertisementController::class,'show'])->name('advertisement.show');
 });
 
