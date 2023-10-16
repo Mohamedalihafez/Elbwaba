@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
 
 
@@ -25,7 +26,9 @@ Route::group(['prefix' => 'contact'],function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::group(['prefix' => '' , 'middleware' => 'web'],function () {
+    Route::get('/',[HomeController::class,'index'])->name('home');
+});
 
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');

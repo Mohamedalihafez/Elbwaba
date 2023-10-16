@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('web');
     }
 
     /**
@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+    
         $advertisements = Advertisement::paginate(15);
         return view('pages.index' , ['advertisements' =>  $advertisements]);
     }

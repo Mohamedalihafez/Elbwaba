@@ -443,3 +443,35 @@
       color: black;
   }
 }
+.intro-single {
+  padding: 1rem !important;
+}
+
+.owl-carousel .owl-item .img-cu  {
+  height: 350px !important;
+  width: 97% !important;
+}
+.card-money {
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0em;
+  border-radius: 0.4em;
+  padding: 0.8em;
+  background: linear-gradient(45deg, #c3a84f, #46b2d6);
+  border-color: #c3a84f;
+  color: #ffffff !important;
+  border: 0px !important;
+  box-shadow: 0 0em 0em rgba(0,0,0,.2);
+  padding: 1rem 2rem 1rem 1.5rem !important;
+
+}
+.card-box-ico span {
+  color:white !important;
+}
+.card-box-ico span {
+  font-size: 3rem !important;
+}
+.p-20 {
+  padding: 20px !important;
+}

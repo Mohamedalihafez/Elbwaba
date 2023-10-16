@@ -28,7 +28,7 @@
             <div class="col-lg-12 wow  slideInUp product_details d-none" >
                 <div class="card">
                     <div class="data-ads">
-                        <form id="ads_form" method="post" enctype="multipart/form-data" action="{{ route('advertisement.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}"  redirect="{{ route('index') }}"  swalOnFail="{{ __('pages.wrongdata') }}">
+                        <form id="ads_form" method="post" enctype="multipart/form-data" action="{{ route('advertisement.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}"  redirect="{{ route('home') }}"  swalOnFail="{{ __('pages.wrongdata') }}">
                             @csrf
                             <div class="d-none">
                                 <input name="currentLat" value=""  id="currentLat"/>

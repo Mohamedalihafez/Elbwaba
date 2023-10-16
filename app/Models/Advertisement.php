@@ -70,6 +70,11 @@ class Advertisement extends Model
       return  $this->belongsTo(City::class, 'city_id');
     }
 
+    public function user()
+    {
+      return  $this->belongsTo(User::class, 'user_id');
+    }
+
     public function building()
     {
       return  $this->belongsTo(Building::class, 'ads_type');
