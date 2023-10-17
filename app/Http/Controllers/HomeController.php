@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-    
         $advertisements = Advertisement::paginate(15);
-        return view('pages.index' , ['advertisements' =>  $advertisements]);
+        $partners = Partner::all();
+        return view('pages.index' , ['advertisements' =>  $advertisements , 'partners' => $partners]);
     }
 }

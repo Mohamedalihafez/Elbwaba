@@ -159,7 +159,7 @@
                     <div class="col-sm-12">
                       <div class="title-box-d">
                         <div style="float:left;" class=" card-money">  
-                          <span class="ion-money">20000 ر.س</span>
+                          <span class="ion-money">  {{$advertisement->price}} ر.س</span>
                         </div>
                         <h3 class="title-d">محتوي الإعلان</h3>
                       </div>
@@ -230,15 +230,9 @@
                       </div>
                       <div class="amenities-list color-text-a">
                         <ul class="list-a no-margin">
-                          <li>Balcony</li>
-                          <li>Outdoor Kitchen</li>
-                          <li>Cable Tv</li>
-                          <li>Deck</li>
-                          <li>Tennis Courts</li>
-                          <li>Internet</li>
-                          <li>Parking</li>
-                          <li>Sun Room</li>
-                          <li>Concrete Flooring</li>
+                          @foreach ($advertisement->items  as $item)
+                            <li class="w-100">{{ $item->name }}</li>
+                          @endforeach
                         </ul>
                       </div>
                     </div>
@@ -315,23 +309,24 @@
               <div class="property-agent text-center">
                 <div class="socials-a">
                   <ul class="list-inline">
-                    <li class="list-inline-item">
+                    <li class="list-inline-item social-buttons">
                       <a href="#">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                       </a>
+                      <a href="https://www.facebook.com/sharer/sharer.php?u={{route('advertisement.show',['advertisement' => $advertisement->id])}}&display=popup"> Facebbok </a>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item social-buttons">
                       <a href="#">
                         <i class="fa fa-twitter" aria-hidden="true"></i>
                       </a>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item social-buttons">
                       <a href="#">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                       </a>
                     </li>
 
-                    <li class="list-inline-item">
+                    <li class="list-inline-item social-buttons">
                       <a href="#">
                         <i class="fa fa-snap" aria-hidden="true"></i>
                       </a>
@@ -355,8 +350,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade " id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
-                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe width="100%" height="460" frameborder="0" src="{{$advertisement->link}}" frameborder="0" allowfullscreen></iframe>
               </div>
              
               <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
@@ -382,8 +376,8 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade " id="pills-video1" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
-                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe width="100%" height="460" frameborder="0" src="https://www.youtube.com/watch?v=Ys78zaUwQzI&list=RDYs78zaUwQzI&start_radio=1" frameborder="0" allowfullscreen></iframe>
+
               </div>
              
               <div class="tab-pane fade show active" id="pills-map1" role="tabpanel" aria-labelledby="pills-map-tab">
@@ -514,6 +508,29 @@ function initMap() {
         });
     });
 
+
+    var popupSize = {
+        width: 780,
+        height: 550
+    };
+
+    $(document).on('click', '.social-buttons > a', function(e){
+
+        var
+            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+        var popup = window.open($(this).prop('href'), 'social',
+            'width='+popupSize.width+',height='+popupSize.height+
+            ',left='+verticalPos+',top='+horisontalPos+
+            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+        if (popup) {
+            popup.focus();
+            e.preventDefault();
+        }
+
+    });
 </script>
 @endsection 
 

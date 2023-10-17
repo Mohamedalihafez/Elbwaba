@@ -26,9 +26,10 @@ Route::group(['prefix' => 'contact'],function () {
 
 Auth::routes();
 
-Route::group(['prefix' => '' , 'middleware' => 'web'],function () {
+Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
     Route::get('/',[HomeController::class,'index'])->name('home');
 });
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');

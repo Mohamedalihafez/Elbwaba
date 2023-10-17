@@ -100,6 +100,7 @@
                                     <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="رقم الرخصه" style="height: 55px;">
                                 </div>     
                                 <hr>
+                               
                                 <div class="col-lg-4 ">
                                     <label class="mb-1" >نوع الشارع </label>
                                     <select id="regions"  class="form-control" name="street_type">
@@ -201,7 +202,15 @@
                                     <p class="error error_stores_number"></p>
                                 </div>
                                 <hr>
-                                
+                                <div class="col-12">
+                                    <h4>خيارات اضافية
+                                    </h4>
+                                    <select name="items[]" class="js-select2 w-100" multiple="multiple">
+                                        @foreach ($items as $item)
+                                            <option value="{{ $item->id }}" data-badge="">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-6 mt-2">
@@ -257,7 +266,7 @@
                                         إضافه رابط اليوتيوب (اختياري)
                                     </label>
                                     <br> 
-                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="link"  class="form-control border-0 bg-light "  style="height: 55px;">
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit"> نشر الإعلان  </button>
@@ -274,6 +283,19 @@
 
 
 @section('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+
+<script>
+    
+    $(".js-select2").select2({
+        closeOnSelect : false,
+        placeholder : "Placeholder",
+        // allowHtml: true,
+        allowClear: true,
+        tags: true // создает новые опции на лету
+    });
+</script>
 <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc&language=fa&callback=initMap" ></script>
 <script>
         let map;
@@ -304,7 +326,6 @@
 		
 						// Update the marker's position with the user's location
 						marker.setPosition(userLocation);
-                        console.log( userLocation.lat.toFixed(6));
 						// Display the user's current latitude and longitude
                         $('#currentLat').val(userLocation.lat.toFixed(6));
                         $('#currentLng').val(userLocation.lng.toFixed(6));
@@ -330,126 +351,123 @@
             $('#currentLat').val(currentLat.toFixed(6));
             $('#currentLng').val(currentLng.toFixed(6));
         }
+
         $(document).ready(function () {
-        $('#regions').on('change', function () {
-            var region = this.value;
-            $("#cities").html('');
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                },
-                url: '{{ route("region.fetch") }}',
-                method: 'post',
-                data: {region_id: region},
-                success: function (results) {
-                    $('#cities').html('');
-                    results.forEach((result, index) => {
-                        $("#cities").append('<option value="' + result['id'] + '">' + result['name_ar'] + '</option>');
-                    });
-                },
+            $('#regions').on('change', function () {
+                var region = this.value;
+                $("#cities").html('');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    },
+                    url: '{{ route("region.fetch") }}',
+                    method: 'post',
+                    data: {region_id: region},
+                    success: function (results) {
+                        $('#cities').html('');
+                        results.forEach((result, index) => {
+                            $("#cities").append('<option value="' + result['id'] + '">' + result['name_ar'] + '</option>');
+                        });
+                    },
+                });
             });
         });
-    });
-        
+    
+        const galleryDt = new DataTransfer();
+        const galleryUploadInput = document.getElementById("galleryPics");
+        const galleryList = document.getElementById("galleryList");
+        const galleryCtrls = document.getElementById("galleryControls");
 
-    const galleryDt = new DataTransfer();
+        function galleryUploadBtnActive() {
+            galleryUploadInput.click();
+        }
 
-const galleryUploadInput = document.getElementById("galleryPics");
-const galleryList = document.getElementById("galleryList");
-const galleryCtrls = document.getElementById("galleryControls");
+        galleryUploadInput.addEventListener("change", function () {
+            if ((galleryDt.items.length + this.files.length) <= 5) {
+                //preview the images
+                for (let i = 0; i < this.files.length; i++) {
+                let file = this.files[i];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.addEventListener("load", function () {
+                    let result = reader.result;
+                    let imageCon = document.createElement("div");
+                    imageCon.classList.add("gallery-preview-wrapper");
+                    imageCon.classList.add("d-flex");
+                    imageCon.classList.add("align-items-center");
+                    imageCon.classList.add("justify-content-center");
+                    imageCon.classList.add("d-inline-block");
+                    imageCon.classList.add("active");
+                    imageCon.innerHTML =
+                        '<div class="gallery-pic-container d-flex align-items-center justify-content-center overflow-hidden"><img></div><div class="gallery-cancel-btn"><i class="fas fa-times"></i></div><div class="gallery-file-name"></div>';
+                    imageCon.firstElementChild.firstElementChild.src = result;
+                    imageCon.children[2].innerHTML = file.name;
+                    /*addEventListener to cancel button*/
+                    imageCon.children[1].addEventListener("click", function () {
+                        const fileName = this.parentElement.children[2].innerHTML;
+                        this.parentElement.remove();
+                        for (let i = 0; i < galleryDt.items.length; i++) {
+                        if (fileName === galleryDt.items[i].getAsFile().name) {
+                            galleryDt.items.remove(i);
+                            continue;
+                        }
+                        }
+                        // Updating input file files after deletion
+                        galleryUploadInput.files = galleryDt.files;
+                        if(galleryUploadInput.files.length < 5 && galleryCtrls.hasAttribute("hidden")){
+                        galleryCtrls.removeAttribute("hidden");
+                        }
+                    });
 
-function galleryUploadBtnActive() {
-  galleryUploadInput.click();
-}
-
-galleryUploadInput.addEventListener("change", function () {
-  if ((galleryDt.items.length + this.files.length) <= 5) {
-    //preview the images
-    for (let i = 0; i < this.files.length; i++) {
-      let file = this.files[i];
-      if (file) {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.addEventListener("load", function () {
-          let result = reader.result;
-          let imageCon = document.createElement("div");
-          imageCon.classList.add("gallery-preview-wrapper");
-          imageCon.classList.add("d-flex");
-          imageCon.classList.add("align-items-center");
-          imageCon.classList.add("justify-content-center");
-          imageCon.classList.add("d-inline-block");
-          imageCon.classList.add("active");
-          imageCon.innerHTML =
-            '<div class="gallery-pic-container d-flex align-items-center justify-content-center overflow-hidden"><img></div><div class="gallery-cancel-btn"><i class="fas fa-times"></i></div><div class="gallery-file-name"></div>';
-          imageCon.firstElementChild.firstElementChild.src = result;
-          imageCon.children[2].innerHTML = file.name;
-          /*addEventListener to cancel button*/
-          imageCon.children[1].addEventListener("click", function () {
-            const fileName = this.parentElement.children[2].innerHTML;
-            this.parentElement.remove();
-            for (let i = 0; i < galleryDt.items.length; i++) {
-              if (fileName === galleryDt.items[i].getAsFile().name) {
-                galleryDt.items.remove(i);
-                continue;
-              }
+                    galleryList.insertBefore(imageCon, galleryCtrls);
+                    });
+                    reader.onerror = function () {
+                    alert(reader.error);
+                    };
+                }
+                }
+                for (let file of this.files) {
+                galleryDt.items.add(file);
+                }
+                this.files = galleryDt.files;
+                if(this.files.length == 5){
+                galleryCtrls.setAttribute("hidden", "");
+                }
             }
-            // Updating input file files after deletion
-            galleryUploadInput.files = galleryDt.files;
-            if(galleryUploadInput.files.length < 5 && galleryCtrls.hasAttribute("hidden")){
-              galleryCtrls.removeAttribute("hidden");
+            else {
+                galleryUploadInput.files = galleryDt.files;
+                alert("Please upload 5 images only!");
             }
-          });
-
-          galleryList.insertBefore(imageCon, galleryCtrls);
         });
-        reader.onerror = function () {
-          alert(reader.error);
-        };
-      }
-    }
-    for (let file of this.files) {
-      galleryDt.items.add(file);
-    }
-    this.files = galleryDt.files;
-    if(this.files.length == 5){
-      galleryCtrls.setAttribute("hidden", "");
-    }
-  }
-  else {
-    galleryUploadInput.files = galleryDt.files;
-    alert("Please upload 5 images only!");
-  }
-});
 
+        $( "#setlocation" ).on( "click", function() {
+            $('#location_map').addClass('d-none');
+            $('.product_details').removeClass('d-none');
+            $('.product_details').css("visibility","inherit");
+        } );
 
-$( "#setlocation" ).on( "click", function() {
-  $('#location_map').addClass('d-none');
-  $('.product_details').removeClass('d-none');
-  $('.product_details').css("visibility","inherit");
-} );
-
-$( "#back_map" ).on( "click", function() {
-  $('.product_details').addClass('d-none');
-  $('#location_map').removeClass('d-none');
-} );
+        $( "#back_map" ).on( "click", function() {
+            $('.product_details').addClass('d-none');
+            $('#location_map').removeClass('d-none');
+        } );
 
 </script>
 <script>
-
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-    initialCountry: "SA",
-    utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-
-    $(document).ready(function(){
-        $('#ads_form').append(`<input class="d-none" name="country_code" value="966" />`);
-        $('.iti__country-list li').click(function(){
-            var dataVal = $(this).attr('data-dial-code');
-            $('#ads_form').append(`<input class="d-none" name="country_code" value="${dataVal}" />`);
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+        initialCountry: "SA",
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
-    });
+
+        $(document).ready(function(){
+            $('#ads_form').append(`<input class="d-none" name="country_code" value="966" />`);
+            $('.iti__country-list li').click(function(){
+                var dataVal = $(this).attr('data-dial-code');
+                $('#ads_form').append(`<input class="d-none" name="country_code" value="${dataVal}" />`);
+            });
+        });
 
 
 </script>

@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CompoundController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\ContributorController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\BuildingController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Admin\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +49,26 @@ Route::group(['prefix' => 'compound'],function(){
     Route::post('/delete/{compound}',[CompoundController::class,'destroy'])->name('compound.delete');
 });
 
+Route::group(['prefix' => 'partner'],function(){
+    Route::get('/', [PartnerController::class,"index"])->name('partner');
+    Route::post('/partners', [PartnerController::class, 'partners'])->name('partners');
+    Route::post('api/fetch-minor', [PartnerController::class, 'fetchMainor'])->name('partner.fetch');
+    Route::get('/upsert/{partner?}',[PartnerController::class,'upsert'])->name('partner.upsert');
+    Route::get('/filter',[PartnerController::class,'filter'])->name('partner.filter');
+    Route::post('/modify',[PartnerController::class,'modify'])->name('partner.modify');
+    Route::post('/delete/{partner}',[PartnerController::class,'destroy'])->name('partner.delete');
+});
+
+Route::group(['prefix' => 'contributor'],function(){
+    Route::get('/', [ContributorController::class,"index"])->name('contributor');
+    Route::post('/contributors', [ContributorController::class, 'contributors'])->name('contributors');
+    Route::post('api/fetch-minor', [ContributorController::class, 'fetchMainor'])->name('contributor.fetch');
+    Route::get('/upsert/{contributor?}',[ContributorController::class,'upsert'])->name('contributor.upsert');
+    Route::get('/filter',[ContributorController::class,'filter'])->name('contributor.filter');
+    Route::post('/modify',[ContributorController::class,'modify'])->name('contributor.modify');
+    Route::post('/delete/{contributor}',[ContributorController::class,'destroy'])->name('contributor.delete');
+});
+
 Route::group(['prefix' => 'building'],function(){
     Route::get('/', [BuildingController::class,"index"])->name('building');
     Route::post('/buildings', [BuildingController::class, 'buildings'])->name('buildings');
@@ -78,9 +101,17 @@ Route::group(['prefix' => 'apartment'],function(){
 
 Route::group(['prefix' => 'tenant'],function(){
     Route::get('/', [TenantController::class,"index"])->name('tenant');
-    Route::post('api/fetch-minor', [TenantController::class, 'fetchMainor'])->name('tenant.fetch');
     Route::get('/upsert/{tenant?}',[TenantController::class,'upsert'])->name('tenant.upsert');
     Route::get('/filter',[TenantController::class,'filter'])->name('tenant.filter');
     Route::post('/modify',[TenantController::class,'modify'])->name('tenant.modify');
     Route::post('/delete/{tenant}',[TenantController::class,'destroy'])->name('tenant.delete');
+});
+
+Route::group(['prefix' => 'item'],function(){
+    Route::get('/', [ItemController::class,"index"])->name('item');
+    Route::post('api/fetch-minor', [ItemController::class, 'fetchMainor'])->name('item.fetch');
+    Route::get('/upsert/{item?}',[ItemController::class,'upsert'])->name('item.upsert');
+    Route::get('/filter',[ItemController::class,'filter'])->name('item.filter');
+    Route::post('/modify',[ItemController::class,'modify'])->name('item.modify');
+    Route::post('/delete/{item}',[ItemController::class,'destroy'])->name('item.delete');
 });

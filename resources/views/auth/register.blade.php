@@ -16,6 +16,8 @@
                             <div class="card-body">
                                 <form id="register_form" method="POST" action="{{ route('register') }}">
                                     @csrf
+                                    <input type="hidden" name="role_id" type="text"  value="2" required autocomplete="name" autofocus>
+ 
                                     <div class="row mb-3">      
                                         <div class="col-md-12">
                                             <label class="mb-2" for="exampleInputEmail1">الإسم </label>

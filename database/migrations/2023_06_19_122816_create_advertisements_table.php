@@ -39,6 +39,7 @@ return new class extends Migration
             $table->string('question_1')->nullable();
             $table->string('question_2')->nullable();
             $table->string('question_3')->nullable();
+            $table->string('link')->nullable();
             $table->string('phone_2')->nullable();
             $table->float('price')->nullable();
             $table->string('location')->nullable();

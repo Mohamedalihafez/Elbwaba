@@ -34,6 +34,10 @@
     <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
     
     @yield('css')
 </head>
@@ -61,8 +65,6 @@
         <!-- Template Javascript -->
         <script src="{{ asset('assets/js/main.js')}}"></script>
         <script src="{{ asset('assets/web/contactform/contactform.js')}}"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 
     @yield('js')

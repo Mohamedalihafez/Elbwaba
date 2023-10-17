@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin_assets/images/favicon.png') }}">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo.jpeg')}}">
+    <title>لوحه تحكم البوابه </title>
     <!-- chartist CSS -->
     <link href="{{ asset('admin_assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
     <!--Toaster Popup message CSS -->
@@ -26,12 +26,15 @@
     <link href="{{ asset('admin_assets\css\select2.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('admin_assets\css\fileupload.css') }}" rel="stylesheet" />
+      {{-- Dropify --}}
+      <link href="{{ asset('admin_assets\css\fileupload.css') }}" rel="stylesheet" />
+
 </head>
 <body class="skin-blue fixed-layout">
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">البوابه</p>
         </div>
     </div>
     <div id="main-wrapper">
@@ -40,11 +43,11 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{ route('dashboard') }}">
                         <b>
-                            <img src="{{ asset('admin_assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                            <img src="" alt="homepage" class="dark-logo" />
                             <img src="{{ asset('admin_assets/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
                         </b>
                         <span>
-                            <img src="{{ asset('admin_assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                            <img src="" alt="homepage" class="dark-logo" />
                             <img src="{{ asset('admin_assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage"/>
                         </span>
                     </a>
@@ -75,6 +78,10 @@
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('apartment') }}"><i class="ti-control-record text-success"></i> {{ __('pages.apartments') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('maintenance') }}"><i class="ti-control-record text-success"></i> {{ __('pages.maintenances') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('tenant') }}"><i class="ti-control-record text-success"></i> {{ __('pages.tenants') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('partner') }}"><i class="ti-control-record text-success"></i> {{ __('pages.partners') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('item') }}"><i class="ti-control-record text-success"></i> {{ __('pages.items') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('contributor') }}"><i class="ti-control-record text-success"></i> {{ __('pages.contributors') }}</a></li>@endif
+
                         <li><a class="waves-effect waves-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" aria-expanded="false"><i class="ti-control-record text-success"></i><span class="hide-menu">{{ __('pages.Logout') }}</span></a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                     </ul>
@@ -142,6 +149,14 @@
     <script src="{{ asset('admin_assets\js\fileupload.js') }}"></script>
 
     <script>
+        
+		$(".js-select2").select2({
+			closeOnSelect : false,
+			placeholder : "Placeholder",
+			// allowHtml: true,
+			allowClear: true,
+			tags: true // создает новые опции на лету
+		});
         $(document).ready(function(){
             function route(){
                 return $(this).attr('route');

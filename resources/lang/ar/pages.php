@@ -663,5 +663,10 @@
          'details' => 'تفاصيل',
          'is_paid' => 'مدفوع',
          'is_not_paid' => 'غير مدفوع',
+         'partners' => 'الرعاة الداعمون',
+         'add_partner' => 'إضافة راعي داعم  ', 
+         'link' => 'الرابط',
+         'contributors'=>'المساهمون',
+         'add_contributor'=>'إضافة مساهم',
     ];
 ?>

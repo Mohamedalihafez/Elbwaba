@@ -7,6 +7,7 @@ use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Models\Building;
 use App\Models\City;
+use App\Models\Item;
 use App\Models\Region;
 
 class AdvertisementController extends Controller
@@ -27,12 +28,15 @@ class AdvertisementController extends Controller
     {
         $regions = Region::all();
         $buildings = Building::all();
-        return view('pages.advertisement.index' ,[ 'regions' => $regions , 'buildings' => $buildings]);
+        $items = Item::all();
+        return view('pages.advertisement.index' ,[ 'regions' => $regions , 'items' => $items, 'buildings' => $buildings]);
     }
 
     public function show( Advertisement $advertisement)
     {
-        return view('pages.advertisement.show' ,[ 'advertisement' => $advertisement]);
+        $items = Item::all();
+        
+        return view('pages.advertisement.show' ,[ 'advertisement' => $advertisement , 'items' => $items]);
     }
 
     public function fetchRegion(Request $request)

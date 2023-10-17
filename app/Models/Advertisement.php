@@ -12,7 +12,7 @@ class Advertisement extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','price','location','seen'	,'user_id'
+        'title' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
    ];
 
     static function upsertInstance($request)
@@ -27,6 +27,7 @@ class Advertisement extends Model
         ],
             $request->all()
         );
+
 
         foreach($request->ads_images as $key => $result){
    
@@ -45,7 +46,9 @@ class Advertisement extends Model
                     'use_for' => 'ads'
                 ]);    
         }
-        
+
+        $advertisement->items()->sync($request->items);
+
         return $advertisement;    
     }
 
@@ -80,6 +83,10 @@ class Advertisement extends Model
       return  $this->belongsTo(Building::class, 'ads_type');
     }
 
+    public function items()
+    {
+        return $this->belongsToMany(Item::class);
+    }
 
     
 }
