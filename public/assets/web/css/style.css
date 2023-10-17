@@ -9,60 +9,8 @@
 //--//-->   STYLES GENERALES
 ======================================*/
 
-body {
-  font-family: 'Poppins', sans-serif;
-  color: #555555;
-}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #000000;
-}
 
-a {
-  color: #000000;
-  transition: all .5s ease;
-}
-
-a:hover {
-  color: #2eca6a;
-  text-decoration: none;
-}
-
-.link-two {
-  color: #000000;
-  transition: all .5s ease;
-}
-
-.link-two:hover {
-  text-decoration: underline;
-  color: #000000;
-}
-
-.link-one {
-  color: #000000;
-  transition: all .5s ease;
-}
-
-.link-one:hover {
-  color: #000000;
-  text-decoration: none;
-}
-
-.link-icon {
-  color: #000000;
-  font-weight: 500;
-}
-
-.link-icon span {
-  font-size: 14px;
-  padding-left: 4px;
-  vertical-align: middle;
-}
 
 .link-a {
   color: #ffffff;
@@ -151,8 +99,8 @@ a:hover {
   position: relative;
   width: 50%;
   float: left;
-  padding-left: 25px;
-  padding-right: 5px;
+  padding-right: 25px;
+  padding-left: 5px;
 }
 
 .list-a li:before {
@@ -278,7 +226,7 @@ a:hover {
 
 .title-box-d {
   padding-bottom: 1.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   position: relative;
 }
 
@@ -440,27 +388,6 @@ a:hover {
 
 /* Back to top button */
 
-.back-to-top {
-  position: fixed;
-  display: none;
-  background: #2eca6a;
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  text-align: center;
-  line-height: 1;
-  font-size: 16px;
-  border-radius: 50%;
-  right: 15px;
-  bottom: 15px;
-  transition: background 0.5s;
-  z-index: 11;
-}
-
-.back-to-top i {
-  padding-top: 12px;
-  color: #fff;
-}
 
 /* Prelaoder */
 
@@ -684,68 +611,8 @@ a:hover {
   color: #2eca6a;
 }
 
-.navbar-default .dropdown:hover .dropdown-menu {
-  -webkit-transform: translate3d(0px, 0px, 0px);
-  transform: translate3d(0px, 0px, 0px);
-  visibility: visible;
-  opacity: 1;
-  filter: alpha(opacity=1);
-}
 
-/*------/ Hamburger Navbar /------*/
 
-.navbar-toggler {
-  position: relative;
-}
-
-.navbar-toggler:focus,
-.navbar-toggler:active {
-  outline: 0;
-}
-
-.navbar-toggler span {
-  display: block;
-  background-color: #000000;
-  height: 3px;
-  width: 25px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  left: 0;
-  opacity: 1;
-}
-
-.navbar-toggler span:nth-child(1),
-.navbar-toggler span:nth-child(3) {
-  transition: -webkit-transform .35s ease-in-out;
-  transition: transform .35s ease-in-out;
-  transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(1) {
-  position: absolute;
-  left: 12px;
-  top: 10px;
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-  opacity: 0.9;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(2) {
-  height: 12px;
-  visibility: hidden;
-  background-color: transparent;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(3) {
-  position: absolute;
-  left: 12px;
-  top: 10px;
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-  opacity: 0.9;
-}
 
 /*======================================
 //--//-->   BOX COLAPSE
@@ -1149,9 +1016,7 @@ a:hover {
   color: #000000;
 }
 
-.property-agent .socials-a {
-  text-align: center;
-}
+
 
 /*======================================
 //--//-->   NEWS - CARD-B

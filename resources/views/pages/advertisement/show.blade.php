@@ -6,7 +6,6 @@
 
 
 @section('content')
-<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
@@ -30,15 +29,6 @@
   <!-- Main Stylesheet File -->
   <link href="{{ asset('assets/web/css/style.css')}}" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: EstateAgency
-    Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-</head>
-
-<body>
 
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
@@ -137,13 +127,15 @@
   <section class="intro-single">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12 col-xl-8 ">
           <div class="title-single-box">
             <h1 class="title-single">صور الإعلان</h1>
-            <span class="color-text-a">Chicago, IL 606543</span>
           </div>
+          <input class="d-none" id="currentLat" type="text" value="{{$advertisement->currentLat}}"/>
+          <input class="d-none" id="currentLng" type="text" value="{{$advertisement->currentLng}}"/>
+
           <section class="property-single nav-arrow-b">
-            <div class="container">
+            <div class="">
               <div class="row">
                 <div class="col-md-12">
                   <div class="col-md-12 animated fadeIn">
@@ -159,14 +151,108 @@
                         </div>
                       @endforeach
                     </div>
+                  </div>
                 </div>
-              </div>
+                <div class="col-md-12 col-lg-12">
+
+                  <div class="row mt-3">
+                    <div class="col-sm-12">
+                      <div class="title-box-d">
+                        <div style="float:left;" class=" card-money">  
+                          <span class="ion-money">20000 ر.س</span>
+                        </div>
+                        <h3 class="title-d">محتوي الإعلان</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="property-description">
+                    <p class="description color-text-a">
+                       {{$advertisement->title}}
+                    </p>
+                    <p class="description color-text-a no-margin">
+                      {{$advertisement->description}}
+                     </p>
+                  </div>
+                  <div class="row  pt-20">
+                    <div class="col-md-6 col-lg-6">
+                      <div class="property-summary">
+                        <div class="row  ">
+                          <div class="col-sm-12">
+                            <div class="title-box-d ">
+                              <h3 class="title-d">ملخص سريع </h3>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="">
+                          <ul class="list list-tems pl-0">
+                            <li class="">
+                              <strong>رقم الإعلان:</strong>
+                              <span>{{$advertisement->id}}</span>
+                            </li>
+                            <li class="">
+                              <strong>العنوان:</strong>
+                              <span>{{$advertisement->region->name_ar}} - {{$advertisement->city->name_ar}} -  {{$advertisement->district}} - {{$advertisement->street}}</span>
+                            </li>
+                            <li class="">
+                              <strong>نوع الملكية:</strong>
+                              <span> @if($advertisement->ads_type == 1) مالك @elseif($advertisement->ads_type == 2) مكتب عقار @else  وسيط @endif</span>
+                            </li>
+                            <li class="">
+                              <strong>نوع الشارع :</strong>
+                              <span>@if($advertisement->street_type == 1) سكني @else تجاري @endif </span>
+                            </li>
+                            <li class="">
+                              <strong>المساحه:</strong>
+                              <span>{{$advertisement->width}}
+                                <sup>2</sup>
+                              </span>
+                            </li>
+                            <li class="">
+                              <strong>الغرف:</strong>
+                              <span>{{$advertisement->rooms}}</span>
+                            </li>
+                            <li class="">
+                              <strong>دورات المياه:</strong>
+                              <span>{{$advertisement->bathrooms}}</span>
+                            </li>
+          
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 ">
+                      <div class="row ">
+                        <div class="col-sm-12 ">
+                          <div class="title-box-d">
+                            <h3 class="title-d">وسائل الراحة</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="amenities-list color-text-a">
+                        <ul class="list-a no-margin">
+                          <li>Balcony</li>
+                          <li>Outdoor Kitchen</li>
+                          <li>Cable Tv</li>
+                          <li>Deck</li>
+                          <li>Tennis Courts</li>
+                          <li>Internet</li>
+                          <li>Parking</li>
+                          <li>Sun Room</li>
+                          <li>Concrete Flooring</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
         </div>
-        <div class="col-6  d-none d-lg-block ">
-          <div class="row section-t3">
+        
+        <div class="col-4  d-none d-lg-block ">
+
+     
+          <div class="row mt-3 ">
             <div class="col-sm-12">
               <div class="title-box-d">
                 <h3 class="title-d">بيانات المعلن</h3>
@@ -179,22 +265,54 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="property-agent">
-                <h4 class="title-agent">{{$advertisement->user->name}}</h4>
-                <p class="color-text-a">
-                  Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                  dui. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim.
-                </p>
+                <h5 class="title-agent">   <strong> الإسم:</strong> {{$advertisement->user->name}}</h5>
+
                 <ul class="list-unstyled">
-                  <li class="d-flex justify-content-between">
+                  <li class="">
                     <strong>رقم الجوال:</strong>
                     <span class="color-text-a">{{$advertisement->phone}}</span>
                   </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Mobile:</strong>
-                    <span class="color-text-a">777 287 378 737</span>
-                  </li>
+
                 </ul>
+                
+                {{-- <div class="socials-a">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-snap" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div> --}}
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3 ">
+            <div class="col-sm-12">
+              <div class="title-box-d">
+                <h3 class="title-d">مشاركه الإعلان</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="property-agent text-center">
                 <div class="socials-a">
                   <ul class="list-inline">
                     <li class="list-inline-item">
@@ -212,156 +330,67 @@
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                       </a>
                     </li>
+
                     <li class="list-inline-item">
                       <a href="#">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
+                        <i class="fa fa-snap" aria-hidden="true"></i>
                       </a>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="row justify-content-between p-20">
-          <div class="col-md-5 col-lg-4">
-            <div class="property-price d-flex justify-content-center foo">
-              <div class="card-header-c d-flex">
-                <div class="card-box-ico card-money">
-                  <span class="ion-money">20000 ر.س</span>
-                </div>
-              </div>
-            </div>
-            <div class="property-summary">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="title-box-d section-t4">
-                    <h3 class="title-d">Quick Summary</h3>
-                  </div>
-                </div>
-              </div>
-              <div class="summary-list">
-                <ul class="list">
-                  <li class="d-flex justify-content-between">
-                    <strong>Property ID:</strong>
-                    <span>1134</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Location:</strong>
-                    <span>Chicago, IL 606543</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Property Type:</strong>
-                    <span>House</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Status:</strong>
-                    <span>Sale</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Area:</strong>
-                    <span>340m
-                      <sup>2</sup>
-                    </span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Beds:</strong>
-                    <span>4</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Baths:</strong>
-                    <span>2</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Garage:</strong>
-                    <span>1</span>
-                  </li>
-                </ul>
+                </div> 
               </div>
             </div>
           </div>
-          <div class="col-md-7 col-lg-7 section-md-t3">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="title-box-d">
-                  <h3 class="title-d">محتوي الإعلان</h3>
-                </div>
+          <div class="col-md-12 mt-3 ">
+            <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
+                  aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
+                  aria-selected="false">العنوان</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade " id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
+                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+             
+              <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <div id="map"></div>
               </div>
             </div>
-            <div class="property-description">
-              <p class="description color-text-a">
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                neque, auctor sit amet
-                aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                nibh pulvinar quam id dui posuere blandit.
-              </p>
-              <p class="description color-text-a no-margin">
-                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                malesuada. Quisque velit nisi,
-                pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
-              </p>
-            </div>
-            <div class="row section-t3">
-              <div class="col-sm-12">
-                <div class="title-box-d">
-                  <h3 class="title-d">Amenities</h3>
-                </div>
-              </div>
-            </div>
-            <div class="amenities-list color-text-a">
-              <ul class="list-a no-margin">
-                <li>Balcony</li>
-                <li>Outdoor Kitchen</li>
-                <li>Cable Tv</li>
-                <li>Deck</li>
-                <li>Tennis Courts</li>
-                <li>Internet</li>
-                <li>Parking</li>
-                <li>Sun Room</li>
-                <li>Concrete Flooring</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 ">
-        <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
-              aria-controls="pills-video" aria-selected="true">Video</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
-              aria-selected="false">Floor Plans</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
-              aria-selected="false">Ubication</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-            <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
-              webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div>
-          <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-            <img src="img/plan2.jpg" alt="" class="img-fluid">
-          </div>
-          <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834"
-              width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
+          </div>  
         </div>
       </div>
       <div class="col-12   d-md-block d-lg-none ">
-        <div class="row section-t3">
+        <div class="row ">
+          <div class="col-md-12 mt-3 ">
+            <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video1" role="tab"
+                  aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map1" role="tab" aria-controls="pills-map"
+                  aria-selected="false">العنوان</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade " id="pills-video1" role="tabpanel" aria-labelledby="pills-video-tab">
+                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
+                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+             
+              <div class="tab-pane fade show active" id="pills-map1" role="tabpanel" aria-labelledby="pills-map-tab">
+                <div class="map-show" id="map_2"></div>
+              </div>
+            </div>
+          </div>  
           <div class="col-sm-12">
             <div class="title-box-d">
               <h3 class="title-d">بيانات المعلن</h3>
@@ -376,21 +405,19 @@
             <div class="property-agent">
               <h4 class="title-agent">{{$advertisement->user->name}}</h4>
               <p class="color-text-a">
-                Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                dui. Quisque velit nisi,
-                pretium ut lacinia in, elementum id enim.
+
               </p>
               <ul class="list-unstyled">
-                <li class="d-flex justify-content-between">
+                <li class="">
                   <strong>رقم الجوال:</strong>
                   <span class="color-text-a">{{$advertisement->phone}}</span>
                 </li>
-                <li class="d-flex justify-content-between">
+                <li class="">
                   <strong>Mobile:</strong>
                   <span class="color-text-a">777 287 378 737</span>
                 </li>
               </ul>
-              <div class="socials-a">
+              <div class="socials-a text-center">
                 <ul class="list-inline">
                   <li class="list-inline-item">
                     <a href="#">
@@ -407,16 +434,7 @@
                       <i class="fa fa-instagram" aria-hidden="true"></i>
                     </a>
                   </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-dribbble" aria-hidden="true"></i>
-                    </a>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -424,12 +442,8 @@
 
         </div>
       </div>
-
-      </div>
     </div>
   </section>
-
-
 
   <!-- JavaScript Libraries -->
   <script src="{{ asset('assets/web/lib/jquery/jquery.min.js')}}"></script>
@@ -438,9 +452,52 @@
   <!-- Contact Form JavaScript File -->
   <script src="{{ asset('assets/web/contactform/contactform.js')}}"></script>
 
+  <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc&language=fa&callback=initMap" ></script>
+
+  <script>
+    // Replace 'YOUR_API_KEY' with your Google Maps API key
+const API_KEY = 'AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc';
+
+// Function to initialize and show the map
+$(document).ready(function() {
+  initMap();
+});
+
+function initMap() {
+    // Get latitude and longitude from your backend or any other source
+    const latitude = parseFloat($('#currentLat').val());
+    const longitude =  parseFloat($('#currentLng').val());
+
+    const location = { lat: latitude, lng: longitude };
+
+    // Create a map centered on the provided location
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 15,
+    });
+
+    const map_2 = new google.maps.Map(document.getElementById('map_2'), {
+        center: location,
+        zoom: 15,
+    });
+
+    
+    // Create a marker for the location
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'Your Location',
+    });
+
+    const marker2 = new google.maps.Marker({
+        position: location,
+        map: map_2,
+        title: 'Your Location',
+    });
+}
+  </script>
   <!-- Template Main Javascript File -->
 
-</body>
 
 @endsection
 

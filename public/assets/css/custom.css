@@ -475,3 +475,31 @@
 .p-20 {
   padding: 20px !important;
 }
+.list-tems {
+  list-style: none;
+}
+.pl-0 {
+  padding-right: 0px !important;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.socials-a {
+    background-color: white;
+    padding: 20px;
+}
+.socials-a .list-inline-item:not(:last-child) {
+  margin-right: 3px !important;
+}
+#map {
+  width: 100% !important;
+  height: 400px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.map-show {
+  width: 100% !important;
+  height: 400px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
