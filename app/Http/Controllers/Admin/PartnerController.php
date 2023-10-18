@@ -15,7 +15,7 @@ class PartnerController extends Controller
     {
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.partner.index',[
-                'partners' => Partner::filter($request->all())->paginate(10),
+                'partners' => Partner::filter($request->all())->where('partner_type' , 1)->paginate(10),
                 'users' => User::where('role_id',USER)->orWhere('role_id',SUPERADMIN)->get(),
             ]);
         else 
@@ -57,7 +57,7 @@ class PartnerController extends Controller
     public function filter(Request $request)
     {
         return view('admin.pages.partner.index',[
-            'partners' => Partner::filter($request->all())->paginate(10)
+            'partners' => Partner::filter($request->all())->where('partner_type' , 1)->paginate(10)
         ]);
     }
 }

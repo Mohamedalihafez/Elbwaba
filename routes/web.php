@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\Admin\BuildingController;
 
 
 /*
@@ -28,13 +29,18 @@ Auth::routes();
 
 Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
     Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::post('api/fetch-minor', [BuildingController::class, 'fetchBuilding'])->name('building.fetch');
+
+});
+Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
+    Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
+    Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');
 });
 Route::get('/',[HomeController::class,'index'])->name('home');
 
-Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
-    Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');
+Route::group(['prefix' => 'advertisement' , 'middleware' => 'web'],function () {
     Route::post('api/fetch-region', [AdvertisementController::class, 'fetchRegion'])->name('region.fetch');
-    Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
+    Route::get('/all',[AdvertisementController::class,'all'])->name('advertisement.all');
 });
 
 Route::group(['prefix' => 'ads-show'],function () {

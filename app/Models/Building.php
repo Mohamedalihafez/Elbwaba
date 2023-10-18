@@ -13,7 +13,7 @@ class Building extends Model
 
     protected $fillable = [
         'name',
-        'compound_id',
+        'category_id',
         'user_id'
     ];
 
@@ -46,13 +46,19 @@ class Building extends Model
         return response()->json($results);
     }
 
+    static function fetchBuilding($request)
+    {
+        $data = Building::where("category_id", $request->category_id)->get(["name", "id"]);
+        return $data;
+    }
+
     public function deleteInstance()
     {
         return $this->delete();
     }
     
-    public function compound()
+    public function category()
     {
-        return $this->belongsTo(Compound::class);
+        return $this->belongsTo(Category::class);
     }
 }

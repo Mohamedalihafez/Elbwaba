@@ -666,6 +666,19 @@ margin-bottom: 50px;
   width: 100% ;
   min-height: 30px;
 }
-.item_partner_box {
+.img_logo_partner  {
+  height: 50px !important;
+}
 
+
+.form-control:disabled, .form-control:read-only {
+  background-color: #dee2e6;
+  height: 40px!important;
+  border: 0px !important;
+}
+.bg-search-section {
+  background: linear-gradient(185deg, #00b98e, #63AEF4);
+}
+.form-control , .form-select {
+  font-weight:bolder !important;
 }

@@ -12,7 +12,7 @@ class Advertisement extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
+        'title' ,'category_id' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
    ];
 
     static function upsertInstance($request)
@@ -52,6 +52,15 @@ class Advertisement extends Model
         return $advertisement;    
     }
 
+    public function scopeFilter($query,$request)
+    {
+        if ( isset($request['name']) ) {
+            $query->where('name','like','%'.$request['name'].'%');
+        }
+
+        return $query;
+    }
+
     //Relations
     public function users()
     {
@@ -80,7 +89,7 @@ class Advertisement extends Model
 
     public function building()
     {
-      return  $this->belongsTo(Building::class, 'ads_type');
+      return  $this->belongsTo(Building::class, 'category_id');
     }
 
     public function items()

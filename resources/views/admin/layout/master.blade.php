@@ -80,6 +80,7 @@
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('tenant') }}"><i class="ti-control-record text-success"></i> {{ __('pages.tenants') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('partner') }}"><i class="ti-control-record text-success"></i> {{ __('pages.partners') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('item') }}"><i class="ti-control-record text-success"></i> {{ __('pages.items') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('category') }}"><i class="ti-control-record text-success"></i> {{ __('pages.categories') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('contributor') }}"><i class="ti-control-record text-success"></i> {{ __('pages.contributors') }}</a></li>@endif
 
                         <li><a class="waves-effect waves-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" aria-expanded="false"><i class="ti-control-record text-success"></i><span class="hide-menu">{{ __('pages.Logout') }}</span></a></li>

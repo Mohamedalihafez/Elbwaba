@@ -30,10 +30,11 @@
                                         </div>
                                     </form>
                                     <table id="example" class=" display  table table-hover table-center mb-0"  filter="{{ route('building.filter') }}">
-                                        <thead>
+                                        <thead class="card-header">
                                             <tr>
                                                 <th></th>
                                                 <th>{{ __('pages.name') }}</th>
+                                                <th>{{ __('pages.buildings') }}</th>
                                                 <th class="text-end">{{ __('pages.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -42,6 +43,7 @@
                                             <tr class="record">
                                                 <td>{{ $building->id }}#</td>
                                                 <td>{{ $building->name }}</td>
+                                                <td> {{$building->category->name}} </td>
                                                 <td class="text-end">
                                                     <div class="actions">
                                                         <a href="{{ route('building.upsert',['building' => $building->id]) }}" class="btn btn-sm bg-success-light" >

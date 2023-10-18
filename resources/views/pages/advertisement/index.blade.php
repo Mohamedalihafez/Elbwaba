@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" >نوع  العقار </label>
-                                    <select id="regions"  class="form-control" name="building_id">
+                                    <select id="regions"  class="form-control" name="category_id">
                                         @foreach ($buildings as $building)
                                             <option value="{{ $building->id }}">{{ $building->name }}</option>
                                         @endforeach

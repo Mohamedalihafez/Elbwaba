@@ -63,8 +63,7 @@ class Maintenance extends Model
     public function scopeFilter($query,$request)
     {
         if ( isset($request['name']) ) {
-            $query->where('name','like','%'.$request['name'].'%')
-                ->orWhere('cost','like','%'.$request['name'].'%');
+            $query->where('name','like','%'.$request['name'].'%');
         }
 
         return $query;

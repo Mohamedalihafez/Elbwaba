@@ -33,7 +33,7 @@ class City extends Model
     public function scopeFilter($query,$request)
     {
         if ( isset($request['name']) ) {
-            $query->where('message','like','%'.$request['name'].'%');
+            $query->where('name','like','%'.$request['name'].'%');
         }
 
         return $query;

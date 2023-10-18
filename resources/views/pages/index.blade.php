@@ -64,10 +64,10 @@
                 <section class="client-section ">
                     <div class="container">  
                         <div class="row">
-                            <div class="owl-carousel owl-theme client-logo " id="client-logo">
+                            <div class="owl-carousel   owl-theme client-logo " id="client-logo">
                                 @foreach ( $partners as $partner )
                                     @if($partner->partner_type == 1)
-                                        <div class="item  item_partner_box ">
+                                        <div class="item  owl-theme-scroll item_partner_box ">
                                             <a  target="_blamk" @if($partner->name != null) href="{{$partner->name}}" @else @endif><img  src="@isset($partner->id){{ asset('/partner/'.$partner->id.'/'.$partner->gallaries->first()->name) }}@endif" class="img-responsive img_logo_partner" alt="client-logo"></a>
                                         </div>
                                     @endif      
@@ -141,43 +141,63 @@
                         <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1"> إعلانات عقاريه</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2"> إعلانات ال VIP </a>
+                        <a class="btn btn-outline-primary " data-bs-toggle="pill" href="#tab-2"> إعلانات ال VIP </a>
                     </li>
-                    <li class="nav-item me-0">
-                        <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3"> إعلانات نجاريه</a>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary " data-bs-toggle="pill" href="#tab-3"> إعلانات تجاريه</a>
                     </li>
                 </ul>
             </div>
-            <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <div class="container-fluid bg-search-section mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
                 <div class="container">
+                    <form class="form" action="{{ route('advertisement.all') }}" method="get">
                     <div class="row g-2">
                         <div class="col-md-10">
-                            <div class="row g-2">
+                            <div class="row g-2">   
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword">
+                                    <select id="real_state"   name="building_id" class="form-select border-0 py-3" >
+                                        <option style="display:none;"  value="">
+                                                إعلانات عقاريه
+                                        </option>
+                                        @foreach ($buildings as $building)
+                                            @if($building->category_id == 1)
+                                                <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
+                                
                                 <div class="col-md-4">
-                                    <select class="form-select border-0 py-3">
-                                        <option selected>Property Type</option>
-                                        <option value="1">Property Type 1</option>
-                                        <option value="2">Property Type 2</option>
-                                        <option value="3">Property Type 3</option>
+                                    <select id="vip"   name="building_id" class="form-select border-0 py-3">
+                                        <option style="display:none;"  value="">
+                                                إعلانات ال VIP
+                                        </option>
+                                        @foreach ($buildings as $building)
+                                            @if($building->category_id == 2)
+                                                <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="form-select border-0 py-3">
-                                        <option selected>Location</option>
-                                        <option value="1">Location 1</option>
-                                        <option value="2">Location 2</option>
-                                        <option value="3">Location 3</option>
+                                    <select id="commercial"   name="building_id" class="form-select border-0 py-3">
+                                        <option style="display:none;"  value="">
+                                                إعلانات تجاريه
+                                        </option>
+                                        @foreach ($buildings as $building)
+                                            @if($building->category_id == 3)
+                                                <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-dark border-0 w-100 py-3">Search</button>
+                            <button type="submit" class="btn btn-dark border-0 w-100 py-3 search_btn"><i class="fa fa-search"> </i>  بحث </button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
       
@@ -216,9 +236,12 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="btn btn-primary py-3 px-5" href="">قراءه المزيد</a>
-                    </div>
+                    <form  class="form d-none" action="{{ route('advertisement.all') }}" method="get">
+                        <input type="hidden" name="item_id" value="1"/>
+                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <button  type="submit" class="btn btn-primary py-3 px-5" href="">قراءه المزيد</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div id="tab-2" class="tab-pane fade show p-0">
@@ -495,26 +518,77 @@
 @section('js')
 <script>
     $('.client-logo').owlCarousel({
-            loop: true,
-            margin: 0,
-            dots: false,
-            nav: false,
-            autoplay: true,
-            navText: ["<i class='icofont icofont-thin-left'></i>", "<i class='icofont icofont-thin-right'></i>"],
-            responsive: {
-                0: {
-                    items: 3
-                },
-                300: {
-                    items: 3
-                },
-                600: {
-                    items: 4
-                },
-                1000: {
-                    items: 6
-                }
+        loop: true,
+        margin: 0,
+        dots: false,
+        nav: false,
+        autoplay: true,
+        navText: ["<i class='icofont icofont-thin-left'></i>", "<i class='icofont icofont-thin-right'></i>"],
+        responsive: {
+            0: {
+                items: 3
+            },
+            300: {
+                items: 3
+            },
+            600: {
+                items: 4
+            },
+            1000: {
+                items: 6
             }
-        })
+        }
+    })
+    $(document).ready(function () {
+        $('#categories').on('change', function () {
+            var category_id = this.value;
+            $("#buildings").html('');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                },
+                url: '{{ route("building.fetch") }}',
+                method: 'post',
+                data: {category_id: category_id},
+                success: function (results) {
+                    $('#buildings').html('');
+                    results.forEach((result, index) => {
+                        $("#buildings").append('<option value="' + result['id'] + '">' + result['name'] + '</option>');
+                    });
+                },
+            });
+        });
+    });
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    $(document).ready(function() {
+    // Add a click event handler to the select element using jQuery
+    $("#real_state").click(function() {
+      // Remove the "disabled" attribute
+      $(this).prop("disabled", false);
+    });
+  });
+        
+    // $(document).ready(function () {
+    //     $('.search_btn').on('click', function () {
+    //         var category_id = $('#categories').val();
+    //         var building_id = $('#buildings').val();
+    //         var ads_title = $('#ads_title').val();
+    //         $.ajax({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': '{{csrf_token()}}'
+    //             },
+    //             url: '{{ route("advertisement.all") }}',
+    //             method: 'get',
+    //             data: { category_id: category_id, building_id: building_id ,  ads_title :ads_title } ,
+    //             success: function (results) { 
+    //                 $('#buildings').html('');
+    //                 results.forEach((result, index) => {
+    //                     $("#buildings").append('<option value="' + result['id'] + '">' + result['name'] + '</option>');
+    //                 });
+    //             },
+    //         });
+    //     });
+    // });
 </script>
 @endsection

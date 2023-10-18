@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
+use App\Models\Category;
 use App\Models\Compound;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,10 +32,14 @@ class BuildingController extends Controller
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.building.upsert',[
                 'building' => $building,
-                'compounds'=>Compound::get(),
+                'categories'=>Category::get(),
             ]);
         else 
             abort(404);
+    }
+    public function fetchBuilding(Request $request)
+    {
+       return Building::fetchBuilding($request);
     }
 
     public function modify(BuildingRequest $request)

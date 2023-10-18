@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\BuildingController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,6 @@ Route::group(['prefix' => 'contributor'],function(){
 Route::group(['prefix' => 'building'],function(){
     Route::get('/', [BuildingController::class,"index"])->name('building');
     Route::post('/buildings', [BuildingController::class, 'buildings'])->name('buildings');
-    Route::post('api/fetch-minor', [BuildingController::class, 'fetchMainor'])->name('building.fetch');
     Route::get('/upsert/{building?}',[BuildingController::class,'upsert'])->name('building.upsert');
     Route::get('/filter',[BuildingController::class,'filter'])->name('building.filter');
     Route::post('/modify',[BuildingController::class,'modify'])->name('building.modify');
@@ -114,4 +114,13 @@ Route::group(['prefix' => 'item'],function(){
     Route::get('/filter',[ItemController::class,'filter'])->name('item.filter');
     Route::post('/modify',[ItemController::class,'modify'])->name('item.modify');
     Route::post('/delete/{item}',[ItemController::class,'destroy'])->name('item.delete');
+});
+
+Route::group(['prefix' => 'category'],function(){
+    Route::get('/', [CategoryController::class,"index"])->name('category');
+    Route::post('api/fetch-minor', [CategoryController::class, 'fetchMainor'])->name('category.fetch');
+    Route::get('/upsert/{category?}',[CategoryController::class,'upsert'])->name('category.upsert');
+    Route::get('/filter',[CategoryController::class,'filter'])->name('category.filter');
+    Route::post('/modify',[CategoryController::class,'modify'])->name('category.modify');
+    Route::post('/delete/{category}',[CategoryController::class,'destroy'])->name('category.delete');
 });

@@ -6,7 +6,7 @@
             <div class="content container-fluid">		
                 <!-- Page Header -->
 
-                <div class="page-header">
+                <div class="page-header card-header">
                     <div class="row">
                         <div class="col-sm-12">
                             <h3 class="page-title">{{ __('pages.add_building') }}</h3>
@@ -25,22 +25,22 @@
                                 <!-- Add Blog -->
                                 <form method="post" enctype="multipart/form-data" action="{{ route('building.modify') }}" class="ajax-form" swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}" redirect="{{ route('building') }}">
                                     @csrf
-                                    <div class="service-fields mb-3">
+                                    <div class="service-fields mb-3 card-header">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <label class="mb-2">{{ __('pages.name') }}</label>
                                                     <input class="form-control" type="text" name="name" placeholder="{{ __('pages.name') }}" value="@isset($building->id){{$building->name}}@endisset">
                                                     <p class="error error_name"></p>
                                                 </div>
-                                                {{-- <div class="col-md-6">
-                                                    <label class="mb-2">{{ __('pages.compound') }}</label>
-                                                    <select class="form-control select2 d-flex " placeholder="{{ __('pages.compound_owner') }}" route="{{route('compounds')}}"  name="compound_id">
-                                                        @if($building->compound)
-                                                            <option class="form-control" selected value="{{$building->compound->id}}">{{ $building->compound->name}}</option>
-                                                        @endif
+                                                <div class="col-md-6">
+                                                    <label class="mb-2">أنواع الإعلانات</label>
+                                                    <select class="form-control  d-flex " placeholder="أنواع الإعلانات " route="{{route('compounds')}}"  name="category_id"> 
+                                                        @foreach($categories as $category)
+                                                            <option @if($building->category->id == $category->id) selected @else @endif class="form-control"  value="{{$category->id}}">{{ $category->name}}</option>
+                                                        @endforeach
                                                     </select>
-                                                </div> --}}
+                                                </div>
                                             </div>
 
                                         </div>

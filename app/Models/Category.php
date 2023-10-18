@@ -8,19 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use App\Scopes\TenantScope;
 
-class Contact extends Model
+class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'email',
-        'phone',
-        'subject',
-        'comments',
     ];
 
+    
     //Tenancy
     protected static function booted()
     { 
@@ -44,11 +41,11 @@ class Contact extends Model
 
     static function upsertInstance($request)
     {   
-        $contact = Contact::create(
+        $category = Category::create(
             $request->all()
         );
 
-        return $contact;
+        return $category;
     }
 
 

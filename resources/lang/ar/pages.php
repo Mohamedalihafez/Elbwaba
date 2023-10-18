@@ -640,7 +640,7 @@
          'name_compound'=> 'إسم المجمع السكني',
          'compound_owner' => 'صاحب المجمع السكني',
          'edit_compound_info' => 'تعديل بيانات المجمع السكني',
-         'buildings' => 'عقارات',
+         'buildings' => 'أقسام الإعلانات',
          'maintenances' => 'الصيانة',
          'add_building' => 'إضافة عقار',
          'add_maintenance' => 'إضافة صيانة',
@@ -668,5 +668,7 @@
          'link' => 'الرابط',
          'contributors'=>'المساهمون',
          'add_contributor'=>'إضافة مساهم',
+         'categories'=>'أنواع الإعلانات',
+         'add_category'=>'إضافه نوع  '
     ];
 ?>

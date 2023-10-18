@@ -46,12 +46,12 @@ class Compound extends Model
     public function scopeFilter($query,$request)
     {
         if ( isset($request['name']) ) {
-            $query->where('name','like','%'.$request['name'].'%')
-                ->orWhere('address','like','%'.$request['name'].'%');
+            $query->where('name','like','%'.$request['name'].'%');
         }
 
         return $query;
     }
+    
     static function compoundSelect($request)
     {
         $results = count($request->term) == 2 ? Compound::where('name','like','%'.$request->term["term"].'%')->take(10)->get()->toArray() : Compound::filter($request->all())->take(10)->get()->toArray();

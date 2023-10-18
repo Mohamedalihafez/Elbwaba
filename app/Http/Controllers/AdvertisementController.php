@@ -39,6 +39,20 @@ class AdvertisementController extends Controller
         return view('pages.advertisement.show' ,[ 'advertisement' => $advertisement , 'items' => $items]);
     }
 
+    public function all( Request $request)
+    {
+
+        $advertisements = Advertisement::where('category_id' , $request->building_id)->Where('title', 'like', '%' . $request->ads_title .'%')->paginate(20);
+        
+        if(count($advertisements) == 0 )
+        {
+            $advertisements = Advertisement::where('category_id' , $request->building_id)->paginate(20);
+        }
+
+        return view('pages.advertisement.all' , ['advertisements' => $advertisements] );
+    }
+
+
     public function fetchRegion(Request $request)
     {
        return City::fetchRegion($request);
