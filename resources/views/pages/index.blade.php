@@ -119,7 +119,7 @@
                 <p><i class="fa fa-check text-primary me-3"></i>تفاصيل العقار من الصور ومساحة العقار وجودة التشطيب والسعر</p>
                 <p><i class="fa fa-check text-primary me-3"></i>تصميم مبتكر لواجهات التطبيق تناسب ثقافة وسلوك المستخدم السعودي .</p>
                 <p><i class="fa fa-check text-primary me-3"></i>لوحة تحكم باللغة العربية سهلة الإستخدام لإدارة محتوي التطبيق بسهولة.</p>
-                <a class="btn btn-primary py-3 px-5 mt-3" href="">تواصل معنا </a>
+                <a class="btn btn-primary py-3 px-5 mt-3" href="{{ route('contact') }}">تواصل معنا </a>
             </div>
         </div>
     </div>
@@ -153,18 +153,20 @@
                     <form class="form" action="{{ route('advertisement.all') }}" method="get">
                     <div class="row g-2">
                         <div class="col-md-10">
-                            <div class="row g-2">   
+                            <div id="container" class="row g-2">   
                                 <div class="col-md-4">
-                                    <select id="real_state"   name="building_id" class="form-select border-0 py-3" >
-                                        <option style="display:none;"  value="">
-                                                إعلانات عقاريه
-                                        </option>
-                                        @foreach ($buildings as $building)
-                                            @if($building->category_id == 1)
-                                                <option value="{{ $building->id }}">{{ $building->name }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                    <a>
+                                        <select id="real_state"  name="building_id" class="form-select border-0 py-3" >
+                                            <option style="display:none;"  value="">
+                                                    إعلانات عقاريه
+                                            </option>
+                                            @foreach ($buildings as $building)
+                                                @if($building->category_id == 1)
+                                                    <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </a>
                                 </div>
                                 
                                 <div class="col-md-4">
@@ -180,7 +182,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select id="commercial"   name="building_id" class="form-select border-0 py-3">
+                                    <select id="commercial"  name="building_id" class="form-select border-0 py-3">
                                         <option style="display:none;"  value="">
                                                 إعلانات تجاريه
                                         </option>
@@ -516,7 +518,56 @@
 
 @endsection
 @section('js')
+
 <script>
+    const select1 = document.getElementById("real_state");
+    const select2 = document.getElementById("vip");
+    const select3 = document.getElementById("commercial");
+
+    function disableOtherSelects(excludedSelect) {
+    const selects = [select1, select2, select3];
+
+    for (const select of selects) {
+        if (select !== excludedSelect) {
+        select.disabled = true;
+        }
+    }
+    }
+
+    function enableAllSelects() {
+    const selects = [select1, select2, select3];
+        for (const select of selects) {
+            select.disabled = false;
+        }
+    }
+
+    select1.addEventListener("click", () => {
+        disableOtherSelects(select1);
+        $('#vip').removeAttr('name');
+        $('#commercial').removeAttr('name');
+        $('#real_state').attr('name','building_id');
+    });
+
+    select2.addEventListener("click", () => {
+        disableOtherSelects(select2);
+        $('#real_state').removeAttr('name');
+        $('#commercial').removeAttr('name');
+        $('#vip').attr('name','building_id');
+    });
+
+    select3.addEventListener("click", () => {
+        disableOtherSelects(select3);
+        $('#vip').removeAttr('name');
+        $('#real_state').removeAttr('name');
+        $('#commercial').attr( 'name','building_id');
+    });
+
+    // Enable all selects when the mouse leaves the container (e.g., a form or div)
+    const container = document.getElementById("container"); // Replace with your container element
+    container.addEventListener("mouseout", () => {
+        enableAllSelects();
+    });
+
     $('.client-logo').owlCarousel({
         loop: true,
         margin: 0,
@@ -559,15 +610,9 @@
             });
         });
     });
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    $(document).ready(function() {
-    // Add a click event handler to the select element using jQuery
-    $("#real_state").click(function() {
-      // Remove the "disabled" attribute
-      $(this).prop("disabled", false);
-    });
-  });
+
+ 
         
     // $(document).ready(function () {
     //     $('.search_btn').on('click', function () {

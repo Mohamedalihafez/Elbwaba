@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ItemRequest;
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class ItemController extends Controller
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.item.index',[
                 'items' => Item::filter($request->all())->paginate(10),
+                
             ]);
         else 
             abort(404);
@@ -32,6 +34,7 @@ class ItemController extends Controller
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.item.upsert',[
                 'item' => $item,
+                'categories'=>Category::get(),
                 'users' => User::where('role_id',SUPERADMIN)->get(),
             ]);
         else 

@@ -257,8 +257,8 @@
         'surgery_name'=>'أسم العملية الجراحية',
         'medical_history_note' => 'ملاحظة التاريخ الطبي',
         //items
-        'items' => 'الأدوات',
-        'add_item' => 'إضافة أداه',
+        'items' => 'خيرات إضافيه للإعلان',
+        'add_item' => 'إضافة خيار إضافي',
         'add_items' => 'إضافة أدوات',
         'item_name' => 'الاسم',
         //Insurance Company
@@ -541,11 +541,7 @@
          'add_surgery'=>'أضف عملية جراحية',
          'surgery_name'=>'أسم العملية الجراحية',
          'medical_history_note' => 'ملاحظة التاريخ الطبي',
-         //items
-         'items' => 'الأدوات',
-         'add_item' => 'إضافة أداه',
-         'add_items' => 'إضافة أدوات',
-         'item_name' => 'الاسم',
+
          //Insurance Company
          'insurance_companies' => 'شركات التأمين',
          'add_insurance' => 'إضافة شركة تأمين',

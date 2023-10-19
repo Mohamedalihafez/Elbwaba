@@ -34,7 +34,8 @@ Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
 });
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
-    Route::get('/',[AdvertisementController::class,'index'])->name('advertisement');
+    Route::get('/category',[AdvertisementController::class,'category'])->name('advertisement');
+    Route::get('/{category?}',[AdvertisementController::class,'index'])->name('advertisement.add');
 });
 Route::get('/',[HomeController::class,'index'])->name('home');
 

@@ -39,8 +39,15 @@
                 </div>
             </div>
             @endforeach
-            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                <a class="btn btn-primary py-3 px-5" href="">قراءه المزيد</a>
+
+            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">                      
+                <nav aria-label="Page navigation example" class="mt-2">
+                    <ul class="pagination">
+                        @for($i = 1; $i <= $advertisements->lastPage(); $i++)
+                            <li class="page-item @if(request()->input('page') == $i) active @endif"><a class="page-link" href="?building_id={{request()->input('building_id')}}&page={{$i}}">{{$i}}</a></li>
+                        @endfor
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

@@ -9,6 +9,9 @@
     .d-flex {
         display: flex !important;
     }
+    .client-section .client-logo .item {
+      padding: 0px !important;
+    }
 }
 
 .market-btn {
@@ -681,4 +684,8 @@ margin-bottom: 50px;
 }
 .form-control , .form-select {
   font-weight:bolder !important;
+}
+
+.form-select:disabled {
+  background-color: #d1d1db;
 }

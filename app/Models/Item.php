@@ -14,7 +14,7 @@ class Item extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'name', 'category_id'
     ];
 
     
@@ -41,11 +41,24 @@ class Item extends Model
 
     static function upsertInstance($request)
     {   
-        $item = Item::create(
-            $request->all()
+        $item = Item::updateOrCreate(
+            [
+                'id' => $request->id ?? null
+            ],
+                $request->all()
         );
 
         return $item;
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function deleteInstance()
+    {
+        return $this->delete();
     }
 
 

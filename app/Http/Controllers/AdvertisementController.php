@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Models\Building;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Item;
 use App\Models\Region;
@@ -24,12 +25,19 @@ class AdvertisementController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index( Category $category)
     {
         $regions = Region::all();
-        $buildings = Building::all();
-        $items = Item::all();
-        return view('pages.advertisement.index' ,[ 'regions' => $regions , 'items' => $items, 'buildings' => $buildings]);
+        $buildings = Building::where('category_id' , $category->id)->get();
+        $items = Item::where('category_id' , $category->id)->get();
+        return view('pages.advertisement.index' ,[ 'regions' => $regions , 'items' => $items, 'buildings' => $buildings , 'category' => $category ]);
+    }
+
+
+    public function category()
+    {
+        $categories= Category::all();
+        return view('pages.advertisement.category' , ['categories' => $categories]);
     }
 
     public function show( Advertisement $advertisement)
@@ -41,12 +49,12 @@ class AdvertisementController extends Controller
 
     public function all( Request $request)
     {
-
-        $advertisements = Advertisement::where('category_id' , $request->building_id)->Where('title', 'like', '%' . $request->ads_title .'%')->paginate(20);
+        dd($request);
+        $advertisements = Advertisement::where('category_id' , $request->building_id)->Where('title', 'like', '%' . $request->ads_title .'%')->orderBy('id', 'DESC')->paginate(1);
         
         if(count($advertisements) == 0 )
         {
-            $advertisements = Advertisement::where('category_id' , $request->building_id)->paginate(20);
+            $advertisements = Advertisement::where('category_id' , $request->building_id)->orderBy('id', 'DESC')->paginate(1);
         }
 
         return view('pages.advertisement.all' , ['advertisements' => $advertisements] );

@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" >نوع  العقار </label>
-                                    <select id="regions"  class="form-control" name="category_id">
+                                    <select id="regions"  class="form-control" name="building_id">
                                         @foreach ($buildings as $building)
                                             <option value="{{ $building->id }}">{{ $building->name }}</option>
                                         @endforeach
@@ -100,107 +100,110 @@
                                     <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="رقم الرخصه" style="height: 55px;">
                                 </div>     
                                 <hr>
-                               
-                                <div class="col-lg-4 ">
-                                    <label class="mb-1" >نوع الشارع </label>
-                                    <select id="regions"  class="form-control" name="street_type">
-                                            <option value="1">سكني</option>
-                                            <option value="2"> تجاري</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4 ">
-                                    <label class="mb-1" for="exampleInputtext1">نوع الفلة                                    </label>
-                                    <select id="regions"  class="form-control" name="ads_type">
-                                            <option value="1">مستقله</option>
-                                            <option value="2">دوبلكس </option>
-                                            <option value="3">تاون هاوس</option>
-                                            <option value="4">مع شقق</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4 ">
-                                    <label class="mb-1" for="exampleInputtext1">الواجهة</label>
-                                    <select id="regions"  class="form-control" name="face_type">
-                                            <option value="1">شمال</option>
-                                            <option value="2">جنوب </option>
-                                            <option value="3">شرق</option>
-                                            <option value="4">غرب</option>
-                                            <option value="5">جنوب شرقي</option>
-                                            <option value="6">جنوب غربي </option>
-                                            <option value="7">شمال شرقي </option>
-                                            <option value="8">شمال غربي </option>
-                                            <option value="9">ثلاث شوارع</option>
-                                            <option value="10">اربع شوارع </option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputtext1">المساحه :</label>
+                                @if($category->id == 1 )
+                                    <div class="col-lg-4 ">
+                                        <label class="mb-1" >نوع الشارع </label>
+                                        <select id="regions"  class="form-control" name="street_type">
+                                                <option value="1">سكني</option>
+                                                <option value="2"> تجاري</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label class="mb-1" for="exampleInputtext1">نوع الفلة                                    </label>
+                                        <select id="regions"  class="form-control" name="ads_type">
+                                                <option value="1">مستقله</option>
+                                                <option value="2">دوبلكس </option>
+                                                <option value="3">تاون هاوس</option>
+                                                <option value="4">مع شقق</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 ">
+                                        <label class="mb-1" for="exampleInputtext1">الواجهة</label>
+                                        <select id="regions"  class="form-control" name="face_type">
+                                                <option value="1">شمال</option>
+                                                <option value="2">جنوب </option>
+                                                <option value="3">شرق</option>
+                                                <option value="4">غرب</option>
+                                                <option value="5">جنوب شرقي</option>
+                                                <option value="6">جنوب غربي </option>
+                                                <option value="7">شمال شرقي </option>
+                                                <option value="8">شمال غربي </option>
+                                                <option value="9">ثلاث شوارع</option>
+                                                <option value="10">اربع شوارع </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputtext1">المساحه :</label>
 
-                                    <input type="text" name="width" class="form-control border-0 bg-light " style="height: 55px;">
-                                    <p class="error error_width"></p>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputtext1">عمر العقار</label>
+                                        <input type="text" name="width" class="form-control border-0 bg-light " style="height: 55px;">
+                                        <p class="error error_width"></p>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputtext1">عمر العقار</label>
 
-                                    <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 55px;">
-                                    <p class="error error_age"></p>
-                                </div>
-                                <div class="col-lg-2 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
-                                    <select id="regions"  class="form-control" name="rooms">
-                                            <option value="1">1</option>
-                                            <option value="2">2 </option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5 </option>
-                                            <option value="6">6  </option>
-                                            <option value="7">7  </option>
-                                            <option value="8">8+  </option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-2 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
-                                    <select id="regions"  class="form-control" name="halls">
-                                            <option value="1">1</option>
-                                            <option value="2">2 </option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5+ </option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-2 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
-                                    <select id="regions"  class="form-control" name="bathrooms">
-                                            <option value="1">1</option>
-                                            <option value="2">2 </option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5+ </option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
+                                        <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                        <p class="error error_age"></p>
+                                    </div>
+                                    <div class="col-lg-2 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
+                                        <select id="regions"  class="form-control" name="rooms">
+                                                <option value="1">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5 </option>
+                                                <option value="6">6  </option>
+                                                <option value="7">7  </option>
+                                                <option value="8">8+  </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
+                                        <select id="regions"  class="form-control" name="halls">
+                                                <option value="1">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5+ </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
+                                        <select id="regions"  class="form-control" name="bathrooms">
+                                                <option value="1">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5+ </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
 
-                                    <input type="number"  name="flats"  class="form-control border-0 bg-light " style="height: 55px;">
-                                    <p class="error error_flats"></p>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
+                                        <input type="number"  name="flats"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <p class="error error_flats"></p>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
 
-                                    <input type="text"  name="ads_direction"  class="form-control border-0 bg-light " style="height: 55px;">
-                                    <p class="error error_ads_direction"></p>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
+                                        <input type="text"  name="ads_direction"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <p class="error error_ads_direction"></p>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
 
-                                    <input type="number"  name="floors"  class="form-control border-0 bg-light " style="height: 55px;">
-                                    <p class="error error_floors"></p>
-                                </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
+                                        <input type="number"  name="floors"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <p class="error error_floors"></p>
+                                    </div>
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
 
-                                    <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 55px;">
-                                    <p class="error error_stores_number"></p>
-                                </div>
+                                        <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <p class="error error_stores_number"></p>
+                                    </div>
+                                @else 
+                                
+                                @endif
                                 <hr>
                                 <div class="col-12">
                                     <h4>خيارات اضافية

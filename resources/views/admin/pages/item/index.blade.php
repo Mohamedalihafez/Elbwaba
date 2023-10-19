@@ -34,6 +34,7 @@
                                             <tr>
                                                 <th></th>
                                                 <th>{{ __('pages.name') }}</th>
+                                                <th>{{ __('pages.buildings') }}</th>
                                                 <th class="text-end">{{ __('pages.actions') }}</th>
                                             </tr>
                                         </thead>
@@ -42,6 +43,7 @@
                                                 <tr class="record">
                                                     <td>{{ $item->id }}#</td>
                                                     <td>{{ $item->name }}</td>
+                                                    <td> {{$item->category->name}} </td>
                                                     <td class="text-end">
                                                         <div class="actions">
                                                             <a href="{{ route('item.upsert',['item' => $item->id]) }}" class="btn btn-sm bg-success-light" >

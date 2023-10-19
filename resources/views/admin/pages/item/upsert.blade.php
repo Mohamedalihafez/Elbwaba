@@ -26,12 +26,19 @@
                                     <div class="service-fields mb-3">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-12 mb-2">
+                                                <div class="col-md-6 mb-2">
                                                     <label class="mb-2">{{ __('pages.name') }}</label>
                                                     <input class="form-control text-start" type="text" name="name" value="@isset($item->id){{$item->name}}@endisset" placeholder="{{ __('pages.cost') }}" >
 
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                    <label class="mb-2">أنواع الإعلانات</label>
+                                                    <select class="form-control  d-flex " placeholder="أنواع الإعلانات " route="{{route('compounds')}}"  name="category_id"> 
+                                                        @foreach($categories as $category)
+                                                            <option @isset($item->id) @if($item->category->id == $category->id) selected @else @endif @endisset class="form-control"  value="{{$category->id}}">{{ $category->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
