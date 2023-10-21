@@ -30,6 +30,7 @@ class AdvertisementController extends Controller
         $regions = Region::all();
         $buildings = Building::where('category_id' , $category->id)->get();
         $items = Item::where('category_id' , $category->id)->get();
+
         return view('pages.advertisement.index' ,[ 'regions' => $regions , 'items' => $items, 'buildings' => $buildings , 'category' => $category ]);
     }
 
@@ -37,6 +38,7 @@ class AdvertisementController extends Controller
     public function category()
     {
         $categories= Category::all();
+
         return view('pages.advertisement.category' , ['categories' => $categories]);
     }
 
@@ -49,12 +51,13 @@ class AdvertisementController extends Controller
 
     public function all( Request $request)
     {
-        dd($request);
-        $advertisements = Advertisement::where('category_id' , $request->building_id)->Where('title', 'like', '%' . $request->ads_title .'%')->orderBy('id', 'DESC')->paginate(1);
-        
-        if(count($advertisements) == 0 )
+        if($request->category_id)
         {
-            $advertisements = Advertisement::where('category_id' , $request->building_id)->orderBy('id', 'DESC')->paginate(1);
+            $advertisements = Advertisement::where('category_id' , $request->category_id)->orderBy('id', 'DESC')->paginate(20);
+        }
+        else 
+        {
+            $advertisements = Advertisement::where('building_id' , $request->building_id)->orderBy('id', 'DESC')->paginate(1);
         }
 
         return view('pages.advertisement.all' , ['advertisements' => $advertisements] );
@@ -69,6 +72,7 @@ class AdvertisementController extends Controller
     public function modify(AdvertisementRequest $request)
     {
         Advertisement::upsertInstance($request);
+        
         return redirect()->route('advertisement');
     }
 }

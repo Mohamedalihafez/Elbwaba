@@ -406,10 +406,6 @@
                   <strong>رقم الجوال:</strong>
                   <span class="color-text-a">{{$advertisement->phone}}</span>
                 </li>
-                <li class="">
-                  <strong>Mobile:</strong>
-                  <span class="color-text-a">777 287 378 737</span>
-                </li>
               </ul>
               <div class="socials-a text-center">
                 <ul class="list-inline">

@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Advertisement;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +29,12 @@ class everyMinute extends Command
     public function handle()
     {
         //
-        DB::table('users')->delete();
+        $advertisments = Advertisement::whereDate('created_at', Carbon::yesterday())->get();
+        foreach( $advertisments as $advertisment)
+        {
+            $advertisment->delete();
+
+        }
         echo "operation done";
     }
 }

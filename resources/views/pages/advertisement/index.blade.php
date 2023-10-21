@@ -32,7 +32,8 @@
                             @csrf
                             <div class="d-none">
                                 <input name="currentLat" value=""  id="currentLat"/>
-                                  <input name="currentLng" value=""  id="currentLng"/>
+                                <input name="currentLng" value=""  id="currentLng"/>
+                                <input name="category_id" value="{{$category->id}}"  id="category_id"/>
                             </div>
                             <div class=" card-header text-center ">
                                 <div class="row">
@@ -60,11 +61,11 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="mb-1" >الحي</label>
-                                    <input type="text"  name="district"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="district"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="mb-1" >الشارع</label>
-                                    <input type="text"  name="street"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="street"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class=" card-header text-center ">
                                     <div class="row">
@@ -76,11 +77,12 @@
                                 <div class="col-lg-3 mt-2">
                                     <label class="mb-1" for="exampleInputtext1">عنوان الاعلان :</label>
 
-                                    <input type="text" name="title" class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text" name="title" class="form-control border-0 bg-light "  style="height: 40;">
                                     <p class="error error_name"></p>
                                 </div>
                                 <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" >نوع  العقار </label>
+                                    
+                                    <label class="mb-1" >@if($category->id == 1 )   نوع العقار @elseif($category->id == 2)  خيارات الفئة @else  خيارات الإعلان @endif  </label>
                                     <select id="regions"  class="form-control" name="building_id">
                                         @foreach ($buildings as $building)
                                             <option value="{{ $building->id }}">{{ $building->name }}</option>
@@ -96,8 +98,8 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" >رقم الرخصه </label>
-                                    <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="رقم الرخصه" style="height: 55px;">
+                                    <label class="mb-1" > @if($category->id == 1 )  رقم الرخصه  @else جهة المعلن @endif </label>
+                                    <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="@if($category->id == 1 )  رقم الرخصه  @else جهة المعلن @endif" style="height: 40;">
                                 </div>     
                                 <hr>
                                 @if($category->id == 1 )
@@ -135,13 +137,13 @@
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputtext1">المساحه :</label>
 
-                                        <input type="text" name="width" class="form-control border-0 bg-light " style="height: 55px;">
+                                        <input type="text" name="width" class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_width"></p>
                                     </div>
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputtext1">عمر العقار</label>
 
-                                        <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                        <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 40;">
                                         <p class="error error_age"></p>
                                     </div>
                                     <div class="col-lg-2 mt-2">
@@ -180,25 +182,25 @@
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
 
-                                        <input type="number"  name="flats"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <input type="number"  name="flats"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_flats"></p>
                                     </div>
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
 
-                                        <input type="text"  name="ads_direction"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <input type="text"  name="ads_direction"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_ads_direction"></p>
                                     </div>
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
 
-                                        <input type="number"  name="floors"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <input type="number"  name="floors"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_floors"></p>
                                     </div>
                                     <div class="col-lg-3 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
 
-                                        <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 55px;">
+                                        <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_stores_number"></p>
                                     </div>
                                 @else 
@@ -218,11 +220,11 @@
                                     <div class="row">
                                         <div class="col-lg-6 mt-2">
                                             <label class="mb-1" > رقم الجوال </label>
-                                            <input id="phone" name="phone" type="tel" style="height: 55px;"   class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">
+                                            <input id="phone" name="phone" type="tel" style="height: 40;"   class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">
                                         </div>
                                         <div class="col-lg-6 mt-2">
                                             <label class="mb-1" > السعر  </label>
-                                            <input  style="height: 55px;" type="number"  name="price"  class="form-control border-0 bg-light " >
+                                            <input  style="height: 40;" type="number"  name="price"  class="form-control border-0 bg-light " >
     
                                         </div>                       
                                         <div class="col-12 mt-2">
@@ -254,22 +256,22 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
-                                    <input type="text"  name="question_1"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="question_1"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
-                                    <input type="text"  name="question_2"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="question_2"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
-                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-1" >
                                         إضافه رابط اليوتيوب (اختياري)
                                     </label>
                                     <br> 
-                                    <input type="text"  name="link"  class="form-control border-0 bg-light "  style="height: 55px;">
+                                    <input type="text"  name="link"  class="form-control border-0 bg-light "  style="height: 40;">
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit"> نشر الإعلان  </button>

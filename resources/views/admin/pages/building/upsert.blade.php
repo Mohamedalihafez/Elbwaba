@@ -37,7 +37,7 @@
                                                     <label class="mb-2">أنواع الإعلانات</label>
                                                     <select class="form-control  d-flex " placeholder="أنواع الإعلانات " route="{{route('compounds')}}"  name="category_id"> 
                                                         @foreach($categories as $category)
-                                                            <option @isset($building->id) @if($building->category->id == $category->id) selected @else @endif  class="form-control"  value="{{$category->id}}">{{ $category->name}}</option>
+                                                            <option @isset($building->id) @if($building->category->id == $category->id) selected @else @endif @endisset  class="form-control"  value="{{$category->id}}">{{ $category->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

@@ -41,10 +41,10 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'web'],function () {
     Route::post('api/fetch-region', [AdvertisementController::class, 'fetchRegion'])->name('region.fetch');
-    Route::get('/all',[AdvertisementController::class,'all'])->name('advertisement.all');
 });
 
 Route::group(['prefix' => 'ads-show'],function () {
+    Route::get('/all',[AdvertisementController::class,'all'])->name('advertisement.all');
     Route::get('/show/{advertisement?}',[AdvertisementController::class,'show'])->name('advertisement.show');
 });
 
