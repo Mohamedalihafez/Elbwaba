@@ -38,7 +38,7 @@ class AdvertisementController extends Controller
     public function category()
     {
         $categories= Category::all();
-
+        
         return view('pages.advertisement.category' , ['categories' => $categories]);
     }
 

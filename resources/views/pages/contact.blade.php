@@ -1,6 +1,7 @@
 @extends('layouts.master.master')
 
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 
 @endsection
 @section('content')
@@ -56,7 +57,7 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
+                    <form id="contact-form" method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
                         @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -68,7 +69,7 @@
                                 <p class="error error_email"></p>
                             </div>
                             <div class="col-12">
-                                <input type="number" name="phone"  class="form-control border-0 bg-light px-4" placeholder="رقم الجوال" style="height: 55px;">
+                                <input id="phone" type="number" name="phone"  class="form-control border-0 bg-light px-4" placeholder="رقم الجوال" style="height: 55px;">
                                 <p class="error error_phone"></p>
                             </div>
                             <div class="col-12">
@@ -94,5 +95,22 @@
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
+<script>
+const phoneInputField = document.querySelector("#phone");
+const phoneInput = window.intlTelInput(phoneInputField, {
+initialCountry: "SA",
+utilsScript:
+    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+});
+
+$(document).ready(function(){
+    $('#contact-form').append(`<input class="d-none" name="country_code" value="966" />`);
+    $('.iti__country-list li').click(function(){
+        var dataVal = $(this).attr('data-dial-code');
+        $('#contact-form').append(`<input class="d-none" name="country_code" value="${dataVal}" />`);
+    });
+});
+</script>
 @endsection

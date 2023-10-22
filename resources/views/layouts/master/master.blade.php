@@ -33,6 +33,9 @@
 
     <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
     
+    {{-- Dropify --}}
+    <link href="{{ asset('admin_assets\css\fileupload.css') }}" rel="stylesheet" />
+    
  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
@@ -63,8 +66,11 @@
         <!-- Template Javascript -->
         <script src="{{ asset('assets/js/main.js')}}"></script>
         <script src="{{ asset('assets/web/contactform/contactform.js')}}"></script>
-
-
+        <script src="{{ asset('admin_assets\js\dropify.js') }}"></script>
+        <script src="{{ asset('admin_assets\js\fileupload.js') }}"></script>
+        <script>
+            $('.dropify').dropify();
+        </script>
     @yield('js')
 </body>
 

@@ -2,26 +2,24 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\ExtraScope;
+use App\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use App\Scopes\TenantScope;
 
-class Contact extends Model
+class Extra extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'email',
-        'phone',
-        'country_code',
-        'comments',
+        'category_id',
+        'building_id',
     ];
 
-    //Tenancy
     protected static function booted()
     { 
         if(Auth::hasUser())
@@ -33,6 +31,24 @@ class Contact extends Model
         } 
     }
 
+    static function upsertInstance($request)
+    {  
+        $building = Building::where('id' , $request->building_id )->first();
+
+        $request->merge([
+            'category_id' =>  $building->category_id
+        ]);
+
+        $extra = Extra::updateOrCreate(
+            [
+                'id' => $request->id ?? null
+            ],
+                $request->all()
+            );
+
+        return $extra;
+    }
+
     public function scopeFilter($query,$request)
     {
         if ( isset($request['name']) ) {
@@ -42,18 +58,25 @@ class Contact extends Model
         return $query;
     }
 
-    static function upsertInstance($request)
-    {   
-        $contact = Contact::create(
-            $request->all()
-        );
-
-        return $contact;
+    static function fetchCategory($request)
+    {
+        $data = Extra::where("building_id", $request->building_id)->get(["name", "id"]);
+        return $data;
     }
+
+
 
     public function deleteInstance()
     {
         return $this->delete();
     }
+
+
+
+    public function category()
+    {
+        return $this->belongsTo(Building::class, 'building_id');
+    }
+
 
 }

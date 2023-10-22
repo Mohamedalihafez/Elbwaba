@@ -19,10 +19,6 @@ class TenantScope implements Scope
 
     public function apply(Builder $builder, Model $model)
     {
-        if(Auth::check())
-        {
-            $builder->where('clinic_id', '=', Auth::user()->clinic_id)
-                    ->orWhere('clinic_id' , null);
-        }
+
     }
 }

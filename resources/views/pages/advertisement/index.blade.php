@@ -1,6 +1,7 @@
 @extends('layouts.master.master')
 
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 
 @endsection
 @section('content')
@@ -83,7 +84,7 @@
                                 <div class="col-lg-3 mt-2">
                                     
                                     <label class="mb-1" >@if($category->id == 1 )   نوع العقار @elseif($category->id == 2)  خيارات الفئة @else  خيارات الإعلان @endif  </label>
-                                    <select id="regions"  class="form-control" name="building_id">
+                                    <select id="building_id"  class="form-control" name="building_id">
                                         @foreach ($buildings as $building)
                                             <option value="{{ $building->id }}">{{ $building->name }}</option>
                                         @endforeach
@@ -105,14 +106,14 @@
                                 @if($category->id == 1 )
                                     <div class="col-lg-4 ">
                                         <label class="mb-1" >نوع الشارع </label>
-                                        <select id="regions"  class="form-control" name="street_type">
+                                        <select id=""  class="form-control" name="street_type">
                                                 <option value="1">سكني</option>
                                                 <option value="2"> تجاري</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 ">
                                         <label class="mb-1" for="exampleInputtext1">نوع الفلة                                    </label>
-                                        <select id="regions"  class="form-control" name="ads_type">
+                                        <select id=""  class="form-control" name="ads_type">
                                                 <option value="1">مستقله</option>
                                                 <option value="2">دوبلكس </option>
                                                 <option value="3">تاون هاوس</option>
@@ -121,7 +122,7 @@
                                     </div>
                                     <div class="col-lg-4 ">
                                         <label class="mb-1" for="exampleInputtext1">الواجهة</label>
-                                        <select id="regions"  class="form-control" name="face_type">
+                                        <select id=""  class="form-control" name="face_type">
                                                 <option value="1">شمال</option>
                                                 <option value="2">جنوب </option>
                                                 <option value="3">شرق</option>
@@ -148,7 +149,7 @@
                                     </div>
                                     <div class="col-lg-2 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
-                                        <select id="regions"  class="form-control" name="rooms">
+                                        <select id=""  class="form-control" name="rooms">
                                                 <option value="1">1</option>
                                                 <option value="2">2 </option>
                                                 <option value="3">3</option>
@@ -161,7 +162,7 @@
                                     </div>
                                     <div class="col-lg-2 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
-                                        <select id="regions"  class="form-control" name="halls">
+                                        <select id=""  class="form-control" name="halls">
                                                 <option value="1">1</option>
                                                 <option value="2">2 </option>
                                                 <option value="3">3</option>
@@ -171,7 +172,7 @@
                                     </div>
                                     <div class="col-lg-2 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
-                                        <select id="regions"  class="form-control" name="bathrooms">
+                                        <select id=""  class="form-control" name="bathrooms">
                                                 <option value="1">1</option>
                                                 <option value="2">2 </option>
                                                 <option value="3">3</option>
@@ -203,19 +204,25 @@
                                         <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_stores_number"></p>
                                     </div>
+                                    <hr>
+                                    <div class="col-12">
+                                        <h4>خيارات اضافية
+                                        </h4>
+                                        <select name="items[]" class="js-select2 w-100" multiple="multiple">
+                                            @foreach ($items as $item)
+                                                <option value="{{ $item->id }}" data-badge="">{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 @else 
-                                
-                                @endif
-                                <hr>
                                 <div class="col-12">
                                     <h4>خيارات اضافية
                                     </h4>
-                                    <select name="items[]" class="js-select2 w-100" multiple="multiple">
-                                        @foreach ($items as $item)
-                                            <option value="{{ $item->id }}" data-badge="">{{$item->name}}</option>
-                                        @endforeach
+                                    <select id="items" name="items[]" class="js-select2 w-100" multiple="multiple">
+
                                     </select>
                                 </div>
+                                @endif
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-6 mt-2">
@@ -288,6 +295,7 @@
 
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 
@@ -372,6 +380,25 @@
                         $('#cities').html('');
                         results.forEach((result, index) => {
                             $("#cities").append('<option value="' + result['id'] + '">' + result['name_ar'] + '</option>');
+                        });
+                    },
+                });
+            });
+
+            $('#building_id').on('change', function () {
+                var building_id = this.value;
+                $("#items").html('');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{csrf_token()}}'
+                    },
+                    url: '{{ route("extra.fetch") }}',
+                    method: 'post',
+                    data: {building_id: building_id},
+                    success: function (results) {
+                        $('#items').html('');
+                        results.forEach((result, index) => {
+                            $("#items").append('<option value="' + result['id'] + '">' + result['name'] + '</option>');
                         });
                     },
                 });

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\BuildingController;
 
 
@@ -23,6 +24,12 @@ use App\Http\Controllers\Admin\BuildingController;
 Route::group(['prefix' => 'contact'],function () {
     Route::get('/',[ContactController::class,'index'])->name('contact');
     Route::post('/modify',[ContactController::class,'modify'])->name('contact.modify');
+});
+
+Route::group(['prefix' => 'order'],function () {
+    Route::get('/',[OrderController::class,'index'])->name('order');
+    Route::post('/modify',[OrderController::class,'modify'])->name('order.modify');
+    Route::post('api/fetch-type', [OrderController::class, 'fetchAds'])->name('ads.fetch');
 });
 
 Auth::routes();

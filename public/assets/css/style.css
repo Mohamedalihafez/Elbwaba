@@ -467,6 +467,23 @@
     background-size: auto;
     justify-content: center;
 }
+.order-header {
+    background-image: url("../img/hand.png");
+    position: relative; 
+    display: flex;
+     background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;  
+}
+.order-header::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.45);
+}
 .bg-header::before {
     content: "";
     position: absolute;

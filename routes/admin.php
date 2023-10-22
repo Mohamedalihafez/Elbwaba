@@ -10,9 +10,11 @@ use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\BuildingController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Admin\ExtraController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,6 +81,20 @@ Route::group(['prefix' => 'building'],function(){
     Route::post('/delete/{building}',[BuildingController::class,'destroy'])->name('building.delete');
 });
 
+Route::group(['prefix' => 'orders'],function(){
+    Route::get('/', [OrderController::class,"index"])->name('orders');
+    Route::get('/upsert/{order?}',[OrderController::class,'upsert'])->name('order.upsert');
+    Route::get('/filter',[OrderController::class,'filter'])->name('order.filter');
+    Route::post('/modify',[OrderController::class,'modify'])->name('orders.modify');
+    Route::post('/delete/{order?}',[OrderController::class,'destroy'])->name('order.delete');
+});
+
+Route::group(['prefix' => 'contact'],function(){
+    Route::get('/', [ContactController::class,"index"])->name('contacts');
+    Route::get('/filter',[ContactController::class,'filter'])->name('contact.filter');
+    Route::post('/delete/{contact?}',[ContactController::class,'destroy'])->name('contact.delete');
+});
+
 Route::group(['prefix' => 'maintenance'],function(){
     Route::get('/', [MaintenanceController::class,"index"])->name('maintenance');
     Route::post('/building', [MaintenanceController::class, 'building'])->name('maintenance.building');
@@ -106,6 +122,26 @@ Route::group(['prefix' => 'tenant'],function(){
     Route::post('/modify',[TenantController::class,'modify'])->name('tenant.modify');
     Route::post('/delete/{tenant}',[TenantController::class,'destroy'])->name('tenant.delete');
 });
+
+Route::group(['prefix' => 'vip'],function(){
+    Route::get('/', [ExtraController::class,"index"])->name('vip');
+    Route::post('api/fetch-category', [ExtraController::class, 'fetchCategory'])->name('vip.fetch');
+    Route::get('/upsert/{vip?}',[ExtraController::class,'upsert'])->name('vip.upsert');
+    Route::get('/filter',[ExtraController::class,'filter'])->name('vip.filter');
+    Route::post('/modify',[ExtraController::class,'modify'])->name('vip.modify');
+    Route::post('/delete/{vip}',[ExtraController::class,'destroy'])->name('vip.delete');
+});
+
+Route::group(['prefix' => 'extra'],function(){
+    Route::get('/', [ExtraController::class,"extra"])->name('vip');
+    Route::post('api/fetch-category', [ExtraController::class, 'fetchCategory'])->name('extra.fetch');
+    Route::get('/upsert/{extra?}',[ExtraController::class,'upsert'])->name('extra.upsert');
+    Route::get('/filter',[ExtraController::class,'filter'])->name('extra.filter');
+    Route::post('/modify',[ExtraController::class,'modify'])->name('extra.modify');
+    Route::post('/delete/{extra}',[ExtraController::class,'destroy'])->name('extra.delete');
+});
+
+
 
 Route::group(['prefix' => 'item'],function(){
     Route::get('/', [ItemController::class,"index"])->name('item');

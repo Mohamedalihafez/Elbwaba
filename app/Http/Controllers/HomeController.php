@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $advertisements = Advertisement::paginate(15);
+        $advertisements = Advertisement::paginate(40);
         $partners = Partner::all();
         $buildings = Building::all();
         $categories = Category::all();

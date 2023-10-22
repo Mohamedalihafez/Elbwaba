@@ -22,6 +22,8 @@ class Region extends Model
         return $this->delete();
     }
 
+    
+
     //Scopes
     public function scopeFilter($query,$request)
     {

@@ -11,7 +11,6 @@ ul.ul-cards {
     flex-wrap: wrap;
     gap: 2rem;
     list-style: none;
-    justify-content: center;
 }
 ul.ul-cards>a{
     --bg-color: #ffffff;
@@ -21,7 +20,7 @@ ul.ul-cards>a{
     --circle-expand: 1rem;
     --flap-height: 1.25rem;
     --flap-offset: 0.5rem;
-    max-width: 15rem;
+    max-width: 17rem;
     margin-top: calc(var(--circle-size) / 2 + var(--circle-expand));
     margin-bottom: var(--flap-offset);
     background-color: var(--bg-color);
@@ -104,7 +103,11 @@ ul.ul-cards>a::before, ul>a::after{
                     <div class="title">	{{ $category->name}}</div>
                 </a>
             @endforeach
+            <div class="col-12">
+                <a href="{{ route('order')}}" class="btn  btn-primary py-3 px-4 me-2 w-100 "><i class="fa fa-get-pocket me-2" aria-hidden="true"></i> طلب إعلان</a>
+            </div>
         </ul>
+
     </div>
 </div>
 @endsection
