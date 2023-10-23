@@ -153,6 +153,7 @@
                         <div class="col-md-10">
                             <div id="container" class="row g-2">   
                                 <div class="col-4">
+                                    
                                     <a>
                                         <select id="real_state"  name="building_id" class="form-select border-0 py-3" >
                                             <option style="display:none;"  value="">
@@ -213,6 +214,12 @@
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
+                                        @if($advertisement->code)
+                                        <div class="ribbon-wrapper">
+                                            <div class="ribbon-tag">{{$advertisement->code}} %</div>
+                                        </div>
+                                        @else 
+                                        @endif
                                         <a href="{{ route('advertisement.show',['advertisement' => $advertisement->id]) }}">
                                             @isset($advertisement->id)
                                                 @if($advertisement->gallaries->count())
@@ -269,7 +276,7 @@
                         <div class="mb-4">
                             <h3 class="mb-3">إذا كان لديك أي استفسار، فلا تتردد في الاتصال بنا                                    </h1>
                         </div>
-                        <a href="tel://+966505360123" class="btn  btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>إجراء مكالمة</a>
+                        <a href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="btn  btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>تواصل معنا</a>
                     </div>
                 </div>
             </div>

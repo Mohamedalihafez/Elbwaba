@@ -207,14 +207,17 @@
                                 <sup>2</sup>
                               </span>
                             </li>
-                            <li class="">
-                              <strong>الغرف:</strong>
-                              <span>{{$advertisement->rooms}}</span>
-                            </li>
-                            <li class="">
-                              <strong>دورات المياه:</strong>
-                              <span>{{$advertisement->bathrooms}}</span>
-                            </li>
+                            @if($advertisement->category_id == 1 )
+                              <li class="">
+                                <strong>الغرف:</strong>
+                                <span>{{$advertisement->rooms}}</span>
+                              </li>
+                              <li class="">
+                                <strong>دورات المياه:</strong>
+                                <span>{{$advertisement->bathrooms}}</span>
+                              </li>
+                            @else
+                            @endif
           
                           </ul>
                         </div>
@@ -230,9 +233,15 @@
                       </div>
                       <div class="amenities-list color-text-a">
                         <ul class="list-a no-margin">
-                          @foreach ($advertisement->items  as $item)
-                            <li class="w-100">{{ $item->name }}</li>
+                          @if($advertisement->category_id == 1 )
+                            @foreach ($advertisement->items  as $item)
+                              <li class="w-100">{{ $item->name }}</li>
+                            @endforeach
+                          @else
+                          @foreach ($advertisement->extras  as $extra)
+                              <li class="w-100">{{ $extra->name }}</li>
                           @endforeach
+                          @endif
                         </ul>
                       </div>
                     </div>

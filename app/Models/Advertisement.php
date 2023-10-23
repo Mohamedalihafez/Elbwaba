@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,13 +13,16 @@ class Advertisement extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title' ,'building_id' ,'category_id' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
+        'title' ,'building_id' ,'category_id' , 'code' , 'hours' , 'expired_at' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
    ];
 
     static function upsertInstance($request)
     {
+        $newDateTime = Carbon::now()->addHours(24); 
+        
         $request->merge([
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id ,
+            'expired_at' => $newDateTime
         ]);
 
         $advertisement = Advertisement::updateOrCreate(
@@ -30,7 +34,7 @@ class Advertisement extends Model
 
 
         foreach($request->ads_images as $key => $result){
-   
+
             $imageName = 'ads_' . $advertisement->id .'_' .$result->getClientOriginalName()  . '.png';
             $result->move('ads/' . $advertisement->id . '/', $imageName);
             $advertisement->gallaries()->updateOrCreate(
@@ -47,7 +51,15 @@ class Advertisement extends Model
                 ]);    
         }
 
-        $advertisement->items()->sync($request->items);
+        if($request->items)
+        {
+            $advertisement->items()->sync($request->items);
+        }
+
+        if($request->extras)
+        {
+            $advertisement->extras()->sync($request->extras);
+        }
 
         return $advertisement;    
     }
@@ -97,5 +109,9 @@ class Advertisement extends Model
         return $this->belongsToMany(Item::class);
     }
 
-    
+    public function extras()
+    {
+        return $this->belongsToMany(Extra::class);
+    }
+
 }

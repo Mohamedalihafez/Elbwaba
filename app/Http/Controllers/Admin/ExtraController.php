@@ -13,7 +13,7 @@ class ExtraController extends Controller
     public function index(Request $request)
     {
         if(Auth::user()->isSuperAdmin())
-            return view('admin.pages.extra.index',[
+            return view('admin.pages.vip.index',[
                 'extras' => Extra::filter($request->all())->where('category_id', 2)->paginate(10),
             ]);
         else 
@@ -25,7 +25,7 @@ class ExtraController extends Controller
     {
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.extra.index',[
-                'extras' => Extra::filter($request->all())->where('category_id', 2)->paginate(10),
+            'extras' => Extra::filter($request->all())->where('category_id',3)->paginate(10),
             ]);
         else 
             abort(404);
@@ -38,9 +38,21 @@ class ExtraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function upsert(Extra $extra)
+    public function upsert(Extra $vip)
     {
         $categories = Building::where('category_id', 2)->get();
+        if(Auth::user()->isSuperAdmin())
+            return view('admin.pages.vip.upsert',[
+                'extra' => $vip,
+                'categories'=> $categories
+            ]);
+        else 
+            abort(404);
+    }
+
+    public function upsertExtra(Extra $extra)
+    {
+        $categories = Building::where('category_id', 3)->get();
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.extra.upsert',[
                 'extra' => $extra,
@@ -65,14 +77,21 @@ class ExtraController extends Controller
        return Extra::fetchCategory($request);
     }
 
-    public function destroy(Extra $extra)
+    public function destroy(Extra $vip)
     {
-        return $extra->deleteInstance();
+        return $vip->deleteInstance();
+    }
+
+    public function filterExtra(Request $request)
+    {
+        return view('admin.pages.extra.index',[
+            'extras' => Extra::filter($request->all())->where('category_id', 3)->paginate(10)
+        ]);
     }
 
     public function filter(Request $request)
     {
-        return view('admin.pages.extra.index',[
+        return view('admin.pages.vip.index',[
             'extras' => Extra::filter($request->all())->where('category_id', 2)->paginate(10)
         ]);
     }

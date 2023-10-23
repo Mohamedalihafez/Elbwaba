@@ -133,10 +133,10 @@ Route::group(['prefix' => 'vip'],function(){
 });
 
 Route::group(['prefix' => 'extra'],function(){
-    Route::get('/', [ExtraController::class,"extra"])->name('vip');
+    Route::get('/', [ExtraController::class,"extra"])->name('extra');
     Route::post('api/fetch-category', [ExtraController::class, 'fetchCategory'])->name('extra.fetch');
-    Route::get('/upsert/{extra?}',[ExtraController::class,'upsert'])->name('extra.upsert');
-    Route::get('/filter',[ExtraController::class,'filter'])->name('extra.filter');
+    Route::get('/upsert/{extra?}',[ExtraController::class,'upsertExtra'])->name('extra.upsert');
+    Route::get('/filter',[ExtraController::class,'filterExtra'])->name('extra.filter');
     Route::post('/modify',[ExtraController::class,'modify'])->name('extra.modify');
     Route::post('/delete/{extra}',[ExtraController::class,'destroy'])->name('extra.delete');
 });

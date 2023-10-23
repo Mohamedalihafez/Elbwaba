@@ -16,6 +16,9 @@ body *{
     .client-section .client-logo .item {
       padding: 0px !important;
     }
+    .btn { 
+      padding: .375rem 0.55rem !important;
+    }
 }
 
 .market-btn {
@@ -698,3 +701,172 @@ margin-bottom: 50px;
 .h-40 {
   height: 55px !important;
 }
+
+
+.bar {
+  position: fixed;
+  top: 75%;
+  width: 38px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9;
+  border-radius: 40px;
+
+}
+
+.bar a {
+  display: block;
+  text-align: center;
+  padding: 0;
+  transition: all .3s ease;
+  font-size: 20px
+}
+
+.icon-bar a:hover {
+  background-color: #000
+}
+
+.facebook {
+  background: #3b5998;
+  border-radius: 40px;
+  color: #fff
+}
+
+.twitter {
+  background: #55acee;
+  border-radius: 40px;
+  color: #fff
+}
+
+.tiktok {
+  background: black;
+  border-radius: 40px;
+  color: #fff
+}
+
+.linkedin {
+  background: #007bb5;
+  color: #fff
+}
+
+.whatsapp {
+  background: #15b12f;
+  border-radius: 40px;
+  color: #fff
+}
+
+.youtube {
+  background: #fffc00;
+  border-radius: 40px;
+  color: #fff
+}
+
+
+.icon2 {
+  padding-top: 10px !important;
+  padding-left: 13px !important;
+  padding-right: 10px !important;
+  padding-bottom: 10px !important;
+  background: transparent !important;
+  border:0px !important
+}
+.icon2-hover:hover {
+  color: white !important;
+}
+
+.fa-tiktok:before {
+  content: "\e07b" !important;
+}
+
+
+.container {
+  padding-top: 60px;
+}
+.dealwrapper {
+  max-width: 320px;
+  background: #ffffff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.list-group {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.list-group h4 {
+  font-size: 18px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+.list-group p {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.list-group-item {
+  display: block;
+  padding: 10px 25px 10px 15px;
+  border: 1px solid rgba(221, 221, 221, 0.25);
+  text-decoration: none;
+}
+.list-group-item .heading {
+  color: #141f31;
+}
+.list-group-item .text {
+  color: #272727;
+}
+.list-group-item.active .heading,
+.list-group-item.active .text {
+  color: #ffffff;
+}
+
+.ribbon-wrapper {
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: -3px;
+  z-index: 1;
+}
+.ribbon-tag {
+  text-align: center;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  position: relative;
+  padding: 7px 0;
+  right: -5px;
+  top: 11px;
+  width: 120px;
+  color: #ffffff;
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+  background: linear-gradient(45deg, orange, #b71717);
+}
+
+.ribbon-tag:before,
+.ribbon-tag:after {
+  content: "";
+  border-top: 3px solid #50504f;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  position: absolute;
+  bottom: -3px;
+}
+.ribbon-tag:before {
+  right: 0;
+}
+.ribbon-tag:after {
+  left: 0;
+}
+

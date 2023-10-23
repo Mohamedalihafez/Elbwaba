@@ -11,7 +11,7 @@
                         <div class="col-sm-12">
                             <h3 class="page-title">{{ __('pages.add_extra') }}</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:(0);">خيارات الإعلانات التجاريه </a></li>
+                                <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('pages.extras') }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body custom-edit-service">                 
-                                <form method="post" enctype="multipart/form-data" action="{{ route('extra.modify') }}" class="ajax-form" swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}" redirect="{{ route('extra') }}">
+                                <form method="post" enctype="multipart/form-data" action="{{ route('vip.modify') }}" class="ajax-form" swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}" redirect="{{ route('vip') }}">
                                     @csrf
                                     <div class="service-fields mb-3">
                                         <div class="form-group">

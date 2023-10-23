@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 06:04 PM
+-- Generation Time: Oct 23, 2023 at 06:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -64,18 +64,48 @@ CREATE TABLE `advertisements` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `category_id` bigint(20) UNSIGNED DEFAULT NULL
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `building_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `code` int(11) DEFAULT NULL,
+  `hours` int(11) DEFAULT NULL,
+  `expired_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `advertisements`
 --
 
-INSERT INTO `advertisements` (`id`, `title`, `description`, `currentLat`, `currentLng`, `region_id`, `city_id`, `district`, `street`, `ads_type`, `license_id`, `street_type`, `face_type`, `width`, `age`, `rooms`, `halls`, `bathrooms`, `flats`, `ads_direction`, `floors`, `stores_number`, `phone`, `country_code`, `question_1`, `question_2`, `question_3`, `link`, `phone_2`, `price`, `location`, `seen`, `user_id`, `created_at`, `updated_at`, `deleted_at`, `category_id`) VALUES
-(29, '22 ح احمد محمد', '22 [asdsadsasda', 28.42, 36.53, 1, 138, 'حي الواحه', 'شارع  الامير فهد', 2, NULL, 2, 3, 250.00, 10, 1, 1, 1, 10, 15, 220, 125, '543281338', '966', 'نعم', NULL, 'نعم', NULL, NULL, 250.00, NULL, 1, 2, '2023-10-15 05:43:00', '2023-10-15 05:43:00', NULL, 2),
-(30, '22 ج شسيشيسسيش', 'سشيشسييسشيسشيسشيسش', 28.42, 36.53, 7, 4, 'سشيشيشس', 'احمد محمد', 2, NULL, 1, 3, 300.00, 10, 3, 2, 2, 10, 250, 12, 7, '543281337', '966', 'نعم', 'لا', 'نعم', NULL, NULL, 450000.00, NULL, 1, 2, '2023-10-15 08:03:59', '2023-10-15 08:03:59', NULL, 3),
-(31, NULL, 'saddsasdsadsaddsadsadsadsa', 28.43, 36.53, 2, 6, 'اسكندريه', '22 abdulmoniem', 2, 'ad', 2, 2, 250.00, 10, 2, 3, 4, 10, NULL, NULL, NULL, '543281337', '966', 'نعم', 'لا', 'نعم', NULL, NULL, 150000.00, NULL, 1, 2, '2023-10-16 04:33:00', '2023-10-16 04:33:00', NULL, 3),
-(32, '22 ج احمد', 'شسيسشيسش', 28.43, 36.53, 2, 18, 'asdsa', '22 abdulmoniem', 2, NULL, 2, 3, 350.00, 12, 3, 2, 3, 15, 180, 12, 17, '543281447', NULL, 'شيسشي', 'يسشيسش', NULL, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DRJHyFA1wRI?si=gorBDbeZsQ9XOvOG\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" a', NULL, 450000.00, NULL, 1, 2, '2023-10-17 06:32:37', '2023-10-17 06:32:37', NULL, 2);
+INSERT INTO `advertisements` (`id`, `title`, `description`, `currentLat`, `currentLng`, `region_id`, `city_id`, `district`, `street`, `ads_type`, `license_id`, `street_type`, `face_type`, `width`, `age`, `rooms`, `halls`, `bathrooms`, `flats`, `ads_direction`, `floors`, `stores_number`, `phone`, `country_code`, `question_1`, `question_2`, `question_3`, `link`, `phone_2`, `price`, `location`, `seen`, `user_id`, `created_at`, `updated_at`, `deleted_at`, `category_id`, `building_id`, `code`, `hours`, `expired_at`) VALUES
+(35, 'sadsad', 'sdaddsa', 28.43, 36.53, 2, 6, 'asdsa', '22 abdulmoniem', 2, NULL, 2, 2, 420.00, 10, 1, 1, 1, 4, 250, 12, 4, '543281338', NULL, 'نعم', 'لا', NULL, 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, NULL, NULL, 1, 6, '2023-10-22 04:04:24', '2023-10-22 04:04:24', NULL, 1, 3, NULL, NULL, NULL),
+(36, '22 sadads', 'sadsadddsadsa', 24.46, 39.47, 6, 62, 'asdsa', '22 abdulmoniem', 1, 'ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281334', NULL, 'نعم', 'لا', 'نعم', 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, 250000.00, NULL, 1, 6, '2023-10-22 04:19:01', '2023-10-22 04:19:01', NULL, 2, 30, NULL, NULL, NULL),
+(37, 'asddadadsad', 'sdadsadsadsa', 28.43, 36.53, 3, 76, 'asdsa', '22 abdulmoniem', 2, 'شسيشسي', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281449', '966', 'نعم', 'لا', 'نعم', 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, 250.00, NULL, 1, 2, '2023-10-23 10:21:08', '2023-10-23 10:21:08', NULL, 2, 31, 50, NULL, NULL),
+(38, 'اعلانات', 'سشيسشيسشيسشيسشيسش', 28.43, 36.53, 3, 76, 'asdsa', '22 abdulmoniem', 2, 'ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281446', '966', 'نعم', 'لا', 'نعم', 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, 350.00, NULL, 1, 2, '2023-10-23 10:34:52', '2023-10-23 10:34:52', NULL, 2, 31, 25, NULL, NULL),
+(39, NULL, 'asdsdsdsadsadsa', 28.43, 36.53, 4, 911, 'اسكندريه', '22 abdulmoniem', 2, 'ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281449', '966', 'نعم', 'لا', 'نعم', 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, 500000.00, NULL, 1, 2, '2023-10-23 12:46:59', '2023-10-23 12:46:59', NULL, 2, 32, 25, NULL, NULL),
+(40, 'محمد علي محمد', 'سشيشيشسيشيسشي', 24.46, 39.47, 4, 595, 'asdsa', '22  G Abdel Moneim El Dalil Street', 3, 'شسيشسي', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281449', '966', 'نعم', 'لا', 'نعم', 'https://www.youtube.com/embed/ooezx9foRY0?si=qhU9ISvh2-9I2K2L', NULL, 100000.00, NULL, 1, 2, '2023-10-23 12:51:05', '2023-10-23 12:51:05', NULL, 3, 39, 50, NULL, '2023-10-24 12:51:05'),
+(41, '22 اشسيشسي', 'إعلان جميل جدا', 28.43, 36.53, 7, 26, 'asdsa', '22  G Abdel Moneim El Dalil Street', NULL, 'شسيشسي', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '543281449', '966', 'نعم', 'لا', NULL, NULL, NULL, 500000.00, NULL, 1, 2, '2023-10-23 13:44:32', '2023-10-23 13:44:32', NULL, 3, 39, 70, NULL, '2023-10-24 13:44:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `advertisement_extra`
+--
+
+CREATE TABLE `advertisement_extra` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `extra_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `advertisement_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advertisement_extra`
+--
+
+INSERT INTO `advertisement_extra` (`id`, `extra_id`, `advertisement_id`, `created_at`, `updated_at`) VALUES
+(1, 4, 38, NULL, NULL),
+(2, 6, 40, NULL, NULL),
+(3, 6, 41, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,7 +130,21 @@ INSERT INTO `advertisement_item` (`id`, `item_id`, `advertisement_id`, `created_
 (2, 2, 32, NULL, NULL),
 (3, 4, 32, NULL, NULL),
 (4, 6, 32, NULL, NULL),
-(5, 11, 32, NULL, NULL);
+(5, 11, 32, NULL, NULL),
+(6, 2, 33, NULL, NULL),
+(7, 3, 33, NULL, NULL),
+(8, 5, 33, NULL, NULL),
+(9, 7, 33, NULL, NULL),
+(10, 3, 34, NULL, NULL),
+(11, 4, 34, NULL, NULL),
+(12, 5, 34, NULL, NULL),
+(13, 15, 34, NULL, NULL),
+(14, 2, 35, NULL, NULL),
+(15, 3, 35, NULL, NULL),
+(16, 4, 35, NULL, NULL),
+(17, 5, 35, NULL, NULL),
+(18, 7, 35, NULL, NULL),
+(19, 4, 37, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,7 +211,22 @@ INSERT INTO `buildings` (`id`, `name`, `category_id`, `user_id`, `created_at`, `
 (27, 'مستودع للبيع', 1, NULL, '2023-10-14 13:42:32', '2023-10-14 13:42:32', NULL),
 (28, 'مستودعات للايجار', 1, NULL, '2023-10-14 13:43:13', '2023-10-14 13:43:13', NULL),
 (29, 'مكاتب للايجار', 1, NULL, '2023-10-14 13:43:25', '2023-10-14 13:43:25', NULL),
-(30, 'خدمات صحيه', 2, NULL, '2023-10-19 11:19:10', '2023-10-19 11:19:10', NULL);
+(30, 'فنادق', 2, NULL, '2023-10-19 11:19:10', '2023-10-21 10:24:54', NULL),
+(31, 'مستشفيات', 2, NULL, '2023-10-21 10:25:07', '2023-10-21 10:25:07', NULL),
+(32, 'مستوصفات', 2, NULL, '2023-10-21 10:25:16', '2023-10-21 10:25:16', NULL),
+(33, 'مراكز طبية', 2, NULL, '2023-10-21 10:25:25', '2023-10-21 10:25:25', NULL),
+(34, 'مدارس تعليمية', 2, NULL, '2023-10-21 10:25:35', '2023-10-21 10:25:35', NULL),
+(35, 'معاهد علمية', 2, NULL, '2023-10-21 10:25:44', '2023-10-21 10:25:44', NULL),
+(36, 'مكاتب محاماة', 2, NULL, '2023-10-21 10:25:52', '2023-10-21 10:25:52', NULL),
+(37, 'مكاتب هندسية', 2, NULL, '2023-10-21 10:26:02', '2023-10-21 10:26:02', NULL),
+(38, 'مكاتب استشاراة', 2, NULL, '2023-10-21 10:26:11', '2023-10-21 10:26:11', NULL),
+(39, 'مطاعم', 3, NULL, '2023-10-21 10:27:13', '2023-10-21 10:27:13', NULL),
+(40, 'مقاهي', 3, NULL, '2023-10-21 10:27:22', '2023-10-21 10:27:22', NULL),
+(41, 'بوتيك', 3, NULL, '2023-10-21 10:27:32', '2023-10-21 10:27:32', NULL),
+(42, 'عطور واكسسوارت', 3, NULL, '2023-10-21 10:27:41', '2023-10-21 10:27:41', NULL),
+(43, 'جلديات احذيه وشنط', 3, NULL, '2023-10-21 10:27:49', '2023-10-21 10:27:49', NULL),
+(44, 'كوفيرات', 3, NULL, '2023-10-21 10:27:58', '2023-10-21 10:27:58', NULL),
+(45, 'مشاغل خياطة', 3, NULL, '2023-10-21 10:28:07', '2023-10-21 10:28:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -4841,7 +4900,34 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `subject`, `comments`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'mohamed', 'mohamedalihaf@gmail.com', '1026036513', NULL, 'سشيسشيش', '2023-10-19 06:14:55', '2023-10-19 06:14:55', NULL);
+(1, 'mohamed', 'mohamedalihaf@gmail.com', '1026036513', NULL, 'سشيسشيش', '2023-10-19 06:14:55', '2023-10-22 11:25:49', '2023-10-22 11:25:49'),
+(2, 'mohamed', 'mahmoud22@gmail.com', '543281447', NULL, '1asdsadsadsa', '2023-10-22 11:25:11', '2023-10-22 11:25:11', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extras`
+--
+
+CREATE TABLE `extras` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `building_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `extras`
+--
+
+INSERT INTO `extras` (`id`, `name`, `building_id`, `category_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, 'mohamed', 30, 2, '2023-10-22 13:39:40', '2023-10-23 07:34:18', '2023-10-23 07:34:18'),
+(4, 'sadsa', 31, 2, '2023-10-23 07:26:12', '2023-10-23 07:26:12', NULL),
+(5, 'ssad', 33, 2, '2023-10-23 07:35:19', '2023-10-23 07:35:19', NULL),
+(6, 'sss', 39, 3, '2023-10-23 07:51:21', '2023-10-23 07:52:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -4909,7 +4995,43 @@ INSERT INTO `gallaries` (`id`, `name`, `imageable_type`, `imageable_id`, `use_fo
 (32, 'logo_1.png', 'App\\Models\\Partner', 1, 'logo', '2023-10-17 12:58:47', '2023-10-17 12:58:47', NULL, NULL),
 (33, 'logo_2.png', 'App\\Models\\Partner', 2, 'logo', '2023-10-17 13:04:58', '2023-10-17 13:04:58', NULL, NULL),
 (34, 'logo_3.png', 'App\\Models\\Partner', 3, 'logo', '2023-10-17 13:05:15', '2023-10-17 13:05:15', NULL, NULL),
-(35, 'logo_4.png', 'App\\Models\\Partner', 4, 'logo', '2023-10-17 13:38:42', '2023-10-17 13:38:42', NULL, NULL);
+(35, 'logo_4.png', 'App\\Models\\Partner', 4, 'logo', '2023-10-17 13:38:42', '2023-10-17 13:38:42', NULL, NULL),
+(36, 'ads_33_Screenshot (5).png.png', 'App\\Models\\Advertisement', 33, 'ads', '2023-10-21 10:35:06', '2023-10-21 10:35:06', NULL, 0),
+(37, 'ads_33_Screenshot (8).png.png', 'App\\Models\\Advertisement', 33, 'ads', '2023-10-21 10:35:06', '2023-10-21 10:35:06', NULL, 1),
+(38, 'ads_33_Screenshot (9).png.png', 'App\\Models\\Advertisement', 33, 'ads', '2023-10-21 10:35:06', '2023-10-21 10:35:06', NULL, 2),
+(39, 'ads_33_Screenshot (10).png.png', 'App\\Models\\Advertisement', 33, 'ads', '2023-10-21 10:35:06', '2023-10-21 10:35:06', NULL, 3),
+(40, 'ads_33_Screenshot (11).png.png', 'App\\Models\\Advertisement', 33, 'ads', '2023-10-21 10:35:07', '2023-10-21 10:35:07', NULL, 4),
+(41, 'ads_34_Screenshot (1).png.png', 'App\\Models\\Advertisement', 34, 'ads', '2023-10-21 11:48:24', '2023-10-21 11:48:24', NULL, 0),
+(42, 'ads_34_Screenshot (2).png.png', 'App\\Models\\Advertisement', 34, 'ads', '2023-10-21 11:48:24', '2023-10-21 11:48:24', NULL, 1),
+(43, 'ads_34_Screenshot (9).png.png', 'App\\Models\\Advertisement', 34, 'ads', '2023-10-21 11:48:24', '2023-10-21 11:48:24', NULL, 2),
+(44, 'ads_34_Screenshot (10).png.png', 'App\\Models\\Advertisement', 34, 'ads', '2023-10-21 11:48:24', '2023-10-21 11:48:24', NULL, 3),
+(45, 'ads_35_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 35, 'ads', '2023-10-22 04:04:24', '2023-10-22 04:04:24', NULL, 0),
+(46, 'ads_35_Screenshot 2023-10-03 103610.png.png', 'App\\Models\\Advertisement', 35, 'ads', '2023-10-22 04:04:24', '2023-10-22 04:04:24', NULL, 1),
+(47, 'ads_35_Screenshot 2023-10-04 102157.png.png', 'App\\Models\\Advertisement', 35, 'ads', '2023-10-22 04:04:24', '2023-10-22 04:04:24', NULL, 2),
+(48, 'ads_35_Screenshot 2023-10-09 114358.png.png', 'App\\Models\\Advertisement', 35, 'ads', '2023-10-22 04:04:24', '2023-10-22 04:04:24', NULL, 3),
+(49, 'ads_36_Screenshot 2023-10-04 102157.png.png', 'App\\Models\\Advertisement', 36, 'ads', '2023-10-22 04:19:01', '2023-10-22 04:19:01', NULL, 0),
+(50, 'ads_36_Screenshot 2023-10-09 114358.png.png', 'App\\Models\\Advertisement', 36, 'ads', '2023-10-22 04:19:01', '2023-10-22 04:19:01', NULL, 1),
+(51, 'picture_20.png', 'App\\Models\\Order', 20, 'picture', '2023-10-22 08:28:44', '2023-10-22 08:28:44', NULL, NULL),
+(52, 'ads_image_27.png', 'App\\Models\\Order', 27, 'ads_image', '2023-10-22 08:35:54', '2023-10-22 08:35:54', NULL, NULL),
+(53, 'ads_image_28.png', 'App\\Models\\Order', 28, 'ads_image', '2023-10-22 08:36:56', '2023-10-22 08:36:56', NULL, NULL),
+(54, 'ads_image_29.png', 'App\\Models\\Order', 29, 'ads_image', '2023-10-22 11:16:13', '2023-10-22 11:16:13', NULL, NULL),
+(55, 'ads_37_php_v_3.png.png', 'App\\Models\\Advertisement', 37, 'ads', '2023-10-23 10:21:08', '2023-10-23 10:21:08', NULL, 0),
+(56, 'ads_37_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 37, 'ads', '2023-10-23 10:21:08', '2023-10-23 10:21:08', NULL, 1),
+(57, 'ads_37_Screenshot 2023-10-03 103610.png.png', 'App\\Models\\Advertisement', 37, 'ads', '2023-10-23 10:21:08', '2023-10-23 10:21:08', NULL, 2),
+(58, 'ads_37_Screenshot 2023-10-04 102157.png.png', 'App\\Models\\Advertisement', 37, 'ads', '2023-10-23 10:21:08', '2023-10-23 10:21:08', NULL, 3),
+(59, 'ads_38_php_v.png.png', 'App\\Models\\Advertisement', 38, 'ads', '2023-10-23 10:34:52', '2023-10-23 10:34:52', NULL, 0),
+(60, 'ads_38_php_v_3.png.png', 'App\\Models\\Advertisement', 38, 'ads', '2023-10-23 10:34:52', '2023-10-23 10:34:52', NULL, 1),
+(61, 'ads_38_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 38, 'ads', '2023-10-23 10:34:52', '2023-10-23 10:34:52', NULL, 2),
+(62, 'ads_38_Screenshot 2023-10-03 103610.png.png', 'App\\Models\\Advertisement', 38, 'ads', '2023-10-23 10:34:52', '2023-10-23 10:34:52', NULL, 3),
+(63, 'ads_39_php_v_3.png.png', 'App\\Models\\Advertisement', 39, 'ads', '2023-10-23 12:46:59', '2023-10-23 12:46:59', NULL, 0),
+(64, 'ads_39_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 39, 'ads', '2023-10-23 12:46:59', '2023-10-23 12:46:59', NULL, 1),
+(65, 'ads_39_Screenshot 2023-10-03 103610.png.png', 'App\\Models\\Advertisement', 39, 'ads', '2023-10-23 12:46:59', '2023-10-23 12:46:59', NULL, 2),
+(66, 'ads_40_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 40, 'ads', '2023-10-23 12:51:05', '2023-10-23 12:51:05', NULL, 0),
+(67, 'ads_40_server.png.png', 'App\\Models\\Advertisement', 40, 'ads', '2023-10-23 12:51:05', '2023-10-23 12:51:05', NULL, 1),
+(68, 'ads_40_test_4.png.png', 'App\\Models\\Advertisement', 40, 'ads', '2023-10-23 12:51:05', '2023-10-23 12:51:05', NULL, 2),
+(69, 'ads_41_php_v_3.png.png', 'App\\Models\\Advertisement', 41, 'ads', '2023-10-23 13:44:32', '2023-10-23 13:44:32', NULL, 0),
+(70, 'ads_41_real-estate-image-59fd75c5874012.jpg.png', 'App\\Models\\Advertisement', 41, 'ads', '2023-10-23 13:44:32', '2023-10-23 13:44:32', NULL, 1),
+(71, 'ads_41_Screenshot 2023-10-03 103610.png.png', 'App\\Models\\Advertisement', 41, 'ads', '2023-10-23 13:44:32', '2023-10-23 13:44:32', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -4945,7 +5067,8 @@ INSERT INTO `items` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`, `ca
 (13, 'مسبح', '2023-10-17 04:37:25', '2023-10-17 04:37:25', NULL, 1),
 (14, 'درج', '2023-10-17 04:37:35', '2023-10-17 04:37:35', NULL, 1),
 (15, 'حوش', '2023-10-17 04:37:45', '2023-10-17 04:37:45', NULL, 1),
-(17, 'مطبخ جاهز', '2023-10-19 06:01:35', '2023-10-19 06:01:35', NULL, 1);
+(17, 'مطبخ جاهز', '2023-10-19 06:01:35', '2023-10-19 06:01:35', NULL, 1),
+(19, 'أرض', '2023-10-22 04:11:20', '2023-10-22 04:11:20', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -5005,7 +5128,47 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2023_10_03_151331_create_partners_table', 6),
 (23, '2023_10_03_151331_create_categories_table', 7),
 (24, '2023_06_14_122204_add_category_id_table', 8),
-(25, '2023_06_14_122204_add_second_category_id_col', 9);
+(25, '2023_06_14_122204_add_second_category_id_col', 9),
+(26, '2023_06_14_122204_add_category_id_col', 10),
+(27, '2023_10_03_151331_create_orders_table', 11),
+(28, '2023_10_03_151331_create_extras_table', 12),
+(29, '2022_11_18_111108_create_advertisement_extra_table', 13),
+(30, '2023_06_14_122204_add_second_code_col', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `country_code` varchar(255) DEFAULT NULL,
+  `city_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ads_type` bigint(20) UNSIGNED DEFAULT NULL,
+  `region_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `country_code`, `city_id`, `category_id`, `ads_type`, `region_id`, `comments`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(23, 'mohamed', NULL, '543281447', '966', 5, 30, 2, 1, 'asdsadsadsadsa', '2023-10-22 08:34:48', '2023-10-22 10:46:30', '2023-10-22 10:46:30'),
+(24, 'dsad', NULL, NULL, '966', 5, 30, 2, 1, NULL, '2023-10-22 08:35:08', '2023-10-22 08:35:08', NULL),
+(25, 'adsad', NULL, NULL, '966', 5, 30, 1, 1, NULL, '2023-10-22 08:35:35', '2023-10-22 08:35:35', NULL),
+(26, 'adsad', NULL, NULL, '966', 5, 30, 1, 1, NULL, '2023-10-22 08:35:42', '2023-10-22 08:35:42', NULL),
+(27, 'adsad', NULL, NULL, '966', 5, 30, 1, 1, NULL, '2023-10-22 08:35:54', '2023-10-22 08:35:54', NULL),
+(28, 'adsaad', 'sdassadad@gmail.com', '543281447', '966', 915, 1, 1, 4, 'sadsada', '2023-10-22 08:36:56', '2023-10-22 11:04:31', NULL),
+(29, 'mohamed', 'ahmed@gmail.com', '543281447', '966', 405, 33, 2, 4, 'asdsadsad', '2023-10-22 11:16:13', '2023-10-22 11:16:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -5214,7 +5377,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `role_id`, `country_code`, `phone`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2, 'mohamed', 'mohamedalihaf@gmail.com', 1, 966, '543281338', NULL, '$2y$10$7J9i4Vd9bw.WRSaVQaeIFeXndg3N17sH3O5b65OiG16Zsiwk5gu9a', NULL, '2023-10-15 05:26:03', '2023-10-15 05:26:03', NULL),
-(6, 'ahmed', 'ahmed@gmail.com', 2, 966, '543281334', NULL, '$2y$10$Q7x1m5WCiJZ2rCJkW2ynvuZLf/N5zm2TLHICMhYCla67jt3OFYAqS', NULL, '2023-10-17 04:58:29', '2023-10-17 04:58:29', NULL);
+(6, 'ahmed', 'ahmed@gmail.com', 1, 966, '543281334', NULL, '$2y$10$Q7x1m5WCiJZ2rCJkW2ynvuZLf/N5zm2TLHICMhYCla67jt3OFYAqS', NULL, '2023-10-17 04:58:29', '2023-10-17 04:58:29', NULL);
 
 --
 -- Indexes for dumped tables
@@ -5224,6 +5387,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `role_id`, `country_code`, `phone`, 
 -- Indexes for table `advertisements`
 --
 ALTER TABLE `advertisements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `advertisement_extra`
+--
+ALTER TABLE `advertisement_extra`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5270,6 +5439,12 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `extras`
+--
+ALTER TABLE `extras`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -5299,6 +5474,12 @@ ALTER TABLE `maintenances`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5366,13 +5547,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `advertisement_extra`
+--
+ALTER TABLE `advertisement_extra`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `advertisement_item`
 --
 ALTER TABLE `advertisement_item`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `apartments`
@@ -5384,7 +5571,7 @@ ALTER TABLE `apartments`
 -- AUTO_INCREMENT for table `buildings`
 --
 ALTER TABLE `buildings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -5402,7 +5589,13 @@ ALTER TABLE `compounds`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `extras`
+--
+ALTER TABLE `extras`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -5414,13 +5607,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `gallaries`
 --
 ALTER TABLE `gallaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `maintenances`
@@ -5432,7 +5625,13 @@ ALTER TABLE `maintenances`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `partners`

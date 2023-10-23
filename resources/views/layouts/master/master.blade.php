@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
+    
     <!-- Favicon -->
     <link href="{{ asset('assets/img/logo.jpeg')}}" rel="icon">
 
@@ -31,15 +31,104 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
 
-    <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
     
     {{-- Dropify --}}
     <link href="{{ asset('admin_assets\css\fileupload.css') }}" rel="stylesheet" />
     
- 
+    
+    <link href="{{ asset('assets/css/custom.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
     
+    
+<style>
+    @import url('https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css');
+    ul.ul-cards {
+        width: min(100%, 60rem);
+        margin-inline: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style: none;
+    }
+    ul.ul-cards>a{
+        --bg-color: #ffffff;
+        --text-color: #333;
+        --padding: 1rem;
+        --circle-size: 5rem;
+        --circle-expand: 1rem;
+        --flap-height: 1.25rem;
+        --flap-offset: 0.5rem;
+        max-width: 17rem;
+        margin-top: calc(var(--circle-size) / 2 + var(--circle-expand));
+        margin-bottom: var(--flap-offset);
+        background-color: var(--bg-color);
+        background-image: linear-gradient(to bottom left, transparent 50%, rgba(0 0 0  / .125));
+        border-radius: var(--padding);
+        padding: var(--padding);
+
+        --bs-rim: inset -0.1rem 0.1rem 0.1rem rgb(255 255 255 / .5);
+        --bs-card-spread: 0.25rem;
+        --bs-card-color:  rgb(0 0 0 / 0.02);
+        --bs-card: 
+            -0.1rem 0.1rem var(--bs-card-spread) var(--bs-card-color),
+            -0.2rem 0.2rem var(--bs-card-spread) var(--bs-card-color),
+            -0.3rem 0.3rem var(--bs-card-spread) var(--bs-card-color),
+            -0.4rem 0.4rem var(--bs-card-spread) var(--bs-card-color),
+            -0.5rem 0.5rem var(--bs-card-spread) var(--bs-card-color),
+            -0.6rem 0.6rem var(--bs-card-spread) var(--bs-card-color),
+            -0.7rem 0.7rem var(--bs-card-spread) var(--bs-card-color),
+            -0.8rem 0.8rem var(--bs-card-spread) var(--bs-card-color),
+            -0.9rem 0.9rem var(--bs-card-spread) var(--bs-card-color),
+            -1.0rem 1.0rem var(--bs-card-spread) var(--bs-card-color),
+            -1.1rem 1.1rem var(--bs-card-spread) var(--bs-card-color),
+            -1.2rem 1.2rem var(--bs-card-spread) var(--bs-card-color),
+            -1.3rem 1.3rem var(--bs-card-spread) var(--bs-card-color),
+            -1.4rem 1.4rem var(--bs-card-spread) var(--bs-card-color),
+            -1.5rem 1.5rem var(--bs-card-spread) var(--bs-card-color),
+            -1.6rem 1.6rem var(--bs-card-spread) var(--bs-card-color),
+            -1.7rem 1.7rem var(--bs-card-spread) var(--bs-card-color),
+            -1.8rem 1.8rem var(--bs-card-spread) var(--bs-card-color),
+            -1.9rem 1.9rem var(--bs-card-spread) var(--bs-card-color);
+        box-shadow: var(--bs-rim), var(--bs-card);
+        display: grid;
+        grid-template-rows: max-content max-content auto ;
+        justify-items: center;
+        text-align: center;
+        gap: 0.75rem;
+        position: relative;
+    }
+    ul.ul-cards>a>.icon{
+        width: var(--circle-size);
+        margin-top: calc(var(--circle-size) / -2 - var(--padding));
+        aspect-ratio: 1;
+        background-color: var(--bg-color);
+        justify-self: center;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        box-shadow:var(--bs-rim), -0.1rem 0.1rem 0.25rem rgb(0 0 0 / .25);
+    }
+    ul.ul-cards>a>.icon>i{
+        font-size: calc(var(--circle-size) / 3);
+        color: var(--accent-color);
+    }
+    ul.ul-cards>a>.title{
+        margin-top: 0.5rem;
+        color: var(--accent-color);
+        font-weight: 700;
+    }
+    ul.ul-cards>a>.content{
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-color)
+    }
+    ul.ul-cards>a::before, ul>a::after{
+        content: "";
+        position: absolute;
+    }
+    /*  */
+</style>
     @yield('css')
 </head>
 <body>
@@ -47,6 +136,22 @@
             <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
                 <div class="spinner"></div>
             </div>
+        </div>
+        <div class="bar "> 
+            <a target="_blank" href="https://www.facebook.com/%D9%8D%D9%8DSchoolCo-107031314600113/" class="facebook icon2-hover"><i class="icon  icon2 fab fa-facebook-f"></i></a> 
+            <a target="_blank" href="https://twitter.com/onlinclass" class="twitter icon2-hover"><i class="icon  icon2 fab fa-twitter"></i></a> 
+            <div class="floating_btn"> 
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="whatsapp icon2-hover">
+                    <i class="icon icon2  fab fa-whatsapp"></i> 
+                </a> 
+            </div>
+            <a target="_blank" href="https://www.youtube.com/channel/UC9g0McaeJWcHcaz1FmsfQeQ " class="youtube icon2-hover">
+                <i class="icon icon2  fab fa-snapchat"></i>
+            </a> 
+
+            <a target="_blank" href="https://www.youtube.com/channel/UC9g0McaeJWcHcaz1FmsfQeQ " class="tiktok icon2-hover">
+                <i class="icon icon2  fab fa-tiktok"></i>
+            </a> 
         </div>
         @include('layout.header')
         @yield('content')

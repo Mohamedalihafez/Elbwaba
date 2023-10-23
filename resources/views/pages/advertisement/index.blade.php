@@ -90,7 +90,14 @@
                                         @endforeach
                                     </select>
                                 </div>  
-                                <div class="col-lg-3 mt-2">
+                                @if($category->id != 1 )
+                                    <div class="col-lg-3 mt-2">
+                                        <label class="mb-1" for="exampleInputtext1">نسبه الخصم  </label>
+                                        <input type="text" name="code" class="form-control border-0 bg-light "  style="height: 40;">
+                                    </div>
+                                @else 
+                                
+                                <div class="col-lg-3   mt-2">
                                     <label class="mb-1" >صفة المعلن</label>
                                     <select id="ads_type"  class="form-control" name="ads_type">
                                             <option value="1">مالك</option>
@@ -98,9 +105,10 @@
                                             <option value="3">وسيط</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-3 mt-2">
-                                    <label class="mb-1" > @if($category->id == 1 )  رقم الرخصه  @else جهة المعلن @endif </label>
-                                    <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="@if($category->id == 1 )  رقم الرخصه  @else جهة المعلن @endif" style="height: 40;">
+                                @endif
+                                <div class="col-lg-3  mt-2">
+                                    <label class="mb-1" > @if($category->id == 1 )  رقم الرخصه  @else  المعلن @endif </label>
+                                    <input type="text" name="license_id" class="form-control border-0 bg-light " placeholder="@if($category->id == 1 )  رقم الرخصه  @else  المعلن @endif" style="height: 40;">
                                 </div>     
                                 <hr>
                                 @if($category->id == 1 )
@@ -218,7 +226,7 @@
                                 <div class="col-12">
                                     <h4>خيارات اضافية
                                     </h4>
-                                    <select id="items" name="items[]" class="js-select2 w-100" multiple="multiple">
+                                    <select id="items" name="extras[]" class="js-select2 w-100" multiple="multiple">
 
                                     </select>
                                 </div>
@@ -254,32 +262,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" card-header text-center ">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-auto">
-                                            <h3 class="page-title"> بيانات مطلوبه </h3>
+                                @if($category->id == 1 )
+                                    <div class=" card-header text-center ">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-auto">
+                                                <h3 class="page-title"> بيانات مطلوبه </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
-                                    <input type="text"  name="question_1"  class="form-control border-0 bg-light "  style="height: 40;">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
-                                    <input type="text"  name="question_2"  class="form-control border-0 bg-light "  style="height: 40;">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
-                                    <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 40;">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label class="mb-1" >
-                                        إضافه رابط اليوتيوب (اختياري)
-                                    </label>
-                                    <br> 
-                                    <input type="text"  name="link"  class="form-control border-0 bg-light "  style="height: 40;">
-                                </div>
+                                    <div class="col-lg-6">
+                                        <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
+                                        <input type="text"  name="question_1"  class="form-control border-0 bg-light "  style="height: 40;">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
+                                        <input type="text"  name="question_2"  class="form-control border-0 bg-light "  style="height: 40;">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
+                                        <input type="text"  name="question_3"  class="form-control border-0 bg-light "  style="height: 40;">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="mb-1" >
+                                            إضافه رابط اليوتيوب (اختياري)
+                                        </label>
+                                        <br> 
+                                        <input type="text"  name="link"  class="form-control border-0 bg-light "  style="height: 40;">
+                                    </div>
+                                @else 
+                                @endif
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit"> نشر الإعلان  </button>
                                 </div>

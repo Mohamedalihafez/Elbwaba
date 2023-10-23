@@ -10,10 +10,10 @@
                 <div class="page-header card-header">
                     <div class="row">
                         <div class="col-sm-7 col-auto">
-                            <h3 class="page-title">خيارات الإعلانات التجاريه</h3>
+                            <h3 class="page-title">{{ __('pages.extras') }}</h3>
                         </div>
                         <div class="col-sm-5 col">
-                            <a href="{{ route('extra.upsert') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> {{ __('pages.add_extra') }}</a>
+                            <a href="{{ route('vip.upsert') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> {{ __('pages.add_extra') }}</a>
                         </div>
                     </div>
                 </div>
@@ -23,13 +23,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form class="form" action="{{ route('extra.filter') }}" method="get">
+                                    <form class="form" action="{{ route('vip.filter') }}" method="get">
                                         <div class="form-group d-flex align-items-center">
                                             <input type="search" placeholder="{{ __('pages.search_by_name') }}" name="name" class="form-control d-block search_input w-50" value="{{request()->input('name')}}">
                                             <button class="btn btn-primary mx-2 btn-search">{{ __('pages.search') }}</button>
                                         </div>
                                     </form>
-                                    <table id="example" class=" display  table table-hover table-center mb-0"  filter="{{ route('extra.filter') }}">
+                                    <table id="example" class=" display  table table-hover table-center mb-0"  filter="{{ route('vip.filter') }}">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -46,10 +46,10 @@
                                                     <td>{{ $extra->name }}</td>
                                                     <td class="text-end">
                                                         <div class="actions">
-                                                            <a href="{{ route('extra.upsert',['extra' => $extra->id]) }}" class="btn btn-sm bg-success-light" >
+                                                            <a href="{{ route('vip.upsert',['vip' => $extra->id]) }}" class="btn btn-sm bg-success-light" >
                                                                 <i class="ti-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <a  data-bs-toggle="modal" href="#" class="btn btn-sm bg-danger-light btn_delete" route="{{ route('extra.delete',['extra' => $extra->id])}}">
+                                                            <a  data-bs-toggle="modal" href="#" class="btn btn-sm bg-danger-light btn_delete" route="{{ route('vip.delete',['vip' => $extra->id])}}">
                                                                 <i class="ti-trash"></i> {{ __('pages.delete') }}
                                                             </a>
                                                         
