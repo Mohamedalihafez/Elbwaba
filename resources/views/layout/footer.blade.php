@@ -4,8 +4,8 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">ابقى على تواصل</h5>
-                <p class="mb-2 f-12"><i class="fa fa-map-marker-alt me-3"></i>حي المصيف الاول، 3364 عمرو ابن العاص                        </p>
-                <p class="mb-2 f-12"><i class="fa fa-phone-alt me-3"></i>966505360123+                        </p>
+                <p class="mb-2 f-12"><i class="fa fa-map-marker me-3"></i>حي المصيف الاول، 3364 عمرو ابن العاص                        </p>
+                <p class="mb-2 f-12"><i class="fa fa-phone me-3"></i>966505360123+                        </p>
                 <p class="mb-2 f-12"><i class="fa fa-envelope me-3"></i>vip.albawaba@gmail.com                        </p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>

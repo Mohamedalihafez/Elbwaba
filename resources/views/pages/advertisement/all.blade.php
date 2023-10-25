@@ -8,12 +8,19 @@
 @endsection
 @section('content')
 <div class="container-xxl py-5">
-    <div class="container-fluid  wow fadeInUp" data-wow-delay="0.1s">
-        <div class="row g-4">
+    <div class="container-fluid  wow fadeInUp " data-wow-delay="0.1s">
+        <h1 class="text-center "> إعلانات @if(Request('category_id') == 1 ) عقاريه  @elseif (Request('category_id') == 2) VIP @else تجاريه  @endif</h1>
+        <div class="row g-4 mt-3">
             @foreach ( $advertisements as $advertisement)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="property-item rounded overflow-hidden">
                     <div class="position-relative overflow-hidden">
+                        @if($advertisement->code)
+                        <div class="ribbon-wrapper">
+                            <div class="ribbon-tag">{{$advertisement->code}} %</div>
+                        </div>
+                        @else 
+                        @endif
                         <a href="{{ route('advertisement.show',['advertisement' => $advertisement->id]) }}">
                             @isset($advertisement->id)
                                 @if($advertisement->gallaries->count())

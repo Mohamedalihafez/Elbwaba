@@ -19,6 +19,9 @@ body *{
     .btn { 
       padding: .375rem 0.55rem !important;
     }
+    .bar {
+      left: 0px !important;
+    }
 }
 
 .market-btn {
@@ -469,13 +472,12 @@ body *{
   letter-spacing: 0em;
   border-radius: 0.4em;
   padding: 0.8em;
-  background: linear-gradient(45deg, #c3a84f, #46b2d6);
+  background: linear-gradient(45deg,  #377fbf  ,  #0f3d67, #198754);
   border-color: #c3a84f;
   color: #ffffff !important;
   border: 0px !important;
   box-shadow: 0 0em 0em rgba(0,0,0,.2);
   padding: 1rem 2rem 1rem 1.5rem !important;
-
 }
 .card-box-ico span {
   color:white !important;
@@ -706,13 +708,12 @@ margin-bottom: 50px;
 .bar {
   position: fixed;
   top: 75%;
-  width: 38px;
+  width: 35px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   z-index: 9;
   border-radius: 40px;
-
 }
 
 .bar a {
@@ -720,7 +721,7 @@ margin-bottom: 50px;
   text-align: center;
   padding: 0;
   transition: all .3s ease;
-  font-size: 20px
+  font-size: 15px;
 }
 
 .icon-bar a:hover {
@@ -756,18 +757,34 @@ margin-bottom: 50px;
   color: #fff
 }
 
-.youtube {
+.snap {
   background: #fffc00;
   border-radius: 40px;
   color: #fff
 }
+.youtube {
+  background: red;
+  border-radius: 40px;
+  color: #fff
+}
 
+.telegram {
+  border-radius: 40px;
+  background: #229ED9;
+  color: #fff
+}
+
+.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-radius: 40px;
+  color: #fff
+}
 
 .icon2 {
-  padding-top: 10px !important;
-  padding-left: 13px !important;
+  padding-top: 9px !important;
+  padding-left: 10px !important;
   padding-right: 10px !important;
-  padding-bottom: 10px !important;
+  padding-bottom: 9px !important;
   background: transparent !important;
   border:0px !important
 }
@@ -781,7 +798,7 @@ margin-bottom: 50px;
 
 
 .container {
-  padding-top: 60px;
+  /* padding-top: 60px; */
 }
 .dealwrapper {
   max-width: 320px;
@@ -870,3 +887,72 @@ margin-bottom: 50px;
   left: 0;
 }
 
+.bg-dark {
+  color: white !important;
+  background:linear-gradient(45deg,  #377fbf  ,  #0f3d67, #198754);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  left: 0px !important;
+  bottom: 0px !important;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

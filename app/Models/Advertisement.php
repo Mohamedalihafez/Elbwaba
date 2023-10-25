@@ -13,7 +13,7 @@ class Advertisement extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title' ,'building_id' ,'category_id' , 'code' , 'hours' , 'expired_at' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
+        'title' ,'ads_owner','building_id' ,'category_id' , 'code' , 'hours' , 'expired_at' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
    ];
 
     static function upsertInstance($request)
@@ -32,23 +32,25 @@ class Advertisement extends Model
             $request->all()
         );
 
-
-        foreach($request->ads_images as $key => $result){
-
-            $imageName = 'ads_' . $advertisement->id .'_' .$result->getClientOriginalName()  . '.png';
-            $result->move('ads/' . $advertisement->id . '/', $imageName);
-            $advertisement->gallaries()->updateOrCreate(
-                [
-                    'imageable_id' => $advertisement->id,
-                    'name' => $imageName,
-                    'use_for' => 'ads'
-                ],
-                [
-                    'imageable_id' => $advertisement->id,
-                    'second_id' => $key,
-                    'name' => $imageName,
-                    'use_for' => 'ads'
-                ]);    
+        if($request->ads_images)
+        {
+            foreach($request->ads_images as $key => $result){
+    
+                $imageName = 'ads_' . $advertisement->id .'_' .$result->getClientOriginalName()  . '.png';
+                $result->move('ads/' . $advertisement->id . '/', $imageName);
+                $advertisement->gallaries()->updateOrCreate(
+                    [
+                        'imageable_id' => $advertisement->id,
+                        'name' => $imageName,
+                        'use_for' => 'ads'
+                    ],
+                    [
+                        'imageable_id' => $advertisement->id,
+                        'second_id' => $key,
+                        'name' => $imageName,
+                        'use_for' => 'ads'
+                    ]);    
+            }
         }
 
         if($request->items)
@@ -62,6 +64,11 @@ class Advertisement extends Model
         }
 
         return $advertisement;    
+    }
+
+    static function advertisementUpdate($request)
+    {
+        return Advertisement::where('id', $request->id)->update(['seen' => $request->status]);
     }
 
     public function scopeFilter($query,$request)
@@ -112,6 +119,11 @@ class Advertisement extends Model
     public function extras()
     {
         return $this->belongsToMany(Extra::class);
+    }
+
+    public function deleteInstance()
+    {
+        return $this->delete();
     }
 
 }

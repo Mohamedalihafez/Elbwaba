@@ -40,6 +40,9 @@
         <div class="col-md-6 animated fadeIn">
             <div class="owl-carousel header-carousel">
                 <div class="owl-carousel-item">
+                    <img class="img-fluid" src="{{ asset('assets/img/slide3.jpeg')}}" alt="">
+                </div>
+                <div class="owl-carousel-item">
                     <img class="img-fluid" src="{{ asset('assets/img/banner_1.png')}}" alt="">
                 </div>
 
@@ -235,7 +238,7 @@
                                     <div class="p-4 pb-0">
                                         <h5 class="text-primary mb-3"> {{$advertisement->price}}</h5>
                                         <a class="d-block h5 mb-2"  href="{{ route('advertisement.show',['advertisement' => $advertisement->id]) }}">{{$advertisement->title}}</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{$advertisement->region->name_ar}} - {{$advertisement->city->name_ar}} -  {{$advertisement->district}} - {{$advertisement->street}}</p>
+                                        <p><i class="fa fa-map-marker text-primary me-2"></i>{{$advertisement->region->name_ar}} - {{$advertisement->city->name_ar}} -  {{$advertisement->district}} - {{$advertisement->street}}</p>
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{$advertisement->width}} المساحه</small>
@@ -276,7 +279,7 @@
                         <div class="mb-4">
                             <h3 class="mb-3">إذا كان لديك أي استفسار، فلا تتردد في الاتصال بنا                                    </h1>
                         </div>
-                        <a href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="btn  btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>تواصل معنا</a>
+                        <a href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=البوابه للتسويق الإلكتروني" class="btn  btn-primary py-3 px-4 me-2"><i class="fa fa-phone me-2"></i>تواصل معنا</a>
                     </div>
                 </div>
             </div>

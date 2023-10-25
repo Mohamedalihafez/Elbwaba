@@ -12,9 +12,13 @@ use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\ExtraController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\AdvertisementController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -150,6 +154,31 @@ Route::group(['prefix' => 'item'],function(){
     Route::get('/filter',[ItemController::class,'filter'])->name('item.filter');
     Route::post('/modify',[ItemController::class,'modify'])->name('item.modify');
     Route::post('/delete/{item}',[ItemController::class,'destroy'])->name('item.delete');
+});
+
+Route::group(['prefix' => 'region'],function(){
+    Route::get('/', [RegionController::class,"index"])->name('region');
+    Route::get('/upsert/{region?}',[RegionController::class,'upsert'])->name('region.upsert');
+    Route::get('/filter',[RegionController::class,'filter'])->name('region.filter');
+    Route::post('/modify',[RegionController::class,'modify'])->name('region.modify');
+    Route::post('/delete/{region}',[RegionController::class,'destroy'])->name('region.delete');
+});
+
+Route::group(['prefix' => 'city'],function(){
+    Route::get('/', [CityController::class,"index"])->name('city');
+    Route::get('/upsert/{city?}',[CityController::class,'upsert'])->name('city.upsert');
+    Route::get('/filter',[CityController::class,'filter'])->name('city.filter');
+    Route::post('/modify',[CityController::class,'modify'])->name('city.modify');
+    Route::post('/delete/{city}',[CityController::class,'destroy'])->name('city.delete');
+});
+
+Route::group(['prefix' => 'advertisementadmin'],function(){
+    Route::get('/', [AdvertisementController::class,"index"])->name('advertisementadmin');
+    Route::get('/upsert/{advertisementadmin?}',[AdvertisementController::class,'upsert'])->name('advertisementadmin.upsert');
+    Route::get('/filter',[AdvertisementController::class,'filter'])->name('advertisementadmin.filter');
+    Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisementadmin.modify');
+    Route::post('/status/update',[AdvertisementController::class,'status'])->name('advertisementadmin.status');
+    Route::post('/delete/{advertisementadmin}',[AdvertisementController::class,'destroy'])->name('advertisementadmin.delete');
 });
 
 Route::group(['prefix' => 'category'],function(){

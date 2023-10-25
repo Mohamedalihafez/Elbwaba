@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('advertisement_extra', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('extra_id')->nullable();
-            $table->foreignId('advertisement_id')->nullable();
-            $table->timestamps();
+        Schema::table('advertisements', function (Blueprint $table) {
+            $table->integer('ads_owner')->nullable();
         });
     }
 
@@ -28,6 +25,11 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisement_extra');
+        Schema::table('advertisements', function (Blueprint $table) {
+            if ( Schema::hasColumn('advertisements','ads_owner') ) {
+                $table->dropColumn('ads_owner');
+            }
+
+        });
     }
 };

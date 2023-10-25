@@ -99,7 +99,7 @@
                                 
                                 <div class="col-lg-3   mt-2">
                                     <label class="mb-1" >صفة المعلن</label>
-                                    <select id="ads_type"  class="form-control" name="ads_type">
+                                    <select id="ads_type"  class="form-control" name="ads_owner">
                                             <option value="1">مالك</option>
                                             <option value="2">مكتب عقار</option>
                                             <option value="3">وسيط</option>

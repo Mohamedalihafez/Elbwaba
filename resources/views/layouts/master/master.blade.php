@@ -129,6 +129,8 @@
     }
     /*  */
 </style>
+<link href="{{ asset('assets/web/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+
     @yield('css')
 </head>
 <body>
@@ -138,19 +140,31 @@
             </div>
         </div>
         <div class="bar "> 
-            <a target="_blank" href="https://www.facebook.com/%D9%8D%D9%8DSchoolCo-107031314600113/" class="facebook icon2-hover"><i class="icon  icon2 fab fa-facebook-f"></i></a> 
-            <a target="_blank" href="https://twitter.com/onlinclass" class="twitter icon2-hover"><i class="icon  icon2 fab fa-twitter"></i></a> 
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=61552400979216" class="facebook icon2-hover"><i class="icon  icon2 fab fa-facebook-f"></i></a> 
+            <a target="_blank" href="https://twitter.com/vip_albawaba" class="twitter icon2-hover"><i class="icon  icon2 fab fa-twitter"></i></a> 
             <div class="floating_btn"> 
-                <a target="_blank" href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="whatsapp icon2-hover">
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=+966505360123&amp;text=البوابه - للتسويق الإلكتروني." class="whatsapp icon2-hover">
                     <i class="icon icon2  fab fa-whatsapp"></i> 
                 </a> 
             </div>
-            <a target="_blank" href="https://www.youtube.com/channel/UC9g0McaeJWcHcaz1FmsfQeQ " class="youtube icon2-hover">
+            <a target="_blank" href="https://www.snapchat.com/add/vip.albawaba " class="snap icon2-hover">
                 <i class="icon icon2  fab fa-snapchat"></i>
             </a> 
 
-            <a target="_blank" href="https://www.youtube.com/channel/UC9g0McaeJWcHcaz1FmsfQeQ " class="tiktok icon2-hover">
+            <a target="_blank" href="https://www.tiktok.com/vip.albawaba" class="tiktok icon2-hover">
                 <i class="icon icon2  fab fa-tiktok"></i>
+            </a> 
+
+            <a target="_blank" href="https://www.instagram.com/vip.albawaba/ " class="instagram icon2-hover">
+                <i class="icon icon2  fa fa-instagram"></i>
+            </a> 
+
+            <a target="_blank" href="https://www.youtube.com/channel/UC0-mu9dUdcX_dgP_FsiwVtw " class="youtube icon2-hover">
+                <i class="icon icon2  fa fa-youtube"></i>
+            </a> 
+
+            <a target="_blank" href="https://t.me/ss_albawaba " class="telegram icon2-hover">
+                <i class="icon icon2  fa fa-telegram"></i>
             </a> 
         </div>
         @include('layout.header')

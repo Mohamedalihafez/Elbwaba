@@ -74,6 +74,10 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('user') }}"><i class="ti-control-record text-success"></i> {{ __('pages.users') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('region') }}"><i class="ti-control-record text-success"></i> {{ __('pages.regions') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('city') }}"><i class="ti-control-record text-success"></i> {{ __('pages.cities') }}</a></li>@endif
+                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('advertisementadmin') }}"><i class="ti-control-record text-success"></i> {{ __('pages.advertisements') }}</a></li>@endif
+
                         {{-- @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('compound') }}"><i class="ti-control-record text-success"></i> {{ __('pages.compounds') }}</a></li>@endif --}}
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('building') }}"><i class="ti-control-record text-success"></i> {{ __('pages.buildings') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('category') }}"><i class="ti-control-record text-success"></i> {{ __('pages.categories') }}</a></li>@endif
@@ -153,6 +157,7 @@
     <script src="{{ asset('admin_assets\js\bootstrap.main.js') }}"></script>
     <script src="{{ asset('admin_assets\js\dropify.js') }}"></script>
     <script src="{{ asset('admin_assets\js\fileupload.js') }}"></script>
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc&language=fa&callback=initMap" ></script>
 
     <script>
         

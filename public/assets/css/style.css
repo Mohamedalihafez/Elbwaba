@@ -85,7 +85,7 @@
 }
 
 .navbar {
-    box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
 }
 
 .navbar .dropdown-toggle::after {
@@ -189,7 +189,7 @@
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    background: linear-gradient(185deg, #00b98e, #63AEF4);
+    background: linear-gradient(45deg,  #377fbf  ,  #0f3d67, #198754);
     border-radius: 40px;
     font-size: 20px;
     transition: .5s;
@@ -447,7 +447,7 @@
     width:136px;
 }
 .btn-primary {
-    background: linear-gradient(185deg, #00b98e, #63AEF4);
+    background: linear-gradient(45deg,  #377fbf  ,  #0f3d67, #198754);
 }
 .banner_p {
     font-size: 20px !important;

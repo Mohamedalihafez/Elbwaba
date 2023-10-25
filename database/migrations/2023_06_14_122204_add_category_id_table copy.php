@@ -8,14 +8,13 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::table('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->integer('partner_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -23,9 +22,13 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('partners');
+        Schema::table('cities', function (Blueprint $table) {
+
+        });
     }
 };

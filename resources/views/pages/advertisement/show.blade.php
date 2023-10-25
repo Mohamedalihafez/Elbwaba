@@ -22,106 +22,13 @@
   {{-- <link href="{{ asset('assets/web/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 
   <!-- Libraries CSS Files -->
-  <link href="{{ asset('assets/web/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('assets/web/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('assets/web/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="{{ asset('assets/web/css/style.css')}}" rel="stylesheet">
 
 
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
-  <div class="box-collapse">
-    <div class="title-box-d">
-      <h3 class="title-d">Search Property</h3>
-    </div>
-    <span class="close-box-collapse right-boxed ion-ios-close"></span>
-    <div class="box-collapse-wrap form">
-      <form class="form-a">
-        <div class="row">
-          <div class="col-md-12 mb-2">
-            <div class="form-group">
-              <label for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="Type">Type</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="city">City</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Property</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+
   <!--/ Form Search End /-->
   <!--/ Intro Single star /-->
   <section class="intro-single">
@@ -129,133 +36,277 @@
       <div class="row">
         <div class="col-12 col-xl-8 ">
           <div class="title-single-box">
-            <h1 class="title-single">صور الإعلان</h1>
+              <h1 class="title-single">صور الإعلان</h1>
           </div>
           <input class="d-none" id="currentLat" type="text" value="{{$advertisement->currentLat}}"/>
           <input class="d-none" id="currentLng" type="text" value="{{$advertisement->currentLng}}"/>
 
           <section class="property-single nav-arrow-b">
-            <div class="">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="col-md-12 animated fadeIn">
-                    <div class="owl-carousel header-carousel">
-                      @foreach ($advertisement->gallaries as $picture)
-                        <div class="owl-carousel-item">
-                          <img
-                            class="img-fluid img-cu"
-                            src="{{ asset('ads/' .$advertisement->id .'/'. $picture->name) }}"
-                            data-src="{{ asset('ads/' .$advertisement->id .'/'. $picture->name) }}"
-                            class="thumbnail mb-[0.5rem]"
-                          />
+              <div class="">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="col-md-12 animated fadeIn">
+                          
+                          <div class="owl-carousel header-carousel">
+                            
+                            @foreach ($advertisement->gallaries as $picture)
+                              <div class="owl-carousel-item">
+                                @if($advertisement->code)
+                                <div class="ribbon-wrapper">
+                                    <div class="ribbon-tag">{{$advertisement->code}} %</div>
+                                </div>
+                                
+                                @else 
+                                @endif
+                                <img
+                                  class="img-fluid img-cu"
+                                  src="{{ asset('ads/' .$advertisement->id .'/'. $picture->name) }}"
+                                  data-src="{{ asset('ads/' .$advertisement->id .'/'. $picture->name) }}"
+                                  class="thumbnail mb-[0.5rem]"
+                                />
+                              </div>
+                            @endforeach
+                          </div>
                         </div>
-                      @endforeach
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-12">
-
-                  <div class="row mt-3">
-                    <div class="col-sm-12">
-                      <div class="title-box-d">
-                        <div style="float:left;" class=" card-money">  
-                          <span class="ion-money">  {{$advertisement->price}} ر.س</span>
-                        </div>
-                        <h3 class="title-d">محتوي الإعلان</h3>
                       </div>
-                    </div>
-                  </div>
-                  <div class="property-description">
-                    <p class="description color-text-a">
-                       {{$advertisement->title}}
-                    </p>
-                    <p class="description color-text-a no-margin">
-                      {{$advertisement->description}}
-                     </p>
-                  </div>
-                  <div class="row  pt-20">
-                    <div class="col-md-6 col-lg-6">
-                      <div class="property-summary">
-                        <div class="row  ">
+                      <div class="col-md-12 col-lg-12">
+                            @if(Request::url())
+                            <input hidden value="{{Request::url()}}" id="url"/>
+                            @endif
+                        <div class="row mt-3">
                           <div class="col-sm-12">
-                            <div class="title-box-d ">
-                              <h3 class="title-d">ملخص سريع </h3>
+                            <div class="title-box-d">
+                              <div style="float:left;" class=" card-money">  
+                                <span class="ion-money">  {{$advertisement->price}} ر.س</span>
+                              </div>
+                              <h3 class="title-d">محتوي الإعلان</h3>
                             </div>
                           </div>
                         </div>
-                        <div class="">
-                          <ul class="list list-tems pl-0">
-                            <li class="">
-                              <strong>رقم الإعلان:</strong>
-                              <span>{{$advertisement->id}}</span>
-                            </li>
-                            <li class="">
-                              <strong>العنوان:</strong>
-                              <span>{{$advertisement->region->name_ar}} - {{$advertisement->city->name_ar}} -  {{$advertisement->district}} - {{$advertisement->street}}</span>
-                            </li>
-                            <li class="">
-                              <strong>نوع الملكية:</strong>
-                              <span> @if($advertisement->ads_type == 1) مالك @elseif($advertisement->ads_type == 2) مكتب عقار @else  وسيط @endif</span>
-                            </li>
-                            <li class="">
-                              <strong>نوع الشارع :</strong>
-                              <span>@if($advertisement->street_type == 1) سكني @else تجاري @endif </span>
-                            </li>
-                            <li class="">
-                              <strong>المساحه:</strong>
-                              <span>{{$advertisement->width}}
-                                <sup>2</sup>
-                              </span>
-                            </li>
-                            @if($advertisement->category_id == 1 )
-                              <li class="">
-                                <strong>الغرف:</strong>
-                                <span>{{$advertisement->rooms}}</span>
-                              </li>
-                              <li class="">
-                                <strong>دورات المياه:</strong>
-                                <span>{{$advertisement->bathrooms}}</span>
-                              </li>
-                            @else
-                            @endif
-          
-                          </ul>
+                        <div class="property-description">
+                          <p class="description color-text-a">
+                            {{$advertisement->title}}
+                          </p>
+                          <p class="description color-text-a no-margin">
+                            {{$advertisement->description}}
+                          </p>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 ">
-                      <div class="row ">
-                        <div class="col-sm-12 ">
-                          <div class="title-box-d">
-                            <h3 class="title-d">وسائل الراحة</h3>
+                        <div class="row  pt-20">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="property-summary">
+                              <div class="row  ">
+                                <div class="col-sm-12">
+                                  <div class="title-box-d ">
+                                    <h3 class="title-d">ملخص سريع </h3>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="">
+                                <ul class="list list-tems pl-0">
+                                    <li class="">
+                                      <strong>رقم الإعلان:</strong>
+                                      <span>{{$advertisement->id}}</span>
+                                    </li>
+                                    <li class="">
+                                      <strong>نوع الإعلان:</strong>
+                                      <span>  {{$advertisement->building->name}}
+                                      </span>
+                                    </li>
+                                    <li class="">
+                                      <strong>العنوان:</strong>
+                                      <span>{{$advertisement->region->name_ar}} - {{$advertisement->city->name_ar}} -  {{$advertisement->district}} - {{$advertisement->street}}</span>
+                                    </li>
+                                    <li class="">
+                                      <strong>نوع الملكية:</strong>
+                                      <span> @if($advertisement->ads_owner == 1) مالك @elseif($advertisement->ads_owner == 2) مكتب عقار @else  وسيط @endif</span>
+                                    </li>
+                                    <li class="">
+                                      <strong>نوع الشارع :</strong>
+                                      <span>@if($advertisement->street_type == 1) سكني @else تجاري @endif </span>
+                                    </li>
+                                    <li class="">
+                                      <strong>المساحه:</strong>
+                                      <span>{{$advertisement->width}}
+                                        <sup>2</sup>
+                                      </span>
+                                    </li>
+                                  @if($advertisement->category_id == 1 )
+                                      <li class="">
+                                        <strong>الغرف:</strong>
+                                        <span>{{$advertisement->rooms}}</span>
+                                      </li>
+                                      <li class="">
+                                        <strong>دورات المياه:</strong>
+                                        <span>{{$advertisement->bathrooms}}</span>
+                                      </li>
+                                      <li class="">
+                                        <strong>عمر العقار:</strong>
+                                        <span>{{$advertisement->age}}</span>
+                                      </li>
+
+                                      <li class="">
+                                        <strong>عدد الصالات:</strong>
+                                        <span>{{$advertisement->halls}}</span>
+                                      </li>
+                                      <li class="">
+                                        <strong>عدد الشقق:</strong>
+                                        <span>{{$advertisement->flats}}</span>
+                                      </li>
+                                      <li class="">
+                                        <strong>عمر الادوار:</strong>
+                                        <span>{{$advertisement->floors}}</span>
+                                      </li>
+                                      <li class="">
+                                        <strong>عدد المحلات:</strong>
+                                        <span>{{$advertisement->stores_number}}</span>
+                                      </li>
+                                  @else
+                                  @endif
+                
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 col-lg-6 ">
+                            <div class="row ">
+                              <div class="col-sm-12 ">
+                                <div class="title-box-d">
+                                  <h3 class="title-d">وسائل الراحة</h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="amenities-list color-text-a">
+                              <ul class="list-a no-margin">
+                                @if($advertisement->category_id == 1 )
+                                  @foreach ($advertisement->items  as $item)
+                                    <li class="w-100">{{ $item->name }}</li>
+                                  @endforeach
+                                @else
+                                @foreach ($advertisement->extras  as $extra)
+                                    <li class="w-100">{{ $extra->name }}</li>
+                                @endforeach
+                                @endif
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="amenities-list color-text-a">
-                        <ul class="list-a no-margin">
-                          @if($advertisement->category_id == 1 )
-                            @foreach ($advertisement->items  as $item)
-                              <li class="w-100">{{ $item->name }}</li>
-                            @endforeach
-                          @else
-                          @foreach ($advertisement->extras  as $extra)
-                              <li class="w-100">{{ $extra->name }}</li>
-                          @endforeach
-                          @endif
-                        </ul>
-                      </div>
-                    </div>
                   </div>
-                </div>
               </div>
-            </div>
           </section>
         </div>
         
         <div class="col-4  d-none d-lg-block ">
+            <div class="row mt-3 ">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">بيانات المعلن</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                <img src="{{ asset('assets/img/logo.jpeg')}}" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div class="property-agent">
+                  <h5 class="title-agent">   <strong> الإسم:</strong> {{$advertisement->user->name}}</h5>
 
-     
-          <div class="row mt-3 ">
+                  <ul class="list-unstyled">
+                    <li class="">
+                        <strong>رقم الجوال:</strong>
+                        <span class="color-text-a">{{$advertisement->phone}}</span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3 ">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">مشاركه الإعلان</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+                <div class="property-agent text-center">
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item social-buttons">
+                        <a href="#">
+                          <i  id="fb" class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item social-buttons">
+                        <a  target="_blank" href="https://api.whatsapp.com/send?text={{route('advertisement.show',['advertisement' => $advertisement->id])}}">   <i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                      </li>
+                      <li class="list-inline-item social-buttons">
+                        <a href="#">
+                          <i id="twitter" class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+
+                      <li class="list-inline-item social-buttons">
+                        <a href="#">
+                          <i class="fa fa-snap" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div> 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mt-3 ">
+              <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
+                    aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
+                </li>
+      
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
+                    aria-selected="false">العنوان</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade " id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                  <iframe width="100%" height="460" frameborder="0" src="{{$advertisement->link}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+              
+                <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>  
+        </div>
+      </div>
+      <div class="col-12   d-md-block d-lg-none ">
+          <div class="row ">
+            <div class="col-md-12 mt-3 ">
+              <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video1" role="tab"
+                    aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
+                </li>
+      
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map1" role="tab" aria-controls="pills-map"
+                    aria-selected="false">العنوان</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade " id="pills-video1" role="tabpanel" aria-labelledby="pills-video-tab">
+                  <iframe width="100%" height="460" frameborder="0" src="https://www.youtube.com/watch?v=Ys78zaUwQzI&list=RDYs78zaUwQzI&start_radio=1" frameborder="0" allowfullscreen></iframe>
+
+                </div>
+              
+                <div class="tab-pane fade show active" id="pills-map1" role="tabpanel" aria-labelledby="pills-map-tab">
+                  <div class="map-show" id="map_2"></div>
+                </div>
+              </div>
+            </div>  
             <div class="col-sm-12">
               <div class="title-box-d">
                 <h3 class="title-d">بيانات المعلن</h3>
@@ -268,178 +319,37 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="property-agent">
-                <h5 class="title-agent">   <strong> الإسم:</strong> {{$advertisement->user->name}}</h5>
+                <h4 class="title-agent">{{$advertisement->user->name}}</h4>
+                <p class="color-text-a">
 
+                </p>
                 <ul class="list-unstyled">
                   <li class="">
                     <strong>رقم الجوال:</strong>
                     <span class="color-text-a">{{$advertisement->phone}}</span>
                   </li>
-
                 </ul>
-                
-                {{-- <div class="socials-a">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-snap" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3 ">
-            <div class="col-sm-12">
-              <div class="title-box-d">
-                <h3 class="title-d">مشاركه الإعلان</h3>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 col-lg-12">
-              <div class="property-agent text-center">
-                <div class="socials-a">
+                <div class="socials-a text-center">
                   <ul class="list-inline">
                     <li class="list-inline-item social-buttons">
                       <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                      <a href="https://www.facebook.com/sharer/sharer.php?u={{route('advertisement.show',['advertisement' => $advertisement->id])}}&display=popup"> Facebbok </a>
-                    </li>
-                    <li class="list-inline-item social-buttons">
-                      <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <i  id="fb" class="fa fa-facebook" aria-hidden="true"></i>
                       </a>
                     </li>
                     <li class="list-inline-item social-buttons">
-                      <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
+                      <a  target="_blank" href="https://api.whatsapp.com/send?text={{route('advertisement.show',['advertisement' => $advertisement->id])}}">   <i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </li>
-
                     <li class="list-inline-item social-buttons">
                       <a href="#">
-                        <i class="fa fa-snap" aria-hidden="true"></i>
+                        <i id="twitter" class="fa fa-twitter" aria-hidden="true"></i>
                       </a>
                     </li>
                   </ul>
-                </div> 
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-12 mt-3 ">
-            <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
-                  aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
-              </li>
-    
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
-                  aria-selected="false">العنوان</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade " id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe width="100%" height="460" frameborder="0" src="{{$advertisement->link}}" frameborder="0" allowfullscreen></iframe>
-              </div>
-             
-              <div class="tab-pane fade show active" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                <div id="map"></div>
-              </div>
-            </div>
-          </div>  
-        </div>
-      </div>
-      <div class="col-12   d-md-block d-lg-none ">
-        <div class="row ">
-          <div class="col-md-12 mt-3 ">
-            <ul class="nav nav-pills-a nav-pills mb-3 " id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video1" role="tab"
-                  aria-controls="pills-video" aria-selected="true">فيديو  وصفي </a>
-              </li>
-    
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-map-tab" data-toggle="pill" href="#pills-map1" role="tab" aria-controls="pills-map"
-                  aria-selected="false">العنوان</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade " id="pills-video1" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe width="100%" height="460" frameborder="0" src="https://www.youtube.com/watch?v=Ys78zaUwQzI&list=RDYs78zaUwQzI&start_radio=1" frameborder="0" allowfullscreen></iframe>
 
-              </div>
-             
-              <div class="tab-pane fade show active" id="pills-map1" role="tabpanel" aria-labelledby="pills-map-tab">
-                <div class="map-show" id="map_2"></div>
-              </div>
-            </div>
-          </div>  
-          <div class="col-sm-12">
-            <div class="title-box-d">
-              <h3 class="title-d">بيانات المعلن</h3>
-            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <img src="{{ asset('assets/img/logo.jpeg')}}" alt="" class="img-fluid">
-          </div>
-          <div class="col-md-6 col-lg-6">
-            <div class="property-agent">
-              <h4 class="title-agent">{{$advertisement->user->name}}</h4>
-              <p class="color-text-a">
-
-              </p>
-              <ul class="list-unstyled">
-                <li class="">
-                  <strong>رقم الجوال:</strong>
-                  <span class="color-text-a">{{$advertisement->phone}}</span>
-                </li>
-              </ul>
-              <div class="socials-a text-center">
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                  </li>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -454,46 +364,67 @@
   <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc&language=fa&callback=initMap" ></script>
 
   <script>
-    // Replace 'YOUR_API_KEY' with your Google Maps API key
-const API_KEY = 'AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc';
+    const appDiv = document.getElementById('app');
+    const fb = document.getElementById('fb');
+    fb.addEventListener('click', shareOnFacebook);
 
-// Function to initialize and show the map
-$(document).ready(function() {
-  initMap();
-});
+    const tweet = document.getElementById('twitter');
+    tweet.addEventListener('click', shareOnTwitter);
 
-function initMap() {
-    // Get latitude and longitude from your backend or any other source
-    const latitude = parseFloat($('#currentLat').val());
-    const longitude =  parseFloat($('#currentLng').val());
+    function shareOnFacebook() {
+      const current_url = $('#url').val();
+      const navUrl =
+        'https://www.facebook.com/sharer/sharer.php?u=' +
+        current_url;
+      window.open(navUrl, '_blank');
+    }
 
-    const location = { lat: latitude, lng: longitude };
+    function shareOnTwitter() {
+        const navUrl =
+          'https://twitter.com/intent/tweet?text=' +
+          'https://github.com/knoldus/angular-facebook-twitter.git';
+        window.open(navUrl, '_blank');
+    }
 
-    // Create a map centered on the provided location
-    const map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 15,
+    const API_KEY = 'AIzaSyD5P1aaaeShZf5EehRdc8RBY8MqhXvrtLc';
+
+      // Function to initialize and show the map
+    $(document).ready(function() {
+      initMap();
     });
 
-    const map_2 = new google.maps.Map(document.getElementById('map_2'), {
-        center: location,
-        zoom: 15,
-    });
+    function initMap() {
+        // Get latitude and longitude from your backend or any other source
+        const latitude = parseFloat($('#currentLat').val());
+        const longitude =  parseFloat($('#currentLng').val());
 
-    
-    // Create a marker for the location
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: 'Your Location',
-    });
+        const location = { lat: latitude, lng: longitude };
 
-    const marker2 = new google.maps.Marker({
-        position: location,
-        map: map_2,
-        title: 'Your Location',
-    });
-}
+        // Create a map centered on the provided location
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 15,
+        });
+
+        const map_2 = new google.maps.Map(document.getElementById('map_2'), {
+            center: location,
+            zoom: 15,
+        });
+
+        
+        // Create a marker for the location
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: 'Your Location',
+        });
+
+        const marker2 = new google.maps.Marker({
+            position: location,
+            map: map_2,
+            title: 'Your Location',
+        });
+    }
   </script>
   <!-- Template Main Javascript File -->
 
