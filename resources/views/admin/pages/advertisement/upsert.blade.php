@@ -28,7 +28,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 mb-2">
                                                     <label class="mb-2">{{ __('pages.title') }}</label>
-                                                    <input class="form-control text-start" type="text" name="title" value="@isset($advertisement->id){{$advertisement->description}}@endisset" placeholder="{{ __('pages.name') }}" >
+                                                    <input class="form-control text-start" type="text" name="title" value="@isset($advertisement->id){{$advertisement->title}}@endisset" placeholder="{{ __('pages.name') }}" >
                                                 </div>
                                                 <div class="col-md-6 mb-2 d-none">
                                                     <label class="mb-2">{{ __('pages.code') }}</label>
@@ -43,14 +43,7 @@
                                                 <input class="d-none" name="currentLat" id="currentLat" type="text" value="{{$advertisement->currentLat}}"/>
                                                 <input class="d-none" name="currentLng" id="currentLng" type="text" value="{{$advertisement->currentLng}}"/>
                                       
-                                                <div class="col-md-12 mt-3">
-                                                    <label class="mb-2">المنطقه </label>
-                                                    <select class="form-control  d-flex " placeholder="المنطقه"  name="region_id"> 
-                                                        @foreach($regions as $region)
-                                                            <option @isset($advertisement->id) @if($advertisement->region->id == $region->id) selected @else @endif @endisset class="form-control"  value="{{$region->id}}">{{ $region->name_ar}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                           
                                                 <div class="col-md-12 ">
                                                     <label class="mb-2">{{ __('pages.location') }}</label>
                                                     <div class="map-show" id="map_2"></div>
