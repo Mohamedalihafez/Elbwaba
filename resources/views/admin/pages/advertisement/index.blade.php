@@ -12,9 +12,9 @@
                         <div class="col-sm-7 col-auto">
                             <h3 class="page-title">{{ __('pages.advertisements') }}</h3>
                         </div>
-                        <div class="col-sm-5 col">
-                            <a href="{{ route('city.upsert') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> {{ __('pages.add_city') }}</a>
-                        </div>
+                        {{-- <div class="col-sm-5 col">
+                            <a href="{{ route('advertisementadmin.upsert') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> {{ __('pages.add_advertisment') }}</a>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- /Page Header -->
@@ -23,7 +23,7 @@
                         <div class="card card-header ">
                             <div class="card-body   " >
                                 <div class="table-responsive ">
-                                    <form class="form" action="{{ route('city.filter') }}" method="get">
+                                    <form class="form" action="{{ route('advertisementadmin.filter') }}" method="get">
                                         <div class="form-group d-flex align-advertisements-center">
                                             <input type="search" placeholder="{{ __('pages.search_by_name') }}" name="name" class="form-control d-block search_input w-50" value="{{request()->input('name')}}">
                                             <button class="btn btn-primary mx-2 btn-search">{{ __('pages.search') }}</button>

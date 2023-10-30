@@ -956,3 +956,6 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.color-white {
+  color: white !important;
+}

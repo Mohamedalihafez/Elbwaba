@@ -155,29 +155,7 @@
                                         <input type="number"  name="age"  class="form-control border-0 bg-light "  style="height: 40;">
                                         <p class="error error_age"></p>
                                     </div>
-                                    <div class="col-lg-2 mt-2">
-                                        <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
-                                        <select id=""  class="form-control" name="rooms">
-                                                <option value="1">1</option>
-                                                <option value="2">2 </option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5 </option>
-                                                <option value="6">6  </option>
-                                                <option value="7">7  </option>
-                                                <option value="8">8+  </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-2 mt-2">
-                                        <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
-                                        <select id=""  class="form-control" name="halls">
-                                                <option value="1">1</option>
-                                                <option value="2">2 </option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5+ </option>
-                                        </select>
-                                    </div>
+           </div>
                                     <div class="col-lg-2 mt-2">
                                         <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
                                         <select id=""  class="form-control" name="bathrooms">
@@ -211,7 +189,29 @@
 
                                         <input type="number"  name="stores_number"  class="form-control border-0 bg-light " style="height: 40;">
                                         <p class="error error_stores_number"></p>
+                                    </div>                                <div class="col-lg-2 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
+                                        <select id=""  class="form-control" name="rooms">
+                                                <option value="1">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5 </option>
+                                                <option value="6">6  </option>
+                                                <option value="7">7  </option>
+                                                <option value="8">8+  </option>
+                                        </select>
                                     </div>
+                                    <div class="col-lg-2 mt-2">
+                                        <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
+                                        <select id=""  class="form-control" name="halls">
+                                                <option value="1">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5+ </option>
+                                        </select>
+                             
                                     <hr>
                                     <div class="col-12">
                                         <h4>خيارات اضافية

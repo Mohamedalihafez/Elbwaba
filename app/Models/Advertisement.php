@@ -20,10 +20,14 @@ class Advertisement extends Model
     {
         $newDateTime = Carbon::now()->addHours(24); 
         
-        $request->merge([
-            'user_id' => Auth::user()->id ,
-            'expired_at' => $newDateTime
-        ]);
+        if(!$request->id)
+        {
+            $request->merge([
+                'user_id' => Auth::user()->id ,
+                'expired_at' => $newDateTime ,
+            ]);
+        }
+        
 
         $advertisement = Advertisement::updateOrCreate(
         [
@@ -74,7 +78,7 @@ class Advertisement extends Model
     public function scopeFilter($query,$request)
     {
         if ( isset($request['name']) ) {
-            $query->where('name','like','%'.$request['name'].'%');
+            $query->where('title','like','%'.$request['name'].'%');
         }
 
         return $query;

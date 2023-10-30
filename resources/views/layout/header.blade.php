@@ -31,7 +31,7 @@
                 <a href="{{ route('home') }}" class="nav-item nav-link {{is_active('home')}} ">الرئيسيه </a>
                 <a href="{{ route('home') }}" class="nav-item nav-link   {{is_active('home')}} ">خدماتنا  </a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} "> تواصل معنا </a>
-                <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} ">عملائنا الكرام  </a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} ">أحبابنا   </a>
          
             </div>
 

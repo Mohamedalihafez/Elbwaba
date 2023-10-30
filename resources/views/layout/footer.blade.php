@@ -18,7 +18,7 @@
                 <h5 class="text-white mb-4"></h5>
                 <a class="btn btn-link text-white-50" href="">خدماتنا </a>
                 <a class="btn btn-link text-white-50" href="">تواصل معنا </a>
-                <a class="btn btn-link text-white-50" href="">عملائنا الكرام </a>
+                <a class="btn btn-link text-white-50" href="">أحبابنا  </a>
                 <a class="btn btn-link text-white-50" href="">سياسة الخصوصية                        </a>
                 <a class="btn btn-link text-white-50" href="">الشروط والأحكام</a>
             </div>
@@ -48,8 +48,12 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">للاستفسارات</h5>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="رقم الجوال ">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">تواصل معنا </button>
+                    <form id="contact-form" method="post" enctype="multipart/form-data" action="{{ route('contact.modify') }}" class="ajax-form" resetAfterSend  swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
+                        @csrf
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" name="phone" placeholder="رقم الجوال ">
+                        <p class="error error_name"></p>
+                        <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">تواصل معنا </button>
+                    </form>
                 </div>
             </div>
         </div>

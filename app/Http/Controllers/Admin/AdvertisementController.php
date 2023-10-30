@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
+use App\Models\Building;
+use App\Models\City;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +32,23 @@ class AdvertisementController extends Controller
      */
     public function upsert(Advertisement $advertisementadmin)
     {
+        $regions = Region::all();
+        
+        if ( $advertisementadmin)
+        {
+            $buildings = Building::where('category_id',$advertisementadmin->category_id)->get();
+        }
+        else {
+            $buildings = Building::all();
+        }
+        $cities = City::where('region_id' ,$advertisementadmin->region_id)->get();
+
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.advertisement.upsert',[
                 'advertisement' => $advertisementadmin,
-                'regions' => Region::all(),
+                'regions' =>  $regions,
+                'cities' =>  $cities ,
+                'buildings' =>  $buildings,
             ]);
         else 
             abort(404);

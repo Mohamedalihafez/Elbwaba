@@ -24,9 +24,7 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
             'phone' => 'required|integer',
-            'comments' => 'required|min:3',
         ];
     }
 
@@ -34,8 +32,6 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => 'الإسم',
-            'phone' => __('pages.phone'),
-            'comments' => __('pages.comments'),
         ];
     }
 }
