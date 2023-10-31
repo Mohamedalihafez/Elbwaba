@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use App\Scopes\TenantScope;
+
 
 class Advertisement extends Model
 {
@@ -16,6 +18,17 @@ class Advertisement extends Model
         'title' ,'ads_owner','building_id' ,'category_id' , 'code' , 'hours' , 'expired_at' ,'description', 'currentLat','currentLng','region_id','city_id' ,'district'	 ,'street','ads_type','license_id','street_type','face_type','width','age','rooms','halls','bathrooms','flats','ads_direction','floors'	,'stores_number','phone', 'country_code','question_1','question_2','question_3','phone_2','link','price','location','seen'	,'user_id'
    ];
 
+    protected static function booted()
+    { 
+        if(Auth::hasUser())
+        {
+            if(! Auth::user()->isSuperAdmin())
+            {
+                static::addGlobalScope(new TenantScope('advertisements'));
+            } 
+        }
+    }
+   
     static function upsertInstance($request)
     {
         $newDateTime = Carbon::now()->addHours(24); 
@@ -82,6 +95,12 @@ class Advertisement extends Model
         }
 
         return $query;
+    }
+    static function itemFilter($request)
+    {
+        $data = Item::where("category_id",1)->get(["name", "id"]);
+
+        return $data;
     }
 
     //Relations

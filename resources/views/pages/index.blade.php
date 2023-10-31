@@ -6,7 +6,7 @@
 <div class="container-fluid header bg-white p-0">
     <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5 text-center">
-        <h1 class="display-5 animated fadeIn mb-4">تطبيق <span class="text-primary">البوابة</span> للتسويق الإلكتروني 
+        <h1 class="display-5 animated fadeIn mb-4"> <span class="text-primary">البوابة</span> للتسويق الإلكتروني 
             <br>
             <span class="text-primary ">( فن وفكر وإنجاز )</span> 
         </h1>
@@ -82,8 +82,8 @@
                 </section>
             </div>
         </div>
-        <div class="text-center mx-auto  wow fadeInUp " data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="mb-3 header_text">الشركاء المساهمون في النجاح المشترك</h1>
+        <div class="text-center mx-auto  wow fadeInUp mb-3 " data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="mb-3  header_text"> المساهمون في النجاح </h1>
         </div>
         
         <div class="row g-4">

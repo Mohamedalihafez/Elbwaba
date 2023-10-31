@@ -24,7 +24,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">{{ __('pages.add_advertisement') }}</h3>
+                            <h3 class="page-title">تعديل الإعلان</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-advertisement"><a href="javascript:(0);">{{ __('pages.advertisements') }}</a></li>
                             </ul>
@@ -41,27 +41,28 @@
                                     <div class="service-fields mb-3">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-6   mb-2 ">
-                                                    <label class="mb-2">{{ __('pages.title') }}</label>
+                                                <div class="col-md-6   mt-2  ">
+                                                    <label class="mt-2 ">{{ __('pages.title') }}</label>
                                                     <input class="form-control text-start" type="text" name="title" value="@isset($advertisement->id){{$advertisement->title}}@endisset" placeholder="{{ __('pages.name') }}" >
                                                 </div>
-                                                <div class="col-md-3  mb-2  ">
-                                                    <label class="mb-2">نوع العقار </label>
-                                                    <select  class="form-control  d-flex " placeholder="المنطقه"  name="building_id"> 
+                                                <div class="@if(Auth::user()->isSuperAdmin()) col-md-3  @else  col-md-6 @endif  mt-2   ">
+                                                    <label class="mt-2 ">نوع العقار </label>
+                                                    <select id="building_id"  class="form-control  d-flex " placeholder="المنطقه"  name="building_id"> 
                                                         @foreach($buildings as $building)
                                                             <option @isset($advertisement->id) @if($advertisement->building_id == $building->id) selected @else @endif @endisset class="form-control"  value="{{$building->id}}">{{ $building->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                @if(Auth::user()->isSuperAdmin())
+                                                    <div class="col-md-3  mt-2   ">
+                                                        <label class="mt-2 ">صلاحيه الإعلان  </label>
+                                                        <input class="form-control text-start" type="datetime-local" name="expired_at" value="@isset($advertisement->id){{$advertisement->expired_at}}@endisset" placeholder="{{ __('pages.name') }}" >
 
-                                                <div class="col-md-3  mb-2  ">
-                                                    <label class="mb-2">صلاحيه الإعلان  </label>
-                                                    <input class="form-control text-start" type="datetime-local" name="expired_at" value="@isset($advertisement->id){{$advertisement->expired_at}}@endisset" placeholder="{{ __('pages.name') }}" >
-
-                                                </div>
+                                                    </div>
+                                                @endif
                                                 
-                                                <div class="col-md-3  mb-2  ">
-                                                    <label class="mb-2">المنطقه </label>
+                                                <div class="col-md-3  mt-2   ">
+                                                    <label class="mt-2 ">المنطقه </label>
                                                     <select id="regions" class="form-control  d-flex " placeholder="المنطقه"  name="region_id"> 
                                                         @foreach($regions as $region)
                                                             <option @isset($advertisement->id) @if($advertisement->region->id == $region->id) selected @else @endif @endisset class="form-control"  value="{{$region->id}}">{{ $region->name_ar}}</option>
@@ -69,8 +70,8 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-3  mb-2  ">
-                                                    <label class="mb-2">المدينه </label>
+                                                <div class="col-md-3  mt-2   ">
+                                                    <label class="mt-2 ">المدينه </label>
                                                     <select id="cities" class="form-control  d-flex " placeholder="المدينه"  name="city_id"> 
                                                         @foreach($cities as $city)
                                                             <option @isset($advertisement->id) @if($advertisement->city_id == $city->id) selected @else @endif @endisset class="form-control"  value="{{$city->id}}">{{ $city->name_ar}}</option>
@@ -78,49 +79,53 @@
                                                     </select>
                                                 </div>
                                                 
-                                                <div class="col-md-3  mb-2 ">
-                                                    <label class="mb-2">{{ __('pages.district') }}</label>
+                                                <div class="col-md-3  mt-2  ">
+                                                    <label class="mt-2 ">{{ __('pages.district') }}</label>
                                                     <input class="form-control text-start" type="text" name="district" value="@isset($advertisement->id){{$advertisement->district}}@endisset" placeholder="{{ __('pages.district') }}" >
                                                 </div>
 
-                                                <div class="col-md-3  mb-2 ">
-                                                    <label class="mb-2">{{ __('pages.street') }}</label>
+                                                <div class="col-md-3  mt-2  ">
+                                                    <label class="mt-2 ">{{ __('pages.street') }}</label>
                                                     <input class="form-control text-start" type="text" name="street" value="@isset($advertisement->id){{$advertisement->street}}@endisset" placeholder="{{ __('pages.street') }}" >
                                                 </div>
-
-                                                <div class="col-md-2  mb-2 ">
-                                                    <label class="mb-1" for="exampleInputtext1">نوع الفلة  </label>
-                                                    <select id=""  class="form-control" name="ads_type">
-                                                            <option @if($advertisement->ads_type == 1) selected @else @endif value="1">مستقله</option>
-                                                            <option @if($advertisement->ads_type == 2) selected @else @endif value="2">دوبلكس </option>
-                                                            <option @if($advertisement->ads_type == 3) selected @else @endif value="3">تاون هاوس</option>
-                                                            <option @if($advertisement->ads_type == 4) selected @else @endif value="4">مع شقق</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2  mb-2 ">
-                                                    <label class="mb-1" >صفة المعلن</label>
+                                                @if($advertisement->category_id == 1 )
+                                                    <div class="col-md-2  mt-2  ">
+                                                        <label class="mt-2 " for="exampleInputtext1">نوع الفلة  </label>
+                                                        <select id=""  class="form-control" name="ads_type">
+                                                                <option @if($advertisement->ads_type == 1) selected @else @endif value="1">مستقله</option>
+                                                                <option @if($advertisement->ads_type == 2) selected @else @endif value="2">دوبلكس </option>
+                                                                <option @if($advertisement->ads_type == 3) selected @else @endif value="3">تاون هاوس</option>
+                                                                <option @if($advertisement->ads_type == 4) selected @else @endif value="4">مع شقق</option>
+                                                        </select>
+                                                    </div>
+                                                @else
+                                                @endif
+                                                @if($advertisement->category_id == 1 )
+                                                <div class="col-md-2  mt-2  ">
+                                                    <label class="mt-2 " >صفة المعلن</label>
                                                     <select id="ads_owner"  class="form-control" name="ads_owner">
                                                             <option  @if($advertisement->ads_owner == 1) selected @else @endif value="1">مالك</option>
                                                             <option  @if($advertisement->ads_owner == 2) selected @else @endif value="2">مكتب عقار</option>
                                                             <option  @if($advertisement->ads_owner == 3) selected @else @endif value="3">وسيط</option>
                                                     </select>
                                                 </div>
-
-                                                <div class="col-md-2  mb-2 ">
-                                                    <label class="mb-1" > @if($advertisement->category_id == 1 )  رقم الرخصه  @else  المعلن @endif </label>
+                                                @else 
+                                                @endif
+                                                <div class="@if($advertisement->category_id != 1) col-md-3 @else col-md-2  @endif mt-2  ">
+                                                    <label class="mt-2 " > @if($advertisement->category_id == 1 )  رقم الرخصه  @else  المعلن @endif </label>
                                                     <input type="text" name="license_id" value="@isset($advertisement->id){{$advertisement->license_id}}@endisset" class="form-control border-0  " placeholder="@if($advertisement->category_id == 1 )  رقم الرخصه  @else  المعلن @endif" style="height: 40;">
                                                 </div>   
-
-                                                <div class="col-md-3  mb-2 ">
-                                                    <label class="mb-1" >نوع الشارع </label>
+                                                @if($advertisement->category_id == 1 )
+                                                <div class="col-md-3  mt-2  ">
+                                                    <label class="mt-2 " >نوع الشارع </label>
                                                     <select id=""  class="form-control" name="street_type">
                                                             <option  @if($advertisement->street_type == 1) selected @else @endif value="1">سكني</option>
                                                             <option  @if($advertisement->street_type == 2) selected @else @endif value="2"> تجاري</option>
                                                     </select>
                                                 </div>
                                                 
-                                                <div class="col-md-3  mb-2 ">
-                                                    <label class="mb-1" for="exampleInputtext1">الواجهة</label>
+                                                <div class="col-md-3 mt-2 ">
+                                                    <label class="mt-2 " for="exampleInputtext1">الواجهة</label>
                                                     <select id=""  class="form-control" name="face_type">
                                                             <option  @if($advertisement->face_type == 1) selected @else @endif   value="1">شمال</option>
                                                             <option  @if($advertisement->face_type == 2) selected @else @endif  value="2">جنوب </option>
@@ -134,19 +139,20 @@
                                                             <option  @if($advertisement->face_type == 10) selected @else @endif  value="10">اربع شوارع </option>
                                                     </select>
                                                 </div>
-
+                                                @else 
+                                                @endif
                                                 <div class="col-md-3 mt-2 ">
-                                                    <label class="mb-2">{{ __('pages.width') }}</label>
-                                                    <input class="form-control text-start" type="text" name="width" value="@isset($advertisement->id){{$advertisement->width}}@endisset" placeholder="{{ __('pages.street') }}" >
+                                                    <label class="mt-2 ">{{ __('pages.width') }}</label>
+                                                    <input class="form-control text-start" type="text" name="width" value="@isset($advertisement->id){{$advertisement->width}}@endisset" placeholder="{{ __('pages.width') }}" >
                                                 </div>
-
+                                                @if($advertisement->category_id == 1 )
                                                 <div class="col-md-3 mt-2 ">
-                                                    <label class="mb-2">{{ __('pages.age') }}</label>
+                                                    <label class="mt-2 ">{{ __('pages.age') }}</label>
                                                     <input class="form-control text-start" type="text" name="age" value="@isset($advertisement->id){{$advertisement->age}}@endisset" placeholder="{{ __('pages.street') }}" >
                                                 </div> 
 
                                                 <div class="col-lg-2 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد الغرف</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد الغرف</label>
                                                     <select id=""  class="form-control" name="rooms">
                                                             <option @if($advertisement->rooms == 1) selected @else @endif  value="1">1</option>
                                                             <option @if($advertisement->rooms == 2) selected @else @endif  value="2">2 </option>
@@ -160,7 +166,7 @@
                                                 </div>
 
                                                 <div class="col-lg-2 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد الصالات</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد الصالات</label>
                                                     <select id=""  class="form-control" name="halls">
                                                             <option @if($advertisement->halls == 1) selected @else @endif  value="1">1</option>
                                                             <option @if($advertisement->halls == 2) selected @else @endif  value="2">2 </option>
@@ -171,7 +177,7 @@
                                                 </div>
 
                                                 <div class="col-lg-2 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد دورات المياه</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد دورات المياه</label>
                                                     <select id=""  class="form-control" name="bathrooms">
                                                             <option  @if($advertisement->bathrooms == 1) selected @else @endif  value="1">1</option>
                                                             <option  @if($advertisement->bathrooms == 2) selected @else @endif  value="2">2 </option>
@@ -182,80 +188,108 @@
                                                 </div>
 
                                                 <div class="col-lg-3 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد الشقق</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد الشقق</label>
                                                     <input class="form-control text-start" type="text" name="flats" value="@isset($advertisement->id){{$advertisement->flats}}@endisset" placeholder="{{ __('pages.street') }}" >
                                                     <p class="error error_flats"></p>
                                                 </div>
 
                                                 <div class="col-lg-3 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">حدود وأطوال العقار</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">حدود وأطوال العقار</label>
             
                                                     <input type="text"  name="ads_direction" value="@isset($advertisement->id){{$advertisement->ads_direction}}@endisset" class="form-control border-0  " style="height: 40;">
                                                     <p class="error error_ads_direction"></p>
                                                 </div>
 
                                                 <div class="col-lg-3 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد الأدوار</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد الأدوار</label>
             
                                                     <input type="number"  name="floors"  value="@isset($advertisement->id){{$advertisement->floors}}@endisset"  class="form-control border-0 " style="height: 40;">
                                                     <p class="error error_floors"></p>
                                                 </div>
 
                                                 <div class="col-lg-3 mt-2">
-                                                    <label class="mb-1" for="exampleInputEmail1">عدد المحلات</label>
+                                                    <label class="mt-2 " for="exampleInputEmail1">عدد المحلات</label>
                                                     <input type="number"  name="stores_number"  value="@isset($advertisement->id){{$advertisement->stores_number}}@endisset"  class="form-control border-0  " style="height: 40;">
                                                     <p class="error error_stores_number"></p>
                                                 </div>
-
-                                                <div class="col-md-6 mb-2">
-                                                    <label class="mb-2" >رقم الجوال </label>
+                                                @else 
+                                                @endif
+                                                <div class="@if($advertisement->category_id != 1)col-md-3 @else col-md-6 @endif mt-2 ">
+                                                    <label class="mt-2 " >رقم الجوال </label>
                                                     <br>
                                                     <input id="phone" type="number"  name="phone"  value="@isset($advertisement->id){{$advertisement->phone}}@endisset"  class="form-control text-start w-100" >
                                                     <p class="error error_phone"></p>
                                                 </div>
 
-                                                <div class="col-md-6 mb-2">
-                                                    <label class="mb-2">{{ __('pages.price') }}</label>
+                                                <div class="@if($advertisement->category_id != 1)col-md-3 @else col-md-6 @endif mt-2 ">
+                                                    <label class="mt-2 ">{{ __('pages.price') }}</label>
                                                     <input class="form-control text-start" type="text" name="price" value="@isset($advertisement->id){{$advertisement->price}}@endisset" placeholder="{{ __('pages.price') }}" >
                                                 </div>
 
                                                 <input class="d-none" name="currentLat" id="currentLat" type="text" value="{{$advertisement->currentLat}}"/>
                                                 <input class="d-none" name="currentLng" id="currentLng" type="text" value="{{$advertisement->currentLng}}"/>
                                       
-                                                <div class="col-md-12 mb-2">
-                                                    <label class="mb-2">{{ __('pages.description') }}</label>
+                                                <div class="col-md-12 mt-2 ">
+                                                    <label class="mt-2 ">{{ __('pages.description') }}</label>
                                                     <textarea id="inputDescriptionEs" class="form-control" name="description"  rows="4" required>@isset($advertisement->id){{$advertisement->description}}@endisset</textarea>
                                                 </div>
-
-                                                <div class="mt-2 mb-2  text-center bg-dark color-white p-2">
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-auto">
-                                                            <h3 class=""> بيانات مطلوبه </h3>
+                                                @if($advertisement->category_id != 1 )
+                                                    <div class="col-12 mt-2">
+                                                        <h4>خيارات اضافية
+                                                        </h4>
+                                                        <select id="items" name="extras[]" class="js-select-multiple w-100" multiple="multiple">
+                                                            @foreach ($extras as $extra)
+                                                                <option value="{{ $extra->id }}" @if(in_array($extra->id,$advertisement->extras->pluck('id')->all())) selected @endif data-badge="">{{$extra->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                @else
+                                                @endif
+                                                @if($advertisement->category_id == 1 )
+                                                    <div class="col-12 mt-2">
+                                                        <h4>خيارات اضافية
+                                                        </h4>
+                                                        <select name="items[]" class="js-select-multiple w-100" multiple="multiple">
+                                                            @foreach ($items as $item)
+                                                                <option value="{{ $item->id }}" @if(in_array($item->id,$advertisement->items->pluck('id')->all())) selected @endif data-badge="">{{$item->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mt-2 mt-2   text-center bg-dark color-white p-2">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-auto">
+                                                                <h3 class=""> بيانات مطلوبه </h3>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row mt-2">
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-1" >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
-                                                        <input type="text"  value="{{$advertisement->question_1}}"  name="question_1"  class="form-control border-0  "  style="height: 40;">
+                                                    <div class="row mt-2">
+                                                        <div class="col-lg-6">
+                                                            <label class="mt-2 " >هل يوجد الرهن أو القيد الذي يمنع أو يحد من التصرف او الانتفاع من العقار ؟</label>
+                                                            <input type="text"  value="{{$advertisement->question_1}}"  name="question_1"  class="form-control border-0  "  style="height: 40;">
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="mt-2 " >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
+                                                            <input type="text"   value="{{$advertisement->question_2}}"   name="question_2"  class="form-control border-0  "  style="height: 40;">
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="mt-2 " >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
+                                                            <input type="text"   value="{{$advertisement->question_3}}"   name="question_3"  class="form-control border-0  "  style="height: 40;">
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="mt-2 " >
+                                                                إضافه رابط اليوتيوب (اختياري)
+                                                            </label>
+                                                            <br> 
+                                                            <br> 
+                                                            <input type="text"    value="{{$advertisement->link}}" name="link"  class="form-control border-0 "  style="height: 40;">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-1" >الحقوق والالتزامات علي العقار الغير موثقة في وثيقه العقار </label>
-                                                        <input type="text"   value="{{$advertisement->question_2}}"   name="question_2"  class="form-control border-0  "  style="height: 40;">
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-1" >المعلومات التي قد تؤثر علي العقار سواء في خفض قيمته او التأثير علي قرار المستهدف بالإعلان</label>
-                                                        <input type="text"   value="{{$advertisement->question_3}}"   name="question_3"  class="form-control border-0  "  style="height: 40;">
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-1" >
-                                                            إضافه رابط اليوتيوب (اختياري)
-                                                        </label>
-                                                        <br> 
-                                                        <br> 
-                                                        <input type="text"    value="{{$advertisement->link}}" name="link"  class="form-control border-0 "  style="height: 40;">
-                                                    </div>
+                                                    @else
+                                                    @endif
                                                     <div class="col-lg-12  card-header">
+                                                        <label class="mt-2 h2 " >
+                                                         صور الإعلان
+                                                        </label>
                                                         <figure class="usr-dtl-pic card-header">
                                                             <img src="" id="superadminpic">
                                                             <label class="camera" for="upload-img"><i class="ti ti-camera" aria-hidden="true"></i></label>
@@ -276,11 +310,11 @@
 
                                                     </div>
                                                     <div class="col-md-12 ">
-                                                        <label class="mb-2">{{ __('pages.location') }}</label>
-                                                        <div class="map-show" id="map_2"></div>
+                                                        <label class="mt-2 h2 " >
+                                                           الموقع
+                                                        </label>                                                        <div class="map-show" id="map_2"></div>
                                                     </div>  
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                     @isset($advertisement->id)
@@ -427,6 +461,24 @@ $(document).ready(function(){
     });
 });
 
+$('#building_id').on('change', function () {
+    var building_id = this.value;
+    $("#items").html('');
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': '{{csrf_token()}}'
+        },
+        url: '{{ route("extra.fetch") }}',
+        method: 'post',
+        data: {building_id: building_id},
+        success: function (results) {
+            $('#items').html('');
+            results.forEach((result, index) => {
+                $("#items").append('<option value="' + result['id'] + '">' + result['name'] + '</option>');
+            });
+        },
+    });
+});
 $(document).ready(function(){
     var previewImage = function(input) {
     var fileTypes = ['jpg', 'jpeg', 'png'];
@@ -508,6 +560,15 @@ $(document).ready(function showpreview (){
             $('.camera').show()
         }     
     });
+
+    $(".js-select-multiple").select2({
+        closeOnSelect : false,
+        placeholder : "Placeholder",
+        // allowHtml: true,
+        allowClear: true,
+        tags: true // создает новые опции на лету
+    });
+        
      
 
 </script>

@@ -73,10 +73,11 @@
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
+                        <li><a href="{{ route('home') }}"><i class="ti-control-record text-success"></i> {{ __('pages.home') }}</a></li>
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('user') }}"><i class="ti-control-record text-success"></i> {{ __('pages.users') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('region') }}"><i class="ti-control-record text-success"></i> {{ __('pages.regions') }}</a></li>@endif
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('city') }}"><i class="ti-control-record text-success"></i> {{ __('pages.cities') }}</a></li>@endif
-                        @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('advertisementadmin') }}"><i class="ti-control-record text-success"></i> {{ __('pages.advertisements') }}</a></li>@endif
+                        <li><a href="{{ route('advertisementadmin') }}"><i class="ti-control-record text-success"></i> {{ __('pages.advertisements') }}</a></li>
 
                         {{-- @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('compound') }}"><i class="ti-control-record text-success"></i> {{ __('pages.compounds') }}</a></li>@endif --}}
                         @if(Auth::user()->isSuperAdmin())<li><a href="{{ route('building') }}"><i class="ti-control-record text-success"></i> {{ __('pages.buildings') }}</a></li>@endif
@@ -168,49 +169,50 @@
 			allowClear: true,
 			tags: true // создает новые опции на лету
 		});
-        $(document).ready(function(){
-            function route(){
-                return $(this).attr('route');
-            }
+        
+        // $(document).ready(function(){
+        //     function route(){
+        //         return $(this).attr('route');
+        //     }
 
-            function placeholder(){
-                return $(this).attr('placeholder');
-            }
+        //     function placeholder(){
+        //         return $(this).attr('placeholder');
+        //     }
             
-            $(".select2").select2({
-                ajax: {
-                    url: route,
-                    type: "post",
-                    dataType: 'json',
-                    delay: 250,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: function (term) {
-                        return {
-                            term: term
-                        };
-                    },
-                    processResults: function (response) {
-                        return {
-                            results: $.map(response, function(item) {
-                                return {
-                                    text: item.name ,
-                                    id: item.id,
-                                }
-                            })
-                        }
-                    },
-                    cache: true,
-                    templateResult: formatRepo,
-                    placeholder: placeholder,
-                },
-            });
+        //     $(".select2").select2({
+        //         ajax: {
+        //             url: route,
+        //             type: "post",
+        //             dataType: 'json',
+        //             delay: 250,
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             },
+        //             data: function (term) {
+        //                 return {
+        //                     term: term
+        //                 };
+        //             },
+        //             processResults: function (response) {
+        //                 return {
+        //                     results: $.map(response, function(item) {
+        //                         return {
+        //                             text: item.name ,
+        //                             id: item.id,
+        //                         }
+        //                     })
+        //                 }
+        //             },
+        //             cache: true,
+        //             templateResult: formatRepo,
+        //             placeholder: placeholder,
+        //         },
+        //     });
 
-            function formatRepo (item) {
-                return item.name;
-            }
-        });
+        //     function formatRepo (item) {
+        //         return item.name;
+        //     }
+        // });
 
         $('.dropify').dropify();
       

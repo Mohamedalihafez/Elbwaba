@@ -183,7 +183,7 @@
         'comments' => 'استفسار',
         'send_message' => 'ارسل رسالة',
         'get_in_touch' => 'تواصل معنا',
-        'location' => 'المكان',
+        'location' => 'الموقع',
         'contact_us' => 'اتصل بنا',
         'home' => 'الصفحه الرئيسيه',
         //swalalert
@@ -468,7 +468,7 @@
          'comments' => 'استفسار',
          'send_message' => 'ارسل رسالة',
          'get_in_touch' => 'تواصل معنا',
-         'location' => 'المكان',
+         'location' => 'الموقع',
          'contact_us' => 'اتصل بنا',
          'home' => 'الصفحه الرئيسيه',
          //swalalert
@@ -636,7 +636,7 @@
          'name_compound'=> 'إسم المجمع السكني',
          'compound_owner' => 'صاحب المجمع السكني',
          'edit_compound_info' => 'تعديل بيانات المجمع السكني',
-         'buildings' => 'أقسام الإعلانات',
+         'buildings' => 'أقسام الإعلانات العقاريه',
          'maintenances' => 'الصيانة',
          'add_building' => 'إضافة عقار',
          'add_maintenance' => 'إضافة صيانة',
@@ -690,8 +690,6 @@
          'width'=>'المساحه',
          'age'=>'عمر العقار',
          'price' => 'السعر',
-
- 
-
+         'advertisemnts' => 'إعلاناتي',
     ];
 ?>

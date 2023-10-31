@@ -68,6 +68,9 @@ class User extends Authenticatable
 
         return $query;
     }
+
+
+
     public function isSuperAdmin() 
     {
         return auth()->user()->role->id == SUPERADMIN;
@@ -81,6 +84,15 @@ class User extends Authenticatable
     public function allPrivilege() 
     {
         return auth()->user()->role->all_privileges == 1;
+    }
+    
+    public function hasPrivilege($privilege)
+    {
+        if ( $this->isSuperAdmin() || $this->isPartner() || $this->allPrivilege() ) {
+            return true;
+        }
+
+        return auth()->user()->role->privileges->whereIn('id',[$privilege])->count();
     }
 
     public function role()

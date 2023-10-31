@@ -16,9 +16,27 @@ class TenantScope implements Scope
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return void
      */
+    protected $table = '';
+
+    public function __construct($table)
+    {
+        $this->table= $table;
+    }
 
     public function apply(Builder $builder, Model $model)
     {
+        if(Auth::check())
+        {
+            if(Auth::user()->isSuperAdmin())
+            {
+                $builder;
+            }
+            else{
+                if($this->table == 'advertisements'){
+                    $builder->where('advertisements.user_id', '=', Auth::user()->id);
+                }
 
+            }
+        }
     }
 }

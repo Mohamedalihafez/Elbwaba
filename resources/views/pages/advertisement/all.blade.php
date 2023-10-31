@@ -9,7 +9,7 @@
 @section('content')
 <div class="container-xxl py-5">
     <div class="container-fluid  wow fadeInUp " data-wow-delay="0.1s">
-        <h1 class="text-center "> إعلانات @if(Request('category_id') == 1 ) عقاريه  @elseif (Request('category_id') == 2) VIP @else تجاريه  @endif</h1>
+        <h1 class="text-center "> إعلانات  @if(Request('category_id')) @if(Request('category_id') == 1 ) عقاريه  @elseif (Request('category_id') == 2) VIP @else تجاريه  @endif @else @endif</h1>
         <div class="row g-4 mt-3">
             @foreach ( $advertisements as $advertisement)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">

@@ -17,7 +17,7 @@ class Contact extends Model
         'name',
         'email',
         'phone',
-        'country_code',
+        // 'country_code',
         'comments',
     ];
 

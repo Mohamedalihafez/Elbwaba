@@ -173,12 +173,13 @@ Route::group(['prefix' => 'city'],function(){
 });
 
 Route::group(['prefix' => 'advertisementadmin'],function(){
-    Route::get('/', [AdvertisementController::class,"index"])->name('advertisementadmin');
-    Route::get('/upsert/{advertisementadmin?}',[AdvertisementController::class,'upsert'])->name('advertisementadmin.upsert');
-    Route::get('/filter',[AdvertisementController::class,'filter'])->name('advertisementadmin.filter');
-    Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisementadmin.modify');
+    Route::get('/', [AdvertisementController::class,"index"])->name('advertisementadmin')->can('view-advertisement');
+    Route::get('/upsert/{advertisementadmin?}',[AdvertisementController::class,'upsert'])->name('advertisementadmin.upsert')->can('upsert-advertisement');
+    Route::get('/filter',[AdvertisementController::class,'filter'])->name('advertisementadmin.filter')->can('upsert-advertisement');
+    Route::get('/filter-item',[AdvertisementController::class,'itemFilter'])->name('items');
+    Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisementadmin.modify')->can('view-advertisement');
     Route::post('/status/update',[AdvertisementController::class,'status'])->name('advertisementadmin.status');
-    Route::post('/delete/{advertisementadmin}',[AdvertisementController::class,'destroy'])->name('advertisementadmin.delete');
+    Route::post('/delete/{advertisementadmin}',[AdvertisementController::class,'destroy'])->name('advertisementadmin.delete')->can('delete-advertisement');
 });
 
 Route::group(['prefix' => 'category'],function(){

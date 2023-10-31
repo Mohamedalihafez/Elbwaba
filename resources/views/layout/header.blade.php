@@ -48,7 +48,11 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('pages.dashboard') }}</a>
+                                @if (Auth::user()->isSuperAdmin())
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('pages.dashboard') }}</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('advertisementadmin') }}">{{ __('pages.advertisemnts') }}</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}">{{ __('pages.my_profile') }}</a>
                                 <a class="dropdown-item"  onclick="event.preventDefault();document.getElementById('logout-form').submit();" aria-expanded="false" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     {{ __('pages.Logout') }}

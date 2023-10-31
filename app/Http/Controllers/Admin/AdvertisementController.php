@@ -7,6 +7,8 @@ use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Models\Building;
 use App\Models\City;
+use App\Models\Extra;
+use App\Models\Item;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +19,20 @@ class AdvertisementController extends Controller
     {
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.advertisement.index',[
-                'advertisements' => Advertisement::filter($request->all())->paginate(50),
-                
-            ]);
+                'advertisements_building' => Advertisement::where('category_id', 1)->filter($request->all())->paginate(50),
+                'advertisements_vip' => Advertisement::where('category_id', 2)->filter($request->all())->paginate(50),
+                'advertisements_commerce' => Advertisement::where('category_id', 3)->filter($request->all())->paginate(50),
+
+        ]);
         else 
-            abort(404);
+        {
+            return view('admin.pages.advertisement.index',[
+                'advertisements_building' => Advertisement::where('user_id',Auth::user()->id)->where('category_id', 1)->filter($request->all())->paginate(50),
+                'advertisements_vip' => Advertisement::where('user_id',Auth::user()->id)->where('category_id', 2)->filter($request->all())->paginate(50),
+                'advertisements_commerce' => Advertisement::where('user_id',Auth::user()->id)->where('category_id', 3)->filter($request->all())->paginate(50),
+
+            ]);
+        }
         
     }
 
@@ -38,25 +49,45 @@ class AdvertisementController extends Controller
         {
             $buildings = Building::where('category_id',$advertisementadmin->category_id)->get();
         }
-        else {
+
+        else 
+        {
             $buildings = Building::all();
         }
-        $cities = City::where('region_id' ,$advertisementadmin->region_id)->get();
 
+        $cities = City::where('region_id' ,$advertisementadmin->region_id)->get();
+        $items = Item::where('category_id' , $advertisementadmin->category_id)->get();
+        $extras = Extra::where('category_id' , $advertisementadmin->category_id)->where('building_id' , $advertisementadmin->building_id)->get();
         if(Auth::user()->isSuperAdmin())
             return view('admin.pages.advertisement.upsert',[
                 'advertisement' => $advertisementadmin,
                 'regions' =>  $regions,
                 'cities' =>  $cities ,
                 'buildings' =>  $buildings,
-            ]);
+                'items' => $items,
+                'extras'=>$extras,
+        ]);
         else 
-            abort(404);
+        {
+            return view('admin.pages.advertisement.upsert',[
+                'advertisement' => $advertisementadmin,
+                'regions' =>  $regions,
+                'cities' =>  $cities ,
+                'buildings' =>  $buildings,
+                'items' => $items,
+                'extras'=>$extras,
+            ]);
+        }
     }
 
     public function status(Request $request)
     {
         return Advertisement::advertisementUpdate($request);
+    }
+
+    public function itemFilter(Request $request)
+    {
+       return Advertisement::itemFilter($request);
     }
 
 
@@ -74,7 +105,9 @@ class AdvertisementController extends Controller
     public function filter(Request $request)
     {
         return view('admin.pages.advertisement.index',[
-            'advertisements' => Advertisement::filter($request->all())->paginate(50)
+            'advertisements_building' => Advertisement::where('category_id', 1)->filter($request->all())->paginate(50),
+            'advertisements_vip' => Advertisement::where('category_id', 2)->filter($request->all())->paginate(50),
+            'advertisements_commerce' => Advertisement::where('category_id', 3)->filter($request->all())->paginate(50),
         ]);
     }
 }
