@@ -55,6 +55,9 @@ position: relative!important;
     width: 120px;
     height: 120px;
 }
+.navbar-light .navbar-nav .nav-link:hover {
+    font-weight:500 !important;
+}
       </style>
 
 </head>
