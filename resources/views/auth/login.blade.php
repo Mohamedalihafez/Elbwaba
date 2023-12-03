@@ -18,7 +18,12 @@
                                 <form id="login_form" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     
-                                    <div class="row mb-3">                
+                                    <div class="row mb-3"> 
+                                        @if (request()->input('message'))
+                                            <div class="alert alert-danger col-12">
+                                                    هذا الحساب تم تعليقه الرجاء المتابعه مع الإداره
+                                            </div>
+                                        @endif        
                                         <div class="col-md-12">
                                             <label class="mb-2" for="exampleInputEmail1">رقم الجوال </label>
                                             <input id="phone" type="tel"  placeholder="رقم الجوال"  class="form-control w-100   @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus pattern="\d*">

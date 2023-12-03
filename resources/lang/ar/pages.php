@@ -691,5 +691,6 @@
          'age'=>'عمر العقار',
          'price' => 'السعر',
          'advertisemnts' => 'إعلاناتي',
+         'this_account_is_suspended' => 'هذا الحساب تم تعليقه'
     ];
 ?>

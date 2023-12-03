@@ -983,3 +983,6 @@ input:checked+.slider:before {
     object-fit: cover;
     width: 100%;
 }
+    .navbar-light .navbar-nav .nav-link:hover {
+    font-weight:500 !important;
+}

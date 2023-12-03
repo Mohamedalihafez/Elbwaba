@@ -17,12 +17,14 @@ class CheckSuspend
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->suspend == 1){
-            auth()->logout();
+        if (auth()->user()) {
+            if (auth()->user()->suspend == 1){
+                auth()->logout();
+    
+                $message = __('auth.this_account_is_suspended');
 
-            $message = __('auth.this_account_is_suspended');
-
-            return redirect()->route('login')->withMessage($message);
+                return redirect()->route('login', ['message' => $message]);
+            }
         }
 
      

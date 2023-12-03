@@ -56,9 +56,7 @@
         color: white;
         margin-left: 12px;
     }
-    .navbar-light .navbar-nav .nav-link:hover {
-    font-weight:500 !important;
-}
+
         .btn-Purple:hover {
         background: linear-gradient(to bottom, #fa71cd 100% ,#c471f5 0%);
         color: white;

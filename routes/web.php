@@ -37,7 +37,7 @@ Route::group(['prefix' => 'privacy'],function () {
     Route::get('/',[ContactController::class,'privacy'])->name('privacy');
 });
 
-Route::group(['prefix' => 'services'],function () {
+Route::group(['prefix' => 'services-data'],function () {
     Route::get('/',[ServiceController::class,'index'])->name('servicess');
 });
 
