@@ -169,6 +169,9 @@
     .bar {
         top:60% !important;
     }
+    .navbar-light .navbar-nav .nav-link:hover {
+    font-weight:500 !important;
+}
     /*  */
 </style>
 <link href="{{ asset('assets/web/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
