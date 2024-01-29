@@ -236,6 +236,7 @@
         <script src="{{ asset('assets/web/contactform/contactform.js')}}"></script>
         <script src="{{ asset('admin_assets\js\dropify.js') }}"></script>
         <script src="{{ asset('admin_assets\js\fileupload.js') }}"></script>
+        
         <script>
             $('.dropify').dropify();
             

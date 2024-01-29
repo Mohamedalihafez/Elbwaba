@@ -34,7 +34,7 @@
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{is_active('contact')}} "> تواصل معنا </a>
          
             </div>
-                <a href="{{ route('contact') }}" class="btn btn-Purple  d-lg-flex {{is_active('contact')}} ">أفكار    </a>
+                <a href="{{ route('ideas') }}" class="btn btn-Purple  d-lg-flex {{is_active('ideas')}} ">أفكار    </a>
 
             @guest	
                 <ul class="nav header-navbar-rht">

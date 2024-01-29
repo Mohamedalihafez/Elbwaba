@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\Setting;
+use App\Models\Term;
 
 class ContactController extends Controller
 {
@@ -38,6 +39,13 @@ class ContactController extends Controller
         return view('pages.policy' , ['setting'=> $setting]);
     }
     
+    public function terms()
+    {
+        $terms = Term::all();
+        return view('pages.terms' , ['terms'=> $terms ]);
+    }
+    
+
     public function modify(ContactRequest $request)
     {
         Contact::upsertInstance($request);

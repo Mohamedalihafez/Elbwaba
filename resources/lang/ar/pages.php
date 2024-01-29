@@ -272,7 +272,6 @@
         'company_classes' => 'شرائح شركة التأمين',
         'percentage' => 'نسبة الخصم',
          'insurance_name' => 'اسم شركة التأمين',
-
          //Insurance Classes
          'classes' => 'شرائح',
          'add_class' => 'إضافة شريحة',

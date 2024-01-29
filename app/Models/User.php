@@ -88,6 +88,16 @@ class User extends Authenticatable
     {
         return User::where('id', $request->id)->update(['suspend' => $request->suspend]);
     }
+
+    static function ideasUpdate($request)
+    {
+        return User::where('id', $request->id)->update(['ideas_id' => $request->ideas_id]);
+    }
+
+    static function ideaRequest($request)
+    {
+        return User::where('id', $request->id)->update(['request_id' => 1]);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -174,5 +184,16 @@ class User extends Authenticatable
     public function role()
     {
         return  $this->belongsTo(Role::class, 'role_id');
+    }
+
+    
+    public function slider()
+    {
+        return  $this->belongsTo(Slider::class, 'id' , 'user_id');
+    }
+
+    public function social()
+    {
+        return  $this->belongsTo(Social_media::class, 'id' , 'user_id');
     }
 }

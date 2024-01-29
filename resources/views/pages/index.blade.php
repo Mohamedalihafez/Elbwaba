@@ -8,32 +8,28 @@
 <div class="container-fluid header bg-white p-0">
     <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5 text-center">
-        <h1 class="display-5 animated fadeIn mb-4"> <span class="text-primary">{{ trim( $setting->title_1  ," ") }} </span>  
-            <br>
-            <span class="text-primary ">( {{$setting->title_2 }} )</span> 
-        </h1>
-        <div class="text-center "> 
-            <!-- App Store button -->
-            <a href="https://apps.apple.com/us/app/%D8%A7%D9%84%D8%A8%D9%88%D8%A7%D8%A8%D8%A9-albawaba/id1557450065#?platform=iphone" target="_blank" class="market-btn apple-btn" role="button">
+            <h1 class="display-5 animated fadeIn mb-4"> <span class="text-primary">{{ trim( $setting->title_1  ," ") }} </span>  
+                <br>
+                <span class="text-primary ">( {{$setting->title_2 }} )</span> 
+            </h1>
+            <div class="text-center "> 
+                <!-- App Store button -->
+                <a href="https://apps.apple.com/us/app/%D8%A7%D9%84%D8%A8%D9%88%D8%A7%D8%A8%D8%A9-albawaba/id1557450065#?platform=iphone" target="_blank" class="market-btn apple-btn" role="button">
+                    <span class="market-button-subtitle">حمل الأن </span>
+                    <span class="market-button-title">App Store</span>
+                </a>
+                
+                <!-- Google Play button -->
+                <a href="https://play.google.com/store/apps/details?id=com.art4Muslimt.tabook&pli=1" target="_blank" class="market-btn google-btn " role="button">
                 <span class="market-button-subtitle">حمل الأن </span>
-                <span class="market-button-title">App Store</span>
-            </a>
-            
-            <!-- Google Play button -->
-            <a href="https://play.google.com/store/apps/details?id=com.art4Muslimt.tabook&pli=1" target="_blank" class="market-btn google-btn " role="button">
-              <span class="market-button-subtitle">حمل الأن </span>
-              <span class="market-button-title">Google Play</span>
-            </a>
-            
-            <!-- Windows store button -->
+                <span class="market-button-title">Google Play</span>
+                </a>
+                
+                <!-- Windows store button -->
 
-            
-            <!-- Amazon button -->
-            {{-- <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn amazon-btn" role="button">
-              <span class="market-button-subtitle">Order now at</span>
-              <span class="market-button-title">Amazon.com</span>
-            </a> --}}
-        </div> 
+                
+
+            </div> 
             <p class="animated fadeIn mb-4 pb-2 banner_p">
               {{$setting->description}}
             </p>
@@ -46,7 +42,7 @@
                     <div class="owl-carousel-item">
                       
                         <img  class="img-fluid img2"  src="{{ asset('setting/' .$setting->id .'/'. $picture->name) }}" />
-                        </a>
+                       
                    </div>
                     @endforeach
                 @endisset
@@ -57,6 +53,60 @@
 
 <!-- Header End -->
 
+{{-- <div class="container-fluid pt-5 mb-3">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+        </div>
+        <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+            <div class="position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{ asset('assets/img/property-1.jpg')}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                            href="">Business</a>
+                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                </div>
+            </div>
+            <div class="position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{ asset('assets/img/property-1.jpg')}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                            href="">Business</a>
+                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                </div>
+            </div>
+            <div class="position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{ asset('assets/img/property-1.jpg')}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                            href="">Business</a>
+                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                </div>
+            </div>
+            <div class="position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{ asset('assets/img/property-1.jpg')}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                            href="">Business</a>
+                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> --}}
 <!-- Category Start -->
 <div class="container-xxl py-5">
     <div class="container">

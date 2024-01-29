@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\Admin\BuildingController;
 
 
@@ -46,6 +47,10 @@ Route::group(['prefix' => 'policy'],function () {
     Route::get('/',[ContactController::class,'policy'])->name('policy');
 });
 
+Route::group(['prefix' => 'terms'],function () {
+    Route::get('/',[ContactController::class,'terms'])->name('terms-home');
+});
+
 Auth::routes();
 
 Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
@@ -53,6 +58,15 @@ Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
     Route::post('api/fetch-minor', [BuildingController::class, 'fetchBuilding'])->name('building.fetch');
 
 });
+
+Route::group(['prefix' => 'ideas' , 'middleware' => 'web'],function () {
+    Route::get('/', [IdeaController::class, 'index'])->name('ideas');
+    Route::post('/request', [IdeaController::class, 'request'])->name('ideas.request');
+    Route::get('/add',[IdeaController::class,'add'])->name('ideas.add');
+});
+
+
+
 Route::group(['prefix' => 'advertisement' , 'middleware' => 'auth'],function () {
     Route::post('/modify',[AdvertisementController::class,'modify'])->name('advertisement.modify');
     Route::get('/category',[AdvertisementController::class,'category'])->name('advertisement');
@@ -64,7 +78,7 @@ Route::group(['prefix' => 'advertisement' , 'middleware' => 'web'],function () {
     Route::post('api/fetch-region', [AdvertisementController::class, 'fetchRegion'])->name('region.fetch');
 });
 
-Route::group(['prefix' => 'ads-show'],function () {
+Route::group(['prefix' => 'ads-show'  , 'middleware' => 'web'],function () {
     Route::get('/all',[AdvertisementController::class,'all'])->name('advertisement.all');
     Route::get('/show/{advertisement?}',[AdvertisementController::class,'show'])->name('advertisement.show');
 });
