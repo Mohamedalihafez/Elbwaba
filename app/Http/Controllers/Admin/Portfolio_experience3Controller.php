@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Toastr;
 use App\Models\Portfolio_experience3;
+use Illuminate\Support\Facades\Auth;
 
 class Portfolio_experience3Controller extends Controller
 {
@@ -41,6 +42,8 @@ class Portfolio_experience3Controller extends Controller
       $port_ex3 = new Portfolio_experience3;
       $port_ex3->project_name = $request->project_name;
       $port_ex3->experience_name = $request->experience_name;
+      $port_ex3->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');
@@ -91,6 +94,8 @@ class Portfolio_experience3Controller extends Controller
       $port_ex3 = Portfolio_experience3::find($id);
       $port_ex3->project_name = $request->project_name;
       $port_ex3->experience_name = $request->experience_name;
+      $port_ex3->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');

@@ -8,6 +8,7 @@ use Toastr;
 use Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Portfolio_experience1;
+use Illuminate\Support\Facades\Auth;
 
 class Portfolio_experience1Controller extends Controller
 {
@@ -43,6 +44,8 @@ class Portfolio_experience1Controller extends Controller
       $port_ex1 = new Portfolio_experience1;
       $port_ex1->project_name = $request->project_name;
       $port_ex1->experience_name = $request->experience_name;
+      $port_ex1->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');
@@ -94,6 +97,8 @@ class Portfolio_experience1Controller extends Controller
       $port_ex1 = Portfolio_experience1::find($id);
       $port_ex1->project_name = $request->project_name;
       $port_ex1->experience_name = $request->experience_name;
+      $port_ex1->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');
@@ -130,12 +135,7 @@ class Portfolio_experience1Controller extends Controller
         $port_ex1 = Portfolio_experience1::find($id);
         unlink("assets/frontend/images/Portfolio/port_exper1/".$port_ex1->picture);
         $port_ex1->delete();
-        if($port_ex1){
-            Toastr::success('portfolio_experience1 dalete successfully', 'ID'.'  '.$port_ex1->id, ["positionClass" => "toast-top-center"]);
-        }
-        else{
-            Toastr::warning('Something is wrong', '', ["positionClass" => "toast-top-center"]);
-        }
+
         return redirect()->back();
     }
 }

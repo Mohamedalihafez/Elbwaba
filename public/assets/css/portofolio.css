@@ -1715,7 +1715,8 @@ fieldset[disabled]
   .form-group .input-group-addon ~ .form-control,
   .input-group .input-group-addon + .form-control,
   .input-group .input-group-addon ~ .form-control {
-    padding: 10px 16px 11px 19px; }
+    padding: 9px 9px 9px 15px;
+    }
 
 .form-group.form-group-no-border .form-control,
 .form-group.form-group-no-border .form-control + .input-group-addon,
@@ -1781,7 +1782,8 @@ fieldset[disabled]
 
 .input-group,
 .form-group {
-  margin-bottom: 10px; }
+  margin-bottom: 4px;
+  }
 
 .input-group[disabled] .input-group-addon {
   background-color: #E3E3E3; }
@@ -1796,7 +1798,8 @@ fieldset[disabled]
 .input-group-addon:last-child,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child) {
-  border-right: 0 none; }
+  /* border-right: 0 none; */
+  }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: #E3E3E3;
@@ -4850,7 +4853,7 @@ margin-left: 8px; }
   color: white !important;
 }
 .input-group-addon {
-  margin: 10px;
+  margin: 14px;
 }
 .cc-experience .cc-experience-header {
   padding-top: 60px;

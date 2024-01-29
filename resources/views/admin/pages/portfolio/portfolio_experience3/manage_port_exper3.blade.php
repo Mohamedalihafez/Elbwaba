@@ -39,8 +39,8 @@
                   <thead>
                   <tr>
                     <th>Serial</th>
-                    <th>Project name</th>
-                    <th>Experience Name</th>
+                    <th>اسم المشروع</th>
+                    <th>خبرتك  بالمشروع</th>
                     <th>Picture</th>
                     <th>Create Date</th>
                     <th>Update Date</th>
@@ -82,8 +82,8 @@
                   <tfoot>
                   <tr>
                     <th>Serial</th>
-                    <th>Project name</th>
-                    <th>Experience Name</th>
+                    <th>اسم المشروع</th>
+                    <th>خبرتك  بالمشروع</th>
                     <th>Picture</th>
                     <th>Create Date</th>
                     <th>Update Date</th>

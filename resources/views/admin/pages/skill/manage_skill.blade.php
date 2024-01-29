@@ -41,7 +41,7 @@
                     <th>نسبه مهاره 5</th>
                     <th>مهاره 6</th>
                     <th>نسبه مهاره 6</th>
-                    <th>Action</th>
+                    <th>احداث</th>
                   </tr>
                   </thead>
                   <tbody>

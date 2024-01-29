@@ -302,13 +302,13 @@ Route::group(['prefix' => 'portofolio1'],function(){
 });
 
 
-Route::group(['prefix' => '/portofolio2'],function(){
-    Route::get('crate_port_exp2', [Portfolio_experience2Controller::class, 'create'])->name('crate_port_exp2');
-    Route::post('store_port_exp2', [Portfolio_experience2Controller::class, 'store'])->name('store_port_exp2');
-    Route::get('manage_port_exp2', [Portfolio_experience2Controller::class, 'index'])->name('manage_port_exp2');
-    Route::get('edit_port_exp2/{id}', [Portfolio_experience2Controller::class, 'edit'])->name('edit_port_exp2');
-    Route::put('update_port_exp2/{id}', [Portfolio_experience2Controller::class, 'update'])->name('update_port_exp2');
-    Route::get('destroy_port_exp2/{id}',[Portfolio_experience2Controller::class, 'destroy'])->name('destroy_port_exp2');
+Route::group(['prefix' => 'portofolio2'],function(){
+    Route::get('/', [Portfolio_experience2Controller::class, 'create'])->name('crate_port_exp2');
+    Route::post('/store_port_exp2', [Portfolio_experience2Controller::class, 'store'])->name('store_port_exp2');
+    Route::get('/manage_port_exp2', [Portfolio_experience2Controller::class, 'index'])->name('manage_port_exp2');
+    Route::get('/edit_port_exp2/{id}', [Portfolio_experience2Controller::class, 'edit'])->name('edit_port_exp2');
+    Route::put('/update_port_exp2/{id}', [Portfolio_experience2Controller::class, 'update'])->name('update_port_exp2');
+    Route::get('/destroy_port_exp2/{id}',[Portfolio_experience2Controller::class, 'destroy'])->name('destroy_port_exp2');
 });
 
 Route::group(['prefix' => '/portofolio2'],function(){

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Toastr;
 use Image;
 use App\Models\Portfolio_experience2;
+use Illuminate\Support\Facades\Auth;
+
 class Portfolio_experience2Controller extends Controller
 {
     /**
@@ -41,6 +43,8 @@ class Portfolio_experience2Controller extends Controller
       $port_ex2 = new Portfolio_experience2;
       $port_ex2->project_name = $request->project_name;
       $port_ex2->experience_name = $request->experience_name;
+      $port_ex2->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');
@@ -91,6 +95,8 @@ class Portfolio_experience2Controller extends Controller
       $port_ex2 = Portfolio_experience2::find($id);
       $port_ex2->project_name = $request->project_name;
       $port_ex2->experience_name = $request->experience_name;
+      $port_ex2->user_id = Auth::user()->id;
+
       if($request->hasfile('picture'))
         {
         $file = $request->file('picture');
@@ -98,6 +104,7 @@ class Portfolio_experience2Controller extends Controller
         $image_name = time().'.'.$extention;
         // delete old post image
         $image_delete = Portfolio_experience2::where("picture", $port_ex2->picture);
+        
         if($image_delete)
          {
           unlink("assets/frontend/images/Portfolio/port_exper2/".$port_ex2->picture);
@@ -126,12 +133,7 @@ class Portfolio_experience2Controller extends Controller
         $port_ex2 = Portfolio_experience2::find($id);
         unlink("assets/frontend/images/Portfolio/port_exper2/".$port_ex2->picture);
         $port_ex2->delete();
-        if($port_ex2){
-            Toastr::success('portfolio_experience1 dalete successfully', 'ID'.'  '.$port_ex2->id, ["positionClass" => "toast-top-center"]);
-        }
-        else{
-            Toastr::warning('Something is wrong', '', ["positionClass" => "toast-top-center"]);
-        }
+
         return redirect()->back();
     }
 }

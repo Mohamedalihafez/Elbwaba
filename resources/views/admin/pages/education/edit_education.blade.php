@@ -54,7 +54,6 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Education Institute Name</label>
                     <input type="text" name="institute_name" class="form-control" value="{{$education->institute_name}}" id="exampleInputEmail1" placeholder="Enter Education Institute  Name" maxlength="60" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 60</span>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Session</label>

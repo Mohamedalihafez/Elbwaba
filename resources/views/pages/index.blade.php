@@ -107,77 +107,6 @@
         </div>
     </div>
 </div> --}}
-<!-- Category Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto  wow fadeInUp " data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="mb-3 header_text">الرعاة الداعمون </h1>
-        </div>
-        <div class="container-xxl mb-3 ">
-            <div class="container">
-                <section class="client-section ">
-                    <div class="container">  
-                        <div class="row">
-                            <div class="owl-carousel   owl-theme client-logo " id="client-logo">
-                                @foreach ( $partners as $partner )
-                                    @if($partner->partner_type == 1)
-                                        <div class="item  owl-theme-scroll item_partner_box ">
-                                            <a  target="_blamk" @if($partner->name != null) href="{{$partner->name}}" @else @endif><img  src="@isset($partner->id){{ asset('/partner/'.$partner->id.'/'.$partner->gallaries->first()->name) }}@endif" class="img-responsive img_logo_partner" alt="client-logo"></a>
-                                        </div>
-                                    @endif      
-                                @endforeach
-                            </div>
-                
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <div class="text-center mx-auto  wow fadeInUp mb-3 " data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="mb-3  header_text"> المساهمون في النجاح </h1>
-        </div>
-        
-        <div class="row g-4">
-            @foreach ( $partners as $partner )
-                @if($partner->partner_type == 2)
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img style="height:50px !important;" class="img-fluid" src="@isset($partner->id){{ asset('/partner/'.$partner->id.'/'.$partner->gallaries->first()->name) }}@endif" alt="Icon">
-                                </div>
-                                <h6>{{$partner->name}}</h6>
-                                <span>{{$partner->phone}}</span>
-                            </div>
-                        </a>
-                    </div>  
-                @endif 
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Category End -->
-
-<!-- About Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                    <img class="img-fluid w-100" src="@isset($features->id){{ asset('/features/'.$features->id.'/'.$features->gallaries->first()->name) }}@endif">
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <h1 class="mb-4">خصائص (تطبيق البوابة)</h1>
-                <p class="mb-4"> {!! $features->privacy !!}</p>
-                <a class="btn btn-primary py-3 px-5 mt-3" href="{{ route('contact') }}">تواصل معنا </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- About End -->
-
-<!-- Property List Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-0 gx-5 align-items-end">
@@ -312,6 +241,78 @@
     
     </div>
 </div>
+
+<!-- Category Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto  wow fadeInUp " data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3 header_text">الرعاة الداعمون </h1>
+        </div>
+        <div class="container-xxl mb-3 ">
+            <div class="container">
+                <section class="client-section ">
+                    <div class="container">  
+                        <div class="row">
+                            <div class="owl-carousel   owl-theme client-logo " id="client-logo">
+                                @foreach ( $partners as $partner )
+                                    @if($partner->partner_type == 1)
+                                        <div class="item  owl-theme-scroll item_partner_box ">
+                                            <a  target="_blamk" @if($partner->name != null) href="{{$partner->name}}" @else @endif><img  src="@isset($partner->id){{ asset('/partner/'.$partner->id.'/'.$partner->gallaries->first()->name) }}@endif" class="img-responsive img_logo_partner" alt="client-logo"></a>
+                                        </div>
+                                    @endif      
+                                @endforeach
+                            </div>
+                
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="text-center mx-auto  wow fadeInUp mb-3 " data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="mb-3  header_text"> المساهمون في النجاح </h1>
+        </div>
+        
+        <div class="row g-4">
+            @foreach ( $partners as $partner )
+                @if($partner->partner_type == 2)
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
+                            <div class="rounded p-4">
+                                <div class="icon mb-3">
+                                    <img style="height:50px !important;" class="img-fluid" src="@isset($partner->id){{ asset('/partner/'.$partner->id.'/'.$partner->gallaries->first()->name) }}@endif" alt="Icon">
+                                </div>
+                                <h6>{{$partner->name}}</h6>
+                                <span>{{$partner->phone}}</span>
+                            </div>
+                        </a>
+                    </div>  
+                @endif 
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Category End -->
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                    <img class="img-fluid w-100" src="@isset($features->id){{ asset('/features/'.$features->id.'/'.$features->gallaries->first()->name) }}@endif">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4">خصائص (تطبيق البوابة)</h1>
+                <p class="mb-4"> {!! $features->privacy !!}</p>
+                <a class="btn btn-primary py-3 px-5 mt-3" href="{{ route('contact') }}">تواصل معنا </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Property List Start -->
 <!-- Property List End -->
 
 <!-- Call to Action Start -->

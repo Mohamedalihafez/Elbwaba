@@ -1,8 +1,7 @@
 @extends('layouts.master.master')
 <link href="{{ asset('assets/css/portofolio.css')}}" rel="stylesheet">
 
-@section('title')
-@endsection
+
 @section('content')
 @if ($slider->count() != 0)
 <div class="container-fluid  wow fadeInUp" data-wow-delay="0.1s">
@@ -330,10 +329,10 @@
               <div class="col-md-12 ml-auto mr-auto">
                 <div class="h4 text-center mb-4 title">أعمالي</div>
                 <div class="nav-align-center">
-                  <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Photography" role="tablist"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
+                  <ul class="nav nav-pills nav-pills-primary">
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="pill" data-toggle="tab" href="#web-development"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#graphic-design"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#Photography"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -344,7 +343,7 @@
                   <div class="row">
                     @if ($portfolio_experience1->count() != 0)
                       @foreach ($portfolio_experience1 as $show )
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
                           <figure class="cc-effect"><img src="{{asset('assets/frontend/images/Portfolio/port_exper1/'.$show->picture)}}"  width="550" height="410" alt="Image"/>
                             <figcaption>
@@ -393,7 +392,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane" id="graphic-design" role="tabpanel">
+              <div class="tab-pane" id="graphic-design">
                 <div class="ml-auto mr-auto">
                   <div class="row">
                     @if ($portfolio_experience2->count() != 0)
@@ -451,7 +450,7 @@
                   </div>
                 
             
-              <div class="tab-pane" id="Photography" role="tabpanel">
+              <div class="tab-pane" id="Photography">
                 <div class="ml-auto mr-auto">
                   <div class="row">
             @if ($portfolio_experience3->count() != 0)
@@ -594,44 +593,44 @@
                 <div class="row">
                   <div class="col-md-9">
                     <div class="card mb-0" data-aos="zoom-in">
-                      <div class="h4 text-center title">Contact Me</div>
+                      <div class="h4 text-center title">تواصل معي</div>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="card-body">
                             <form action="" method="POST">
                               @csrf
-                              <div class="p pb-3"><strong>Feel free to contact me </strong></div>
+                              <div class="p pb-3"><strong>لا تتردد في تواصل معي </strong></div>
                               <div class="row mb-3">
                                 <div class="col">
                                   <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                                    <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
+                                    <input class="form-control" type="text" name="name" placeholder="الإسم" required="required"/>
                                   </div>
                                 </div>
                               </div>
                               <div class="row mb-3">
                                 <div class="col">
-                                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                                    <input class="form-control" type="text" name="subject" placeholder="Subject" required="required"/>
+                                  <div class="input-group"><span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input class="form-control" type="text" name="subject" placeholder="رقم الجوال" required="required"/>
                                   </div>
                                 </div>
                               </div>
                               <div class="row mb-3">
                                 <div class="col">
                                   <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input class="form-control" type="email" name="email" placeholder="E-mail" required="required"/>
+                                    <input class="form-control" type="email" name="email" placeholder="البريد الإلكتروني" required="required"/>
                                   </div>
                                 </div>
                               </div>
                               <div class="row mb-3">
                                 <div class="col">
                                   <div class="form-group">
-                                    <textarea class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
+                                    <textarea class="form-control" name="message" placeholder="محتوي طلبك" required="required"></textarea>
                                   </div>
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col">
-                                  <button class="btn btn-primary" type="submit">Send</button>
+                                  <button class="btn btn-primary" type="submit">ارسل </button>
                                 </div>
                               </div>
                             </form>
@@ -641,11 +640,11 @@
                         @if ($about->count() != 0)
                             @foreach ($about as $show)
                             <div class="card-body">
-                              <p class="mb-0"><strong>Address </strong></p>
+                              <p class="mb-0"><strong>العنوان </strong></p>
                               <p class="pb-2">{{ $show->address }}</p>
-                              <p class="mb-0"><strong>Phone</strong></p>
+                              <p class="mb-0"><strong>الجوال</strong></p>
                               <p class="pb-2">{{ $show->phone }}</p>
-                              <p class="mb-0"><strong>Email</strong></p>
+                              <p class="mb-0"><strong>بريد الإلكتروني</strong></p>
                               <p>{{ $show->email }}</p>
                             </div>
                             @endforeach

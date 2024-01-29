@@ -41,9 +41,9 @@ class IdeaController extends Controller
         $about = About::latest()->where('user_id', $request->user)->take(1)->get();
         $skill = Skill::latest()->where('user_id', $request->user)->take(1)->get();
         $social_media = Social_media::latest()->where('user_id', $request->user)->take(1)->get();
-        $portfolio_experience1 = Portfolio_experience1::latest()->where('user_id', $request->user)->take(4)->get();
-        $portfolio_experience2 = Portfolio_experience2::latest()->where('user_id', $request->user)->take(4)->get();
-        $portfolio_experience3 = Portfolio_experience3::latest()->where('user_id', $request->user)->take(4)->get();
+        $portfolio_experience1 = Portfolio_experience1::latest()->where('user_id', $request->user)->get();
+        $portfolio_experience2 = Portfolio_experience2::latest()->where('user_id', $request->user)->get();
+        $portfolio_experience3 = Portfolio_experience3::latest()->where('user_id', $request->user)->get();
         $work_experience = Work_experience::latest()->where('user_id', $request->user)->take(3)->get();
         $education = Education::latest()->where('user_id', $request->user)->take(3)->get();
         $reference = Reference::latest()->where('user_id', $request->user)->take(5)->get();

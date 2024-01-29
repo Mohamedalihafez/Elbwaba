@@ -1,62 +1,38 @@
 @extends('admin.layout.master')
-@section('title')
- | crate portfolio experience1
-@endsection
-
-@section('Content_header')
- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Create Portfolio Experience1</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Create Portfolio Experience1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-@endsection
 
 @section('content')
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+    <div class="main-wrapper">
+      <!-- Page Wrapper -->
+      <div class="page-wrapper">
+          <div class="content container-fluid">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+          <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create Portfolio Experience1</h3>
+                <h3 class="card-title">إنشاء اعمالك</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form  action="{{ route('store_port_exp1') }}" method="post" enctype="multipart/form-data">
+              <form method="post" enctype="multipart/form-data" action="{{ route('store_port_exp1') }}" class="ajax-form" swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}" redirect="{{ route('manage_port_exp1') }}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Project Name</label>
-                    <input type="text" name="project_name" class="form-control" id="exampleInputEmail1" placeholder="Enter project name" maxlength="60" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 60</span>
+                    <label for="exampleInputEmail1">اسم المشروع</label>
+                    <input type="text" name="project_name" class="form-control" id="exampleInputEmail1" placeholder=" اسم المشروع" maxlength="60" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Experience Name</label>
-                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder="Enter experience name" maxlength="35" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 35</span>
+                    <label for="exampleInputEmail1">خبرتك  بالمشروع</label>
+                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder=" خبرتك  بالمشروع" maxlength="35" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Picture</label>
-                    <input type="file" name="picture" class="form-control" id="exampleInputEmail1" required>
+                    <label for="exampleInputEmail1">صوره المشروع</label>
+                    <input type="file" name="picture" class="form-control dropify" id="exampleInputEmail1" required>
                   </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-block btn-outline-primary">Create Portfolio Experience1</button>
+                  <button type="submit" class="btn btn-block btn-outline-primary">حفظ</button>
                 </div>
               </form>
             </div>

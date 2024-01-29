@@ -39,7 +39,7 @@
                   <thead>
                   <tr>
                     <th>Serial</th>
-                    <th>Work Experience Name</th>
+                    <th>Work خبرتك  بالمشروع</th>
                     <th>Short Description</th>
                     <th>Work Place</th>
                     <th>Date From Start To End</th>
@@ -81,7 +81,7 @@
                   <tfoot>
                   <tr>
                     <th>Serial</th>
-                    <th>Work Experience Name</th>
+                    <th>Work خبرتك  بالمشروع</th>
                     <th>Short Description</th>
                     <th>Work Place</th>
                     <th>Date From Start To End</th>

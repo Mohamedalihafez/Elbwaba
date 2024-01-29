@@ -40,14 +40,12 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Project Name</label>
-                    <input type="text" name="project_name" class="form-control" id="exampleInputEmail1" placeholder="Enter project name" maxlength="60" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 60</span>
+                    <label for="exampleInputEmail1">اسم المشروع</label>
+                    <input type="text" name="project_name" class="form-control" id="exampleInputEmail1" placeholder="Enter اسم المشروع" maxlength="60" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Experience Name</label>
-                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder="Enter experience name" maxlength="35" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 35</span>
+                    <label for="exampleInputEmail1">خبرتك  بالمشروع</label>
+                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder="Enter خبرتك  بالمشروع" maxlength="35" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Picture</label>
