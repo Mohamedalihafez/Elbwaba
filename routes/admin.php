@@ -61,7 +61,7 @@ Route::group(['prefix' => 'user'],function(){
     Route::get('/filter',[UserController::class,'filter'])->name('user.filter');
     Route::post('/modify',[UserController::class,'modify'])->name('user.modify');
     Route::post('/status/update',[UserController::class,'status'])->name('user.status');
-    Route::post('/delete/{user}',[UserController::class,'destroy'])->name('ideas.delete');
+    Route::post('/delete/{user}',[UserController::class,'destroy'])->name('user.delete');
 });
 
 Route::group(['prefix' => 'compound'],function(){
