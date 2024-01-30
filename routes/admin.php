@@ -31,8 +31,8 @@ use App\Http\Controllers\Admin\ReferencesController;
 use App\Http\Controllers\Admin\RequestController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TermsController;
-use App\Http\Controllers\Auth\Dashboard\EducationController;
-use App\Http\Controllers\Auth\Dashboard\Work_experienceController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\Work_experienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ use App\Http\Controllers\Auth\Dashboard\Work_experienceController;
 |
 */
 
-Route::group(['prefix' => '/'],function(){
+Route::group(['prefix' => ''],function(){
     Route::get('/', [AdminController::class,"dashboard"])->name('dashboard');
     Route::get('/data', [AdminController::class,"getData"])->name('data');
 });
@@ -311,7 +311,7 @@ Route::group(['prefix' => 'portofolio2'],function(){
     Route::get('/destroy_port_exp2/{id}',[Portfolio_experience2Controller::class, 'destroy'])->name('destroy_port_exp2');
 });
 
-Route::group(['prefix' => '/portofolio2'],function(){
+Route::group(['prefix' => 'portofolio2'],function(){
     Route::get('crate_port_exp3', [Portfolio_experience3Controller::class, 'create'])->name('crate_port_exp3');
     Route::post('store_port_exp3', [Portfolio_experience3Controller::class, 'store'])->name('store_port_exp3');
     Route::get('manage_port_exp3', [Portfolio_experience3Controller::class, 'index'])->name('manage_port_exp3');
@@ -319,7 +319,7 @@ Route::group(['prefix' => '/portofolio2'],function(){
     Route::put('update_port_exp3/{id}', [Portfolio_experience3Controller::class, 'update'])->name('update_port_exp3');
     Route::get('destroy_port_exp3/{id}',[Portfolio_experience3Controller::class, 'destroy'])->name('destroy_port_exp3');
 });
-Route::group(['prefix' => '/portofolio3'],function(){
+Route::group(['prefix' => 'portofolio3'],function(){
     Route::get('create_work_exper',[Work_experienceController::class, 'create'])->name('create_work_exper');
     Route::post('store_work_exper',[Work_experienceController::class, 'store'])->name('store_work_exper');
     Route::get('manage_work_exper',[Work_experienceController::class, 'index'])->name('manage_work_exper');
@@ -328,8 +328,8 @@ Route::group(['prefix' => '/portofolio3'],function(){
     Route::get('destroy_work_exper/{id}',[Work_experienceController::class, 'destroy'])->name('destroy_work_exper');
 });
 
-Route::group(['prefix' => '/education'],function(){
-    Route::get('create_education',[EducationController::class, 'create'])->name('create_education');
+Route::group(['prefix' => 'education'],function(){
+    Route::get('/',[EducationController::class, 'create'])->name('create_education');
     Route::post('store_education',[EducationController::class, 'store'])->name('store_education');
     Route::get('manage_education',[EducationController::class, 'index'])->name('manage_education');
     Route::get('edit_education/{id}',[EducationController::class, 'edit'])->name('edit_education');
@@ -337,7 +337,7 @@ Route::group(['prefix' => '/education'],function(){
     Route::get('destroy_education/{id}',[EducationController::class, 'destroy'])->name('destroy_education');
 });
 
-Route::group(['prefix' => '/reference'],function(){
+Route::group(['prefix' => 'reference'],function(){
     Route::get('create_reference',[ReferencesController::class, 'create'])->name('create_reference');
     Route::post('store_reference',[ReferencesController::class, 'store'])->name('store_reference');
     Route::get('manage_reference',[ReferencesController::class, 'index'])->name('manage_reference');
@@ -346,7 +346,7 @@ Route::group(['prefix' => '/reference'],function(){
     Route::get('destroy_reference/{id}',[ReferencesController::class, 'destroy'])->name('destroy_reference');
 });
 
-Route::group(['prefix' => '/request'],function(){
+Route::group(['prefix' => 'request'],function(){
     Route::post('store_contact',[RequestController::class, 'store'])->name('store_contact');
     Route::get('manage_contact',[RequestController::class, 'index'])->name('manage_contact');
     Route::get('edit_contact/{id}',[RequestController::class, 'edit'])->name('edit_contact');

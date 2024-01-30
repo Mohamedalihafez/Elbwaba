@@ -40,7 +40,7 @@
                   <tr>
                     <th>Serial</th>
                     <th>Work خبرتك  بالمشروع</th>
-                    <th>Short Description</th>
+                    <th>وصف قصير</th>
                     <th>Work Place</th>
                     <th>Date From Start To End</th>
                     <th>Create Date</th>
@@ -82,7 +82,7 @@
                   <tr>
                     <th>Serial</th>
                     <th>Work خبرتك  بالمشروع</th>
-                    <th>Short Description</th>
+                    <th>وصف قصير</th>
                     <th>Work Place</th>
                     <th>Date From Start To End</th>
                     <th>Create Date</th>

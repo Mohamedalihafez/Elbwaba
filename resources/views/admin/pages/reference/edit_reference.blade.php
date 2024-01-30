@@ -55,7 +55,6 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Occupation Name</label>
                     <input type="text" name="occupation" class="form-control" value="{{ $reference->occupation}}" id="exampleInputEmail1" placeholder="Enter Occupation  Name" maxlength="25" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 25</span>
                   </div>
                    <div class="">
                     <h6>Old Image</h6>
@@ -67,11 +66,10 @@
                     <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max Size 150 x 150</span>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Short Description </label>
+                    <label for="exampleInputEmail1">وصف قصير </label>
                       <textarea id="summernote" name="short_description" value="{{ $reference->short_description}}" maxlength="450" required>
-                      Place <em>Enter</em> <u>Short Description</u> 
+                      Place <em>Enter</em> <u>وصف قصير</u> 
                      </textarea>
-                      <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 450</span>
                   </div>
                   
                   

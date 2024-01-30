@@ -1,51 +1,38 @@
 @extends('admin.layout.master')
-@section('title')
-| Manage Education
-@endsection
-@push('css')
-<!-- DataTables -->
 
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-@endpush
-@section('Content_header')
- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Manage Education</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Manage Education</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+@section('css')
+
 @endsection
+
 @section('content')
- <!-- /.card -->
-
+<div class="main-wrapper">
+  <!-- Page Wrapper -->
+  
+  <div class="page-wrapper">
+      <div class="content container-fluid">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"></h3>
+                <div class="row">
+                  <div class="col-sm-7 col-auto">
+                    <h3 class="page-title">المؤهل  </h3>
+                </div>
+                @if(count($education) == 0)
+                <div class="col-sm-5 col">
+                  <a href="{{ route('create_education') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> قم بانشاء مؤهلك  </a>
               </div>
+              @endif
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-header">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Serial</th>
-                    <th>Group / Department Name</th>
-                    <th>Education Institute Name</th>
-                    <th>Session</th>
-                    <th>Name of Examination</th>
-                    <th>Short Description</th>
-                    <th>Create Date</th>
-                    <th>Update Date</th>
+                    <th>#</th>
+                    <th>القسم</th>
+                    <th>المعهد التعليمي</th>
+                    <th>فتره من - إلي</th>
+                    <th>إسم الشهاده </th>
+                    <th>وصف قصير</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -59,11 +46,9 @@
                     <td>{{$show->session}}</td>
                     <td>{{$show->name_of_examination}}</td>
                     <td>{{Str::limit($show->short_description,50)}}</td>
-                    <td>{{$show->created_at->format('Y-m-d h:i:s')}}</td>
-                    <th>{{$show->updated_at->format('Y-m-d h:i:s')}}</th>
                     <th> 
                       <a class="h4 text-danger mr-2" type="submit" onclick="deletecontent({{ $show->id  }})">
-                          <i class="fas fa-trash-alt"></i>
+                          <i class=" ti-trash"></i> حذف
                       </a>
                     <form id="delete-form-{{ $show->id  }}" 
                      action="{{ route('destroy_education',$show->id)}}" method="get" style="display: none;">
@@ -71,7 +56,7 @@
                                       
                     </form>
 
-                    <a href="{{ route('edit_education', $show->id)}}" class="h4 text-success"> <i class="fa fa-pencil-alt"></i> </a>
+                    <a href="{{ route('edit_education', $show->id)}}" class="h4 text-success"> <i class="ti-pencil"></i> تعديل </a>
                    </th>
                   </tr>
                   @endforeach
@@ -80,20 +65,7 @@
                  
                   
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Serial</th>
-                    <th>Group / Department Name</th>
-                    <th>Education Institute Name</th>
-                    <th>Session</th>
-                    <th>Name of Examination</th>
-                    <th>Short Description</th>
-                    <th>Create Date</th>
-                    <th>Update Date</th>
-                    <th>Action</th>
-            
-                  </tr>
-                  </tfoot>
+
                 </table>
               </div>
               <!-- /.card-body -->
@@ -101,20 +73,8 @@
             <!-- /.card -->
 @endsection
 
-@push('js')
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('assets/backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+@section('js')
+
  <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
     <script type="text/javascript">
         function deletecontent(id) {
@@ -169,4 +129,4 @@
 
 </script>
     
-@endpush
+@endsection

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Toastr;
-use App\Models\Auth\Education;
+use App\Models\Education;
+use Illuminate\Support\Facades\Auth;
+
 class EducationController extends Controller
 {
     /**
@@ -38,11 +39,13 @@ class EducationController extends Controller
     public function store(Request $request)
     {
         $education = new Education;
-        $education->group = $request->group;
-        $education->institute_name = $request->institute_name;
-        $education->short_description = $request->short_description;
-        $education->session = $request->session;
-        $education->name_of_examination = $request->name_of_examination;
+        $education->group = $request->group ?? '';
+        $education->institute_name = $request->institute_name ?? '';
+        $education->short_description = $request->short_description ?? '';
+        $education->session = $request->session ?? '';
+        $education->name_of_examination = $request->name_of_examination ?? '';
+        $education->user_id = Auth::user()->id;
+
         $save = $education->save();
 
         return redirect()->back();
@@ -82,11 +85,13 @@ class EducationController extends Controller
     public function update(Request $request, $id)
     {
         $education = Education::find($id);
-        $education->group = $request->group;
-        $education->institute_name = $request->institute_name;
-        $education->short_description = $request->short_description;
-        $education->session = $request->session;
-        $education->name_of_examination = $request->name_of_examination;
+        $education->group = $request->group ?? '';
+        $education->institute_name = $request->institute_name ?? '';
+        $education->short_description = $request->short_description ?? '';
+        $education->session = $request->session ?? '';
+        $education->name_of_examination = $request->name_of_examination ?? '';
+        $education->user_id = Auth::user()->id;
+
         $save = $education->save();
 
         return redirect()->route('manage_education');
@@ -102,12 +107,7 @@ class EducationController extends Controller
     {
         $education = Education::find($id);
         $destroy = $education->delete();
-        if($destroy){
-            Toastr::success('Education delete successfully', 'ID'.'  '. $education->id, ["positionClass" => "toast-top-center"]);
-        }
-        else{
-            Toastr::warning('Something is wrong', '', ["positionClass" => "toast-top-center"]);
-        }
+
         return redirect()->back();
 
     }

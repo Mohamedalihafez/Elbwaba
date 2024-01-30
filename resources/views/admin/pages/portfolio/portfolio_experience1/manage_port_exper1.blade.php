@@ -15,6 +15,7 @@
                   <div class="col-sm-7 col-auto">
                     <h3 class="page-title">اعمالك  </h3>
                 </div>
+                
                     <div class="col-sm-5 col">
                         <a href="{{ route('crate_port_exp1') }}" class="btn btn-primary float-end ">  <i class="ti-plus"></i> قم بانشاء اعمالك  </a>
                     </div>
@@ -22,9 +23,9 @@
                 </div>
             </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+              <div class="card-body table-responsive">
+                <table id="example1" class="table  table-bordered table-striped display  table table-hover table-center mb-0">
+                 <thead>
                   <tr>
                     <th>#</th>
                     <th>اسم المشروع  </th>

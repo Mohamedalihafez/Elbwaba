@@ -509,7 +509,7 @@
             </div>
           </div>
         </div>
-        <div class="" id="experience">
+        {{-- <div class="" id="experience">
           <div class="container cc-experience">
             <div class="h4 text-center mb-4 title">Work Experience</div>
             @if ($work_experience->count() != 0)
@@ -583,16 +583,16 @@
             @endif
 
           </div>
-        </div>
+        </div> --}}
         
       
         <div class="" id="contact">
-          <div class="cc-contact-information" style="background-image: url('{{ asset('assets/frontend/images/staticmap.png') }}')">
+          <div class="cc-contact-information" style="background-image: url('{{ asset('assets/img/slide3.jpeg.jpeg')}}')">
             <div class="container">
-              <div class="cc-contact">
+              <div class="cc-contact ">
                 <div class="row">
                   <div class="col-md-9">
-                    <div class="card mb-0" data-aos="zoom-in">
+                    <div class="card mb-0 m-1" data-aos="zoom-in">
                       <div class="h4 text-center title">تواصل معي</div>
                       <div class="row">
                         <div class="col-md-6">
@@ -600,6 +600,7 @@
                             <form action="" method="POST">
                               @csrf
                               <div class="p pb-3"><strong>لا تتردد في تواصل معي </strong></div>
+                              <input type="hidden" name="user_id" value="{{request('user')}}"> 
                               <div class="row mb-3">
                                 <div class="col">
                                   <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>

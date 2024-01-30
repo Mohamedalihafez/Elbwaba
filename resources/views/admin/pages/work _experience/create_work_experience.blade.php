@@ -61,11 +61,10 @@
                     <span class="help-block"><i class="fa fa-info-circle mr-xs"></i> <strong>Like : APRIL 2013 - FEBRUARY 2014</strong></span>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Short Description </label>
+                    <label for="exampleInputEmail1">وصف قصير </label>
                       <textarea id="summernote" name="short_description" value="{{old('short_description')}}" maxlength="450" required>
-                      Place <em>Enter</em> <u>Short Description</u> 
+                      Place <em>Enter</em> <u>وصف قصير</u> 
                      </textarea>
-                      <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 450</span>
                   </div>
                   
                   

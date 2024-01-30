@@ -42,7 +42,7 @@
                     <th>Nick Name</th>
                     <th>Occupation Name</th>
                     <th>Image</th>
-                    <th>Short Description</th>
+                    <th>وصف قصير</th>
                     <th>Create Date</th>
                     <th>Update Date</th>
                     <th>Action</th>
@@ -87,7 +87,7 @@
                     <th>Nick Name</th>
                     <th>Occupation Name</th>
                     <th>Image</th>
-                    <th>Short Description</th>
+                    <th>وصف قصير</th>
                     <th>Create Date</th>
                     <th>Update Date</th>
                     <th>Action</th>

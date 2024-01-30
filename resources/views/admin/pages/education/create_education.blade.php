@@ -1,82 +1,57 @@
 @extends('admin.layout.master')
-@section('title')
- | Create Education 
-@endsection
-@push('css')
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/summernote/summernote-bs4.min.css') }}">
-  <!-- CodeMirror -->
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/codemirror/codemirror.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/backend/plugins/codemirror/theme/monokai.css') }}"> 
-@endpush
-@section('Content_header')
- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Create Education </h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Create Education</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+@section('css')
+
 @endsection
 
 @section('content')
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+ <!-- /.card -->
+ <div class="main-wrapper">
+  <!-- Page Wrapper -->
+  
+  <div class="page-wrapper">
+      <div class="content container-fluid">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
+          <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create Education </h3>
+                <h3 class="card-title">المؤهل </h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{ route('store_education') }}" method="post" enctype="multipart/form-data">
+              <form method="post" enctype="multipart/form-data" action="{{ route('store_education') }}" class="ajax-form" swalOnSuccess="{{ __('pages.sucessdata') }}" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}" redirect="{{ route('manage_education') }}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Group / Department Name </label>
-                    <input type="text" name="group" class="form-control" value="{{old('group')}}" id="exampleInputEmail1" placeholder="Enter Group / Department Name" maxlength="50" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 50</span>
+                    <label for="exampleInputEmail1">القسم</label>
+                    <input type="text" name="group" class="form-control" value="{{old('group')}}" id="exampleInputEmail1" placeholder="  القسم" maxlength="50" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Education Institute Name</label>
-                    <input type="text" name="institute_name" class="form-control" value="{{old('institute_name')}}" id="exampleInputEmail1" placeholder="Enter Education Institute  Name" maxlength="60" required>
+                    <label for="exampleInputEmail1">المعهد التعليمي</label>
+                    <input type="text" name="institute_name" class="form-control" value="{{old('institute_name')}}" id="exampleInputEmail1" placeholder="المعهد التعليمي" maxlength="60" >
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Session</label>
-                    <input type="text" name="session" class="form-control" value="{{old('session')}}" id="exampleInputEmail1" placeholder="Enter Session" maxlength="20" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 20 <strong>Like : 2013 - 2015</strong></span>
+                    <label for="exampleInputEmail1">فتره من - إلي </label>
+                    <input type="text" name="session" class="form-control" value="{{old('session')}}" id="exampleInputEmail1" placeholder=" 2018-2024" maxlength="20" required>
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputEmail1">Name of Examination</label>
-                    <input type="text" name="name_of_examination" class="form-control" value="{{old('name_of_examination')}}" id="exampleInputEmail1" placeholder="Enter Name of Examination" maxlength="25" required>
-                    <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 25</span>
+                    <label for="exampleInputEmail1">إسم الشهاده </label>
+                    <input type="text" name="name_of_examination" class="form-control" value="{{old('name_of_examination')}}" id="exampleInputEmail1" placeholder=" إسم الشهاده " maxlength="25" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Short Description </label>
+                    <label for="exampleInputEmail1">وصف قصير </label>
                       <textarea id="summernote" name="short_description" value="{{old('short_description')}}" maxlength="450" required>
-                      Place <em>Enter</em> <u>Short Description</u> 
                      </textarea>
-                      <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 450</span>
                   </div>
                   
                   
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-block btn-outline-primary">Create Education</button>
+                  <button type="submit" class="btn btn-block btn-outline-primary">حفظ</button>
                 </div>
               </form>
             </div>
@@ -86,17 +61,11 @@
     </div>
     </section>
 @endsection
-@push('js')
+@section('js')
 <!-- bs-custom-file-input -->
 
-<script src="{{ asset('assets/backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
-<!-- Summernote -->
-<script src="{{ asset('assets/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- CodeMirror -->
-<script src="{{ asset('assets/backend/plugins/codemirror/codemirror.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/codemirror/mode/css/css.js') }}"></script>
-<script src="{{ asset('assets/backend/plugins/codemirror/mode/xml/xml.js') }}"></script>
 <script src="{{ asset('assets/backend/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
 <script>
 $(function () {
@@ -114,4 +83,4 @@ $(function () {
     });
   })
 </script>
-@endpush
+@endsection
