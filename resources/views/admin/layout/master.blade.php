@@ -114,6 +114,7 @@ position: relative!important;
                                     <li><a href="{{ route('manage_about') }}"><i class="ti-control-record text-success"></i>المعلومات الأساسية  عنك     </a></li>
                                     <li><a href="{{ route('manage_skill') }}"><i class="ti-control-record text-success"></i>   مهاراتك     </a></li>
                                     <li><a href="{{ route('manage_port_exp1') }}"><i class="ti-control-record text-success"></i>   أعمالك     </a></li>
+                                    <li><a href="{{ route('manage_education') }}"><i class="ti-control-record text-success"></i>    المؤهل التعليمي      </a></li>
                                     <li><a href="{{ route('manage_contact') }}"><i class="ti-control-record text-success"></i>   طلبات التواصل معك     </a></li>
 
                                 </ul>
