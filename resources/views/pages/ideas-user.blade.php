@@ -25,7 +25,7 @@
                                 <div class="button-container social-buuton-profile"><a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $show->facebook }}" rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $show->twitter }}" rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $show->google }}" rel="tooltip" title="Follow me on Google+"><i class="fa fa-snapchat"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $show->intagram }}" rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></div>
                               @endforeach
                             @else
-                                <div class="button-container social-buuton-profile"><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Google+"><i class="fa fa-snapchat"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></div>
+                                {{-- <div class="button-container social-buuton-profile"><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Google+"><i class="fa fa-snapchat"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></div> --}}
                             @endif
                         </div>
                         {{-- <a class="btn btn-primary" href="{{asset('assets/frontend/images/cv/'.$show->cv)}}" data-aos="zoom-in" data-aos-anchor="data-aos-anchor" download>Download CV</a> --}}
@@ -36,7 +36,7 @@
               </div>
               @endforeach
               @else
-              <div class="profile-page">
+              {{-- <div class="profile-page">
                 <div class="wrapper">
                   <div class="page-header page-header-small" filter-color="green">
                     
@@ -68,7 +68,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               @endif
 
           </div>
@@ -115,43 +115,43 @@
                 </div>
                   @endforeach
                 @else
-                  <div class="card" data-aos="fade-up" data-aos-offset="10">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                      <div class="card-body">
-                        <div class="h4 mt-0 title">About</div>
-                        <p>Hello! I am Anthony Barnett. Web Developer, Graphic Designer and Photographer.</p>
-                        <p>Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience. 
-                          Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience</p>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                      <div class="card-body">
-                        <div class="h4 mt-0 title">Basic Information</div>
-                        <div class="row">
-                          <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-                          <div class="col-sm-8">24</div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                          <div class="col-sm-8">anthony@company.com</div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                          <div class="col-sm-8">+1718-111-0011</div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-                          <div class="col-sm-8">140, City Center, New York, U.S.A nnnnnnnnnn</div>
-                        </div>
-                        <div class="row mt-3">
-                          <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                          <div class="col-sm-8">English, German, French </div>
+                    {{-- <div class="card" data-aos="fade-up" data-aos-offset="10">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12">
+                        <div class="card-body">
+                          <div class="h4 mt-0 title">About</div>
+                          <p>Hello! I am Anthony Barnett. Web Developer, Graphic Designer and Photographer.</p>
+                          <p>Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience. 
+                            Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience</p>
                         </div>
                       </div>
+                      <div class="col-lg-6 col-md-12">
+                        <div class="card-body">
+                          <div class="h4 mt-0 title">Basic Information</div>
+                          <div class="row">
+                            <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
+                            <div class="col-sm-8">24</div>
+                          </div>
+                          <div class="row mt-3">
+                            <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
+                            <div class="col-sm-8">anthony@company.com</div>
+                          </div>
+                          <div class="row mt-3">
+                            <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
+                            <div class="col-sm-8">+1718-111-0011</div>
+                          </div>
+                          <div class="row mt-3">
+                            <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
+                            <div class="col-sm-8">140, City Center, New York, U.S.A nnnnnnnnnn</div>
+                          </div>
+                          <div class="row mt-3">
+                            <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
+                            <div class="col-sm-8">English, German, French </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </div> --}}
                 @endif
                 
               </div>
@@ -218,7 +218,7 @@
                 @endforeach
               
                 @else
-                    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    {{-- <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
@@ -269,7 +269,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 @endif
               
               </div>
@@ -300,7 +300,7 @@
                 </div>
                   @endforeach
                 @else
-                  <div class="card">
+                  {{-- <div class="card">
                   <div class="row">
                     <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
                       <div class="card-body cc-education-header">
@@ -316,7 +316,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 @endif
                 
               </div>
@@ -354,7 +354,7 @@
                       </div>
                       @endforeach
                     @else
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                       <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
                           <figure class="cc-effect"><img src=" {{ asset('assets/frontend/images/project-1.jpg') }}" alt="Image"/>
                             <figcaption>
@@ -385,7 +385,7 @@
                               <p>Web Development</p>
                             </figcaption>
                           </figure></a></div>
-                    </div>
+                    </div> --}}
                     @endif
                     
                     
@@ -410,7 +410,7 @@
                         @endforeach
                     @else
                     
-                          <div class="col-md-6">
+                          {{-- <div class="col-md-6">
                             <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
                                 <figure class="cc-effect"><img src="{{ asset('assets/frontend/images/graphic-design-1.jpg') }}" alt="Image"/>
                                   <figcaption>
@@ -441,7 +441,7 @@
                                     <p>Graphic Design</p>
                                   </figcaption>
                                 </figure></a></div>
-                          </div>
+                          </div> --}}
                     @endif
                     
 
@@ -468,7 +468,7 @@
                     </div>
                 @endforeach
               @else
-                  <div class="col-md-6">
+                  {{-- <div class="col-md-6">
                       <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
                           <figure class="cc-effect"><img src=" {{ asset('assets/frontend/images/photography-1.jpg') }}" alt="Image"/>
                             <figcaption>
@@ -500,7 +500,7 @@
                             </figcaption>
                           </figure></a></div>
                     </div>
-                  
+                   --}}
               @endif
                     
                   </div>
@@ -651,14 +651,14 @@
                             </div>
                             @endforeach
                         @else
-                        <div class="card-body">
+                        {{-- <div class="card-body">
                             <p class="mb-0"><strong>Address </strong></p>
                             <p class="pb-2">140, City Center, New York, U.S.A</p>
                             <p class="mb-0"><strong>Phone</strong></p>
                             <p class="pb-2">+1718-111-0011</p>
                             <p class="mb-0"><strong>Email</strong></p>
                             <p>anthony@company.com</p>
-                          </div>
+                          </div> --}}
                         @endif
                           
                         </div>
