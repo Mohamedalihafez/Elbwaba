@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\Admin\BuildingController;
-
+use App\Http\Controllers\Admin\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +61,7 @@ Route::group(['prefix' => 'home' , 'middleware' => 'web'],function () {
 
 Route::group(['prefix' => 'ideas' , 'middleware' => 'web'],function () {
     Route::get('/', [IdeaController::class, 'index'])->name('ideas');
+    Route::post('/store_contact',[RequestController::class, 'store'])->name('ideas.store_contact');
     Route::post('/request', [IdeaController::class, 'request'])->name('ideas.request');
     Route::get('/add',[IdeaController::class,'add'])->name('ideas.add');
 });

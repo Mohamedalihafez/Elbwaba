@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Toastr;
 
 class RequestController extends Controller
@@ -16,8 +17,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $Request = ModelsRequest::latest()->get();
-        return view('admin.pages.request.manage_request',compact('Request'));
+        $contact = ModelsRequest::where('user_id', Auth::user()->id)->get();
+        return view('admin.pages.request.manage_request',compact('contact'));
         
     }
 
@@ -39,11 +40,13 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        $Request = new Request;
+        $Request = new ModelsRequest;
         $Request->name = $request->name;
         $Request->subject = $request->subject;
         $Request->email = $request->email;
         $Request->message = $request->message;
+        $Request->user_id = $request->user_id;
+
         $save =  $Request->save();
 
         return redirect()->back();
@@ -100,7 +103,8 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-       $Request = Request::find($id);
+       $Request = ModelsRequest::find($id);
+       
        $save =  $Request->delete();
    
         return redirect()->back();

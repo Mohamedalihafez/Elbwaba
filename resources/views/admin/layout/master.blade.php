@@ -107,16 +107,15 @@ position: relative!important;
                             <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="ti-arrow-down text-success"></i>  بيانات أفكار 
                             </a>
-                            <div class="collapse sidebar-nav" id="collapseExample">
+                            <div class=" sidebar-nav" id="collapseExample">
                                 <ul class="  flex-column">
-                                    {{-- Add additional items you want to show when collapsed --}}
                                     <li><a href="{{ route('manage_slider') }}"><i class="ti-control-record text-success"></i>الغلاف الشخصي </a></li>
                                     <li><a href="{{ route('show_socialMedia') }}"><i class="ti-control-record text-success"></i>روابط التواصل الاجتماعي   </a></li>
                                     <li><a href="{{ route('manage_about') }}"><i class="ti-control-record text-success"></i>المعلومات الأساسية  عنك     </a></li>
                                     <li><a href="{{ route('manage_skill') }}"><i class="ti-control-record text-success"></i>   مهاراتك     </a></li>
                                     <li><a href="{{ route('manage_port_exp1') }}"><i class="ti-control-record text-success"></i>   أعمالك     </a></li>
+                                    <li><a href="{{ route('manage_contact') }}"><i class="ti-control-record text-success"></i>   طلبات التواصل معك     </a></li>
 
-                                    <!-- ... other items ... -->
                                 </ul>
                             </div>
                         </li>

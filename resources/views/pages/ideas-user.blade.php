@@ -343,7 +343,7 @@
                   <div class="row">
                     @if ($portfolio_experience1->count() != 0)
                       @foreach ($portfolio_experience1 as $show )
-                    <div class="col-md-4">
+                    <div  class="col-md-4">
                       <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
                           <figure class="cc-effect"><img src="{{asset('assets/frontend/images/Portfolio/port_exper1/'.$show->picture)}}"  width="550" height="410" alt="Image"/>
                             <figcaption>
@@ -586,19 +586,20 @@
         </div> --}}
         
       
-        <div class="" id="contact">
-          <div class="cc-contact-information" style="background-image: url('{{ asset('assets/img/slide3.jpeg.jpeg')}}')">
-            <div class="container">
+        <div class="row mt-4" id="contact">
+          <div class="cc-contact-information col-6" style="background-image: url('{{ asset('assets/setting/1/banner_1 (2).jpg')}}')">
+            <div class="">
               <div class="cc-contact ">
                 <div class="row">
-                  <div class="col-md-9">
+                  <div class="col-md-12">
                     <div class="card mb-0 m-1" data-aos="zoom-in">
                       <div class="h4 text-center title">تواصل معي</div>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="card-body">
-                            <form action="" method="POST">
+                            <form id="contact-form" method="post" enctype="multipart/form-data" action="{{ route('ideas.store_contact') }}" class="ajax-form" resetAfterSend  swalOnSuccess="تم إرسال طلبك بنجاح" title="{{ __('pages.opps') }}" swalOnFail="{{ __('pages.wrongdata') }}">
                               @csrf
+                           
                               <div class="p pb-3"><strong>لا تتردد في تواصل معي </strong></div>
                               <input type="hidden" name="user_id" value="{{request('user')}}"> 
                               <div class="row mb-3">
@@ -667,6 +668,39 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-6">
+            <div class="  wow fadeInUp" data-wow-delay="0.1s">
+              <div class=" ">
+                  <div class="section-title text-center position-relative pb-3 mb-3 mx-auto" style="max-width: 600px;">
+                      <h2 class="mb-0"> هذه خدمه تقدمها البوابة إذا كان لديك أي استفسار يمكنك الاتصال بنا </h2>
+                  </div>
+               
+                  <div class="row g-2">
+                      <div class="col-6">
+                        <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.1s">
+                            <div class="ml-3">
+                                <h5 class="mb-2">اتصل لطرح أي سؤال</h5>
+                                <h6 class="text-primary mb-0">966505360123+</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.4s">
+                          <div class="ps-4">
+                              <h5 class="mb-2">راسلنا عبر البريد الإلكتروني</h5>
+                              <h6 class="text-primary mb-0">vip.albawaba@gmail.com</h6>
+                          </div>
+                      </div>
+                  </div>
+                      <div class="col-lg-12  slideInUp " data-wow-delay="0.6s">
+                          <iframe class="position-relative rounded w-100 " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.6167822510356!2d36.529002774387294!3d28.430817993214188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15a9ad46d59b9f7b%3A0xeafb09e70f11614b!2z2YXYpNiz2LPYqSDYqNmI2KfYqNipINiq2KjZiNmDINmE2YTYrtiv2YXYp9iqINin2YTYudmC2KfYsdmK2Kkg2YjYp9mE2KrYs9mI2YrZgg!5e0!3m2!1sen!2ssa!4v1696345634517!5m2!1sen!2ssa" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+                          tabindex="0"></iframe>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
           </div>
         </div>
       </div>

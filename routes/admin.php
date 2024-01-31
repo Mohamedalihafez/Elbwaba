@@ -347,8 +347,7 @@ Route::group(['prefix' => 'reference'],function(){
 });
 
 Route::group(['prefix' => 'request'],function(){
-    Route::post('store_contact',[RequestController::class, 'store'])->name('store_contact');
-    Route::get('manage_contact',[RequestController::class, 'index'])->name('manage_contact');
+    Route::get('/',[RequestController::class, 'index'])->name('manage_contact');
     Route::get('edit_contact/{id}',[RequestController::class, 'edit'])->name('edit_contact');
     Route::put('update_contact/{id}',[RequestController::class, 'update'])->name('update_contact');
     Route::get('destroy_contact/{id}',[RequestController::class, 'destroy'])->name('destroy_contact');

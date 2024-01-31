@@ -1078,7 +1078,6 @@ input:checked+.slider:before {
 .section-title-ideas {
   display: flex !important;
   margin-bottom: 15px;
-  padding: 15px;
   display: block;
   justify-content: space-between;
   background: #FFFFFF;
@@ -1399,11 +1398,11 @@ a.badge-success:focus, a.badge-success.focus {
 @section('content')
 <div class="undefined  wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
-        <div class="section-title-ideas text-center position-relative   mx-auto">
-            <h1 class="fw-bold text-primary text-uppercase"> 
-                <img class="bg-idea" src="https://vipalbawaba.com/assets/img/lamp.jpg" alt="profile-sample1"  class="background"/> أفكار
+        <div style="padding:10px 1px 10px 1px !important " class="section-title-ideas text-center position-relative   mx-auto">
+            <h1  style="color: #178a8e !important; font-size: 48px;" class="fw-bold text-primary text-uppercase"> 
+                <img class="bg-idea" src="{{ asset('assets/img/lamp.jpg')}}" alt="profile-sample1"  class="background"/> البوابة
             </h1>
-            <h2>هي مساحه لكل مبرمج ومصور وفنان وموهوب والجميع تقدمها البوابة    </h2>
+            <h2 style="color: #ca1820 !important ; font-size: 33px;     line-height: 3rem;" >تتيح مساحة خاصة بكل مبرمج  وموهوب ومصور  ومبدع وفنان <br> وكل من لديه فكرة رائدة وتصميم جذاب وعمل غير عادي      </h2>
         </div>
         <div class="row ">
                 <div class="col-12   text-center">
