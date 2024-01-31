@@ -293,7 +293,7 @@
                       <div class="card-body">
                         <div class="h5">{{ $show->group }}</div>
                         <p class="category">{{ $show->institute_name }}</p>
-                        <p>{{ $show->short_description }}</p>
+                        <p>{!! $show->short_description !!}</p>
                       </div>
                     </div>
                   </div>
