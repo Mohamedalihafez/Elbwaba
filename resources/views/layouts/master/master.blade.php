@@ -297,7 +297,7 @@
                   // Call the Web Share API
                   navigator.share({
                     title: document.title,
-                    text: 'Check out this page!',
+                    text: 'البوابة للتسويق الإلكتروني',
                     url: window.location.href
                   })
                   .then(() => console.log('Successful share'))
