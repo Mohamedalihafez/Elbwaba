@@ -8,6 +8,7 @@
                 <small class="text-light"><i class="fa fa-envelope-open me-2"></i>vip.albawaba@gmail.com</small>
             </div>
         </div>
+
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
                 <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://m.facebook.com/profile.php/?id=61552400979216"><i class="fab fa-facebook-f fw-normal"></i></a>

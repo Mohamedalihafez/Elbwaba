@@ -215,6 +215,11 @@
               <img style="    width: 50px;
     height: 50px;" class="icon icon2 icon-3" src="{{ asset('assets/img/social.png')}}"/>
             </a> 
+
+            <a style=" width: 50px; height: 50px;" id="shareButton" target="_blank" href="https://t.me/ss_albawaba " class="telegram icon2-hover ">
+                <i style="margin-top:8px" class="icon icon2  fa fa-share"></i>
+            </a>  
+
         </div>
         @include('layout.header')
         @yield('content')
@@ -274,7 +279,34 @@
             
             lastScrollTop = scrollTop;
         });
+
+        
         </script>
+        <script>
+            $(document).ready(function() {
+              // Check if the Web Share API is supported
+              if (navigator.share) {
+                // Enable the share button
+                $("#shareButton").prop("disabled", false);
+            
+                // Add click event listener to the share button
+                $("#shareButton").on("click", function() {
+                  // Call the Web Share API
+                  navigator.share({
+                    title: document.title,
+                    text: 'Check out this page!',
+                    url: window.location.href
+                  })
+                  .then(() => console.log('Successful share'))
+                  .catch((error) => console.log('Error sharing:', error));
+                });
+              } else {
+                // Disable the share button if Web Share API is not supported
+                $("#shareButton").prop("disabled", true);
+                console.log('Web Share API not supported.');
+              }
+            });
+            </script>
     @yield('js')
 </body>
 
