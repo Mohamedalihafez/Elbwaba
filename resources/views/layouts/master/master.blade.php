@@ -165,7 +165,7 @@
             margin-right: -27px !important;
         }
         .icon-share {
-            margin-right: -27px !important;
+            margin-right: -21px !important;
         }
     }
 
