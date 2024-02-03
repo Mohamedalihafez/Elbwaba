@@ -43,7 +43,7 @@ class Portfolio_experience1Controller extends Controller
     {
       $port_ex1 = new Portfolio_experience1;
       $port_ex1->project_name = $request->project_name;
-      $port_ex1->experience_name = $request->experience_name;
+      $port_ex1->experience_name = $request->experience_name ?? '';
       $port_ex1->user_id = Auth::user()->id;
 
       if($request->hasfile('picture'))
@@ -96,8 +96,8 @@ class Portfolio_experience1Controller extends Controller
     {
       $port_ex1 = Portfolio_experience1::find($id);
       $port_ex1->project_name = $request->project_name;
-      $port_ex1->experience_name = $request->experience_name;
-      $port_ex1->user_id = Auth::user()->id;
+      $port_ex1->experience_name = $request->experience_name ?? '';
+        $port_ex1->user_id = Auth::user()->id;
 
       if($request->hasfile('picture'))
         {

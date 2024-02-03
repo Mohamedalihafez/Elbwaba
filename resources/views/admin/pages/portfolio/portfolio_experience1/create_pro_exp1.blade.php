@@ -22,8 +22,8 @@
                     <input type="text" name="project_name" class="form-control" id="exampleInputEmail1" placeholder=" اسم المشروع" maxlength="60" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">خبرتك  بالمشروع</label>
-                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder=" خبرتك  بالمشروع" maxlength="35" required>
+                    <label for="exampleInputEmail1">رابط المشروع</label>
+                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" placeholder=" رابط المشروع" maxlength="35" >
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">صوره المشروع</label>

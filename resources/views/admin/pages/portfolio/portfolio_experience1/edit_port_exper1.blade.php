@@ -25,8 +25,8 @@
                     <input type="text"  name="project_name" class="form-control" id="exampleInputEmail1" value="{{ $port_exper1->project_name }}" maxlength="60" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">خبرتك  بالمشروع</label>
-                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" value="{{ $port_exper1->experience_name }}" maxlength="35" required>
+                    <label for="exampleInputEmail1">رابط المشروع</label>
+                    <input type="text" name="experience_name" class="form-control" id="exampleInputEmail1" value="{{ $port_exper1->experience_name }}" maxlength="35" >
                   </div>
                    <div class="">
                     <h6>الصوره القديمه</h6>

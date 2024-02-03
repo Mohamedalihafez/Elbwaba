@@ -46,8 +46,8 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Work خبرتك  بالمشروع</label>
-                    <input type="text" name="work_experienceName" class="form-control" value="{{old('work_experienceName')}}" id="exampleInputEmail1" placeholder="Enter Work خبرتك  بالمشروع" maxlength="45" required>
+                    <label for="exampleInputEmail1">Work رابط المشروع</label>
+                    <input type="text" name="work_experienceName" class="form-control" value="{{old('work_experienceName')}}" id="exampleInputEmail1" placeholder="Enter Work رابط المشروع" maxlength="45" required>
                     <span class="help-block"><i class="fa fa-info-circle mr-xs"></i>Max characters set to 45</span>
                   </div>
                   <div class="form-group">
