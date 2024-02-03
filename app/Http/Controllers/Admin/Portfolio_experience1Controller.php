@@ -19,7 +19,7 @@ class Portfolio_experience1Controller extends Controller
      */
     public function index()
     {
-       $port_exper1 = Portfolio_experience1::latest()->get();
+       $port_exper1 = Portfolio_experience1::where('user_id', Auth::user()->id)->get();
        return view('admin.pages.portfolio.portfolio_experience1.manage_port_exper1',compact('port_exper1'));
     }
 

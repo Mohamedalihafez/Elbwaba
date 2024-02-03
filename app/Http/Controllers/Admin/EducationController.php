@@ -16,7 +16,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $education = Education::latest()->get();
+        $education = Education::where('user_id', Auth::user()->id)->get();
         return view('admin.pages.education.manage_education', compact('education'));
     }
 
