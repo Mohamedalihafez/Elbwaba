@@ -53,8 +53,8 @@
                         @foreach ($about as $show)
                             <div class="card" data-aos="fade-up" data-aos-offset="10">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-12">
-                                        <div class="card-body">
+                                    <div class="col-lg-6 col-md-12 ">
+                                        <div class="card-body ">
                                             <p>{!! $show->short_about !!}</p>
 
                                         </div>
@@ -84,54 +84,167 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <div class="container cc-education card-header">
+                                                <div class="h4 text-center mb-4 title ">المؤهل</div>
+                                                @if ($education->count() != 0)
+                                                    @foreach ($education as $show)
+                                                        <div class="card">
+                                                            <div class="row">
+                                                                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
+                                                                    data-aos-duration="500">
+                                                                    <div class="card-body cc-education-header">
+                                                                        <p>{{ $show->session }}</p>
+                                                                        <div class="h5 text-white">{{ $show->name_of_examination }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50"
+                                                                    data-aos-duration="500">
+                                                                    <div class="card-body">
+                                                                        <div class="h5 text-white">{{ $show->group }}</div>
+                                                                        <p class="category ">{{ $show->institute_name }}</p>
+                                                                        <p>{!! $show->short_description !!}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                @endif
+            
+                                            </div>
+                                        </div>
+            
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="" id="skill">
+                                            <div class="container card-header">
+                                                <div class="h4 text-center mb-4 title ">مهارات احترافية</div>
+                                                @if ($skill->count() != 0)
+                                                    @foreach ($skill as $show)
+                                                        <div class="card" data-aos="fade-up"
+                                                            data-aos-anchor-placement="top-bottom">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_1 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="20"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="40" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_1_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_1_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_2 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="10"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="60" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_2_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_2_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_3 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="10"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="60" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_3_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_3_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_4 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="10"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="60" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_4_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_4_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_5 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="10"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="60" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_5_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_5_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="progress-container progress-primary"><span
+                                                                                class="progress-badge">{{ $show->skill_6 }}</span>
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-primary"
+                                                                                    data-aos="progress-full" data-aos-offset="10"
+                                                                                    data-aos-duration="2000" role="progressbar"
+                                                                                    aria-valuenow="60" aria-valuemin="0"
+                                                                                    aria-valuemax="100"
+                                                                                    style="width: {{ $show->skill_6_percentage }}%;">
+                                                                                </div><span
+                                                                                    class="progress-value">{{ $show->skill_6_percentage }}%</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+            
+                                                @endif
+            
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        {{-- <div class="card" data-aos="fade-up" data-aos-offset="10">
-                <div class="row">
-                  <div class="col-lg-6 col-md-12">
-                    <div class="card-body">
-                      <div class="h4 mt-0 title">About</div>
-                      <p>Hello! I am Anthony Barnett. Web Developer, Graphic Designer and Photographer.</p>
-                      <p>Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience. 
-                        Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skills and experience</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-12">
-                    <div class="card-body">
-                      <div class="h4 mt-0 title">Basic Information</div>
-                      <div class="row">
-                        <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-                        <div class="col-sm-8">24</div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-                        <div class="col-sm-8">anthony@company.com</div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-                        <div class="col-sm-8">+1718-111-0011</div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-                        <div class="col-sm-8">140, City Center, New York, U.S.A nnnnnnnnnn</div>
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-                        <div class="col-sm-8">English, German, French </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
+        
                     @endif
 
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    {{-- <div class="col-md-12">
         <div class="" id="about">
             <div class="">
                 <div class="container-fluid container bg-search-section mb-5 wow fadeIn" data-wow-delay="0.1s"
@@ -142,57 +255,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="">
-                                <div class="container cc-education card-header">
-                                    <div class="h4 text-center mb-4 title text-white">المؤهل</div>
-                                    @if ($education->count() != 0)
-                                        @foreach ($education as $show)
-                                            <div class="card">
-                                                <div class="row">
-                                                    <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
-                                                        data-aos-duration="500">
-                                                        <div class="card-body cc-education-header">
-                                                            <p>{{ $show->session }}</p>
-                                                            <div class="h5 text-white">{{ $show->name_of_examination }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-9" data-aos="fade-left" data-aos-offset="50"
-                                                        data-aos-duration="500">
-                                                        <div class="card-body">
-                                                            <div class="h5 text-white">{{ $show->group }}</div>
-                                                            <p class="category ">{{ $show->institute_name }}</p>
-                                                            <p>{!! $show->short_description !!}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        {{-- <div class="card">
-                    <div class="row">
-                      <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-                        <div class="card-body cc-education-header">
-                          <p>2018 - 2022</p>
-                          <div class="h5">بكالوريوس</div>
-                        </div>
-                      </div>
-                      <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                        <div class="card-body">
-                          <div class="h5">بكالوريوس علوم الحاسب</div>
-                          <p class="category">جامعه الاسكندريه</p>
-                          <p>حاصل علي بكالوريوس علوم الحاسب في الهندسه التقنيه</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> --}}
-                                    @endif
-
-                                </div>
-                            </div>
-
-                        </div>
+                      
                         <div class="col-md-6">
                             <div class="" id="skill">
                                 <div class="container card-header">
@@ -302,58 +365,7 @@
                                             </div>
                                         @endforeach
                                     @else
-                                        {{-- <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">JavaScript</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">SASS</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">Bootstrap</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="progress-container progress-primary"><span class="progress-badge">Photoshop</span>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> --}}
+
                                     @endif
 
                                 </div>
@@ -364,7 +376,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">

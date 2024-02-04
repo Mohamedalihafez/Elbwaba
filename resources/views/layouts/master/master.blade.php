@@ -219,8 +219,8 @@
     height: 50px;" class="icon icon2 icon-3" src="{{ asset('assets/img/social.png')}}"/>
             </a> 
 
-            <a style=" width: 50px; height: 50px;" id="shareButton" target="_blank" href="https://t.me/ss_albawaba " class="telegram icon2-hover icon-share ">
-                <i style="margin-top:8px" class="icon icon2  fa fa-share"></i>
+            <a style=" width: 40px; height: 40px;" id="shareButton" target="_blank" href="https://t.me/ss_albawaba " class="share-2 icon2-hover icon-share ">
+                <i style="margin-top:4px" class="icon icon2  fa fa-share-alt"></i>
             </a>  
 
         </div>
